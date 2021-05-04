@@ -209,7 +209,7 @@ export default class AreaSpe extends React.Component {
                           Docentes Procesamiento de análisis
                         </Button>
                       )}
-                      {this.props.info.titulo == "Sistemas interactivos" && (
+                      {this.props.info.titulo == "Sistemas Interactivos" && (
                         <Button
                           style={{
                             color: "#E1FF00",
@@ -221,7 +221,7 @@ export default class AreaSpe extends React.Component {
                           Docentes Sistemas interactivos
                         </Button>
                       )}
-                      {this.props.info.titulo == "Producción multimedia" && (
+                      {this.props.info.titulo == "Producción Multimedia" && (
                         <Button
                           style={{
                             color: "#E1FF00",
