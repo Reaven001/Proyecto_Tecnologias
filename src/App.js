@@ -109,11 +109,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Container>
-          <Row>
-            <Button href="/Inicio">Iniciar Aplicación</Button>{" "}
-          </Row>
-        </Container>
         <Switch>
           <Route path={"/Inicio"} component={Inicio}></Route>
           <Route path={"/Areas"} component={Areas}></Route>
