@@ -5,14 +5,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
-import doc1 from "../assets/iconoPersona.jpg";
-import doc2 from "../assets/urregoxd.png";
-import doc3 from "../assets/marce.png";
-import doc4 from "../assets/Gfe.jpeg";
-import "../css/docentes.css";
+import doc1 from "../../assets/iconoPersona.jpg";
+import doc2 from "../../assets/urregoxd.png";
+import doc3 from "../../assets/marce.png";
+import doc4 from "../../assets/Gfe.jpeg";
+import "../../css/docentes.css";
 import { CardColumns, CardDeck } from "react-bootstrap";
 
 export default class Docentes extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const styleCard = {
       color: "#620CE8",
@@ -24,14 +28,9 @@ export default class Docentes extends React.Component {
         <Container>
           <Row className="justify-content-center py-5">
             <Col lg={12} sm={12}>
-              <h2 className="titleDoc">DOCENTES</h2>
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col lg={12} sm={12}>
-              <p className="parrDoc">
-                Docentes que han trabajado en el area de X a traves de los años
-              </p>
+              <h2 className="titleDoc">
+                DOCENTES: Area de Transformación Digital
+              </h2>
             </Col>
           </Row>
           <Row className="justify-content-center py-5">

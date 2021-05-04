@@ -3,9 +3,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import cubo from "./assets/cubo.png";
-import Docentes from "./components/Docentes.js";
-import "./css/areas.css";
+import cubo from "../../assets/cubo.png";
+import Docentes from "../DocentesxArea/Docentes.js";
+import "../../css/areas.css";
 
 import "fullpage.js/vendors/scrolloverflow";
 import ReactFullpage from "@fullpage/react-fullpage";
@@ -28,7 +28,7 @@ export default class AreaSpe extends React.Component {
                     <Row className="justify-content-between">
                       <Col>
                         <h2 className="text-center tituloarea">
-                          Transformación Digital
+                          {this.props.info.titulo}
                         </h2>
                       </Col>
                     </Row>
@@ -45,7 +45,7 @@ export default class AreaSpe extends React.Component {
                         </Row>
                         <Row className="justify-content-center">
                           <h3 className="text-center asig">
-                            Tecnologias de internet
+                            {this.props.info.mat1}
                           </h3>
                         </Row>
                       </Col>
@@ -61,7 +61,7 @@ export default class AreaSpe extends React.Component {
                         </Row>
                         <Row className="justify-content-center">
                           <h3 className="text-center asig">
-                            Multimedia educativa
+                            {this.props.info.mat2}
                           </h3>
                         </Row>
                       </Col>
@@ -76,21 +76,62 @@ export default class AreaSpe extends React.Component {
                           />
                         </Row>
                         <Row className="justify-content-center">
-                          <h3 className="text-center asig">Materia x</h3>
+                          <h3 className="text-center asig">
+                            {this.props.info.mat3}
+                          </h3>
                         </Row>
                       </Col>
                     </Row>
                     <Row className="justify-content-center">
-                      <Button
-                        style={{
-                          color: "#E1FF00",
-                          background: "#620CE8",
-                          border: "#0DBFFF",
-                        }}
-                        href="/Docentes"
-                      >
-                        Docentes
-                      </Button>{" "}
+                      {this.props.info.titulo == "Transformación Digital" && (
+                        <Button
+                          style={{
+                            color: "#E1FF00",
+                            background: "#620CE8",
+                            border: "#0DBFFF",
+                          }}
+                          href="/Docentes/TransformacionDigital"
+                        >
+                          Docentes
+                        </Button>
+                      )}
+                      {this.props.info.titulo ==
+                        "Procesamiento de análisis de información multimedia" && (
+                        <Button
+                          style={{
+                            color: "#E1FF00",
+                            background: "#620CE8",
+                            border: "#0DBFFF",
+                          }}
+                          href="/Docentes/Procesamientodeanalisisdeinformacionmultimedia"
+                        >
+                          Docentes Procesamiento
+                        </Button>
+                      )}
+                      {this.props.info.titulo == "Sistemas interactivos" && (
+                        <Button
+                          style={{
+                            color: "#E1FF00",
+                            background: "#620CE8",
+                            border: "#0DBFFF",
+                          }}
+                          href="/Docentes/Sistemasinteractivos"
+                        >
+                          Docentes Sistemas interactivos
+                        </Button>
+                      )}
+                      {this.props.info.titulo == "Producción multimedia" && (
+                        <Button
+                          style={{
+                            color: "#E1FF00",
+                            background: "#620CE8",
+                            border: "#0DBFFF",
+                          }}
+                          href="/Docentes/Produccionmultimedia"
+                        >
+                          Docentes Produccion Multimedia
+                        </Button>
+                      )}
                     </Row>
                   </Container>
                 </div>

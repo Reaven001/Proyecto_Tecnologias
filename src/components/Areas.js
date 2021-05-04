@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import AreaSpe from "../AreaSpe.js";
 import "../css/areas.css";
 
 export default class Areas extends React.Component {
@@ -29,17 +28,21 @@ export default class Areas extends React.Component {
                   </Button>{" "}
                 </Col>
                 <Col>
-                  <Button href="#">
+                  <Button href="/Procesamientodeanalisisdeinformacionmultimedia">
                     Procesamiento de análisis de información multimedia
                   </Button>{" "}
                 </Col>
               </Row>
               <Row className="justify-content-between py-5">
                 <Col>
-                  <Button href="#">Sistemas interactivos</Button>{" "}
+                  <Button href="/Sistemasinteractivos">
+                    Sistemas interactivos
+                  </Button>{" "}
                 </Col>
                 <Col>
-                  <Button href="#">Producción multimedia</Button>{" "}
+                  <Button href="/Produccionmultimedia">
+                    Producción multimedia
+                  </Button>{" "}
                 </Col>
               </Row>
             </Col>

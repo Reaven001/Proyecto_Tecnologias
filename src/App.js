@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./Home.js";
 import Areas from "./components/Areas.js";
-import Docentes from "./components/Docentes.js";
-import AreaSpe from "./AreaSpe.js";
+import Docentes from "./components/DocentesxArea/Docentes.js";
+import Docentes2 from "./components/DocentesxArea/Docentes2.js";
+import Docentes3 from "./components/DocentesxArea/Docentes3.js";
+import Docentes4 from "./components/DocentesxArea/Docentes4.js";
+import AreaSpe from "./components/Areas Espe/AreaSpe.js";
 import Inicio from "./Inicio.js";
 import Menu from "./components/Menu.js";
 
@@ -17,7 +20,26 @@ function App() {
     mat3: "Materia X",
   };
 
-  const areaspe1 = <AreaSpe info={area1} />;
+  const area2 = {
+    titulo: "Procesamiento de análisis de información multimedia",
+    mat1: "Procesamiento de imagenes",
+    mat2: "Inteligencia artificial ",
+    mat3: "Materia X",
+  };
+
+  const area3 = {
+    titulo: "Sistemas interactivos",
+    mat1: "Diseño",
+    mat2: "Diseño de interfaces",
+    mat3: "Materia X",
+  };
+  const area4 = {
+    titulo: "Producción multimedia",
+    mat1: "Render",
+    mat2: "Animación 3d",
+    mat3: "Materia X",
+  };
+
   return (
     <Router>
       <div>
@@ -25,7 +47,30 @@ function App() {
           <Route path={"/Inicio"} component={Inicio}></Route>
           <Route path={"/Areas"} component={Areas}></Route>
           <Route path={"/Docentes"} component={Docentes}></Route>
-          <Route path={"/TransformacionDigital"} component={AreaSpe}></Route>
+          <Route path="/TransformacionDigital">
+            <AreaSpe info={area1} />
+          </Route>
+          <Route path="/Procesamientodeanalisisdeinformacionmultimedia">
+            <AreaSpe info={area2} />
+          </Route>
+          <Route path="/Sistemasinteractivos">
+            <AreaSpe info={area3} />
+          </Route>
+          <Route path="/Produccionmultimedia">
+            <AreaSpe info={area4} />
+          </Route>
+          <Route path="/Docentes/TransformacionDigital">
+            <Docentes />
+          </Route>
+          <Route path="/Docentes/Procesamientodeanalisisdeinformacionmultimedia">
+            <Docentes2 />
+          </Route>
+          <Route path="/Docentes/Sistemasinteractivos">
+            <Docentes3 />
+          </Route>
+          <Route path="/Docentes/Produccionmultimedia">
+            <Docentes4 />
+          </Route>
         </Switch>
       </div>
       <Menu />
