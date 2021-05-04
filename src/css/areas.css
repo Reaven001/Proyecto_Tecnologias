@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.areaspe {
+  background: #e8910c; /*Naranja*/
+  font-family: "Fredoka One";
+  color: #e1ff00;
+}
+
+.areas {
+  background: #e8910c; /*Naranja*/
+}
+
+.titleArea {
+  font-family: "Fredoka One";
+  color: #e1ff00;
+  font-size: 60px;
+}
+
+.tituloarea {
+  font-size: 54pt;
+}
+
+.asig {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20pt;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+@media (max-width: 640px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+  .tituloarea {
+    font-size: 20pt;
+    padding-bottom: 20px;
+  }
+  .asig {
+    font-size: 10pt;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+  .modelo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+  .tituloarea {
+    font-size: 50pt;
+    padding-bottom: 20px;
+  }
+  .asig {
+    font-size: 20pt;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+  .modelo {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+  .tituloarea {
+    font-size: 50pt;
+    padding-bottom: 100px;
+  }
+  .asig {
+    font-size: 20pt;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .modelo {
+    width: 150px;
+    height: 150px;
+  }
+}

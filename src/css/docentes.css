@@ -1,0 +1,44 @@
+.docentes {
+  background: #e8910c; /*Naranja*/
+}
+
+.titleDoc {
+  font-family: "Fredoka One";
+  color: #e1ff00;
+  font-size: 50px;
+}
+
+.parrDoc {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  font-size: 20px;
+}
+
+.tarjetas {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.titleCard {
+  font-weight: bold;
+}
+
+.imageCard {
+  width: 10px;
+  height: 10px;
+}
+
+@media (max-width: 640px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+  .titleDoc {
+    font-size: 40px;
+  }
+
+  .parrDoc {
+    font-size: 20px;
+  }
+  .tarjetas {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

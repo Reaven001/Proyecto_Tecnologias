@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.tituloPrin {
+  font-family: "Fredoka One";
+  color: #e1ff00;
+  font-size: 80px;
+}
+
+.modelosUP {
+  padding-bottom: 50px;
+}
+
+.modelosDOWN {
+  padding-top: 100px;
+}
+
+.palabraen {
+  font-family: "Fredoka One";
+  color: #e1ff00;
+  font-size: 50px;
+}
+
+@media (max-width: 640px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+  .tituloPrin {
+    font-size: 30pt;
+  }
+  .palabraen {
+    font-size: 20pt;
+  }
+  .modInicio {
+    width: 80px;
+    height: 80px;
+  }
+  .modelosUP {
+    padding-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .modelosDOWN {
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

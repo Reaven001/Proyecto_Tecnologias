@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.slide1 {
+  font-family: "Fredoka One";
+  color: #e8910c;
+}
+
+.titulohist {
+  font-family: "Fredoka One";
+  color: #e8910c;
+  font-size: 75px;
+}
+
+.tituloyear {
+  font-family: "Press Start 2P", cursive;
+  color: #e8910c;
+  font-size: 60px;
+  padding-bottom: 100px;
+}
+
+.descrip {
+  font-family: "Press Start 2P", cursive;
+  color: #e1ff00;
+  font-size: 16px;
+  text-align: justify;
+}
+
+@media (max-width: 640px) {
+  /* Los estilos aquí contenidos solo se aplicarán a partir
+  del tamaño de pantalla indicado */
+
+  .tituloaño {
+    font-size: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+  }
+
+  .descrip {
+    font-size: 10px;
+    padding-top: 40px;
+  }
+
+  .imagenTL {
+    width: 150px;
+    height: 150px;
+  }
+}
