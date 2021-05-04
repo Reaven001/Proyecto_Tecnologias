@@ -10,6 +10,14 @@ import Inicio from "./Inicio.js";
 import Menu from "./components/Menu.js";
 
 function App() {
+  const area1 = {
+    titulo: "Transformación Digital",
+    mat1: "Tecnologias de internet",
+    mat2: "Multimedia educativa",
+    mat3: "Materia X",
+  };
+
+  const areaspe1 = <AreaSpe info={area1} />;
   return (
     <Router>
       <div>

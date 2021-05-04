@@ -76,7 +76,7 @@ export default class AreaSpe extends React.Component {
                           />
                         </Row>
                         <Row className="justify-content-center">
-                          <h3 className="text-center asig">Materia X</h3>
+                          <h3 className="text-center asig">Materia x</h3>
                         </Row>
                       </Col>
                     </Row>
