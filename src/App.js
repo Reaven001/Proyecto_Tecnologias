@@ -28,13 +28,13 @@ function App() {
   };
 
   const area3 = {
-    titulo: "Sistemas interactivos",
+    titulo: "Sistemas Interactivos",
     mat1: "Diseño",
     mat2: "Diseño de interfaces",
     mat3: "Materia X",
   };
   const area4 = {
-    titulo: "Producción multimedia",
+    titulo: "Producción Multimedia",
     mat1: "Render",
     mat2: "Animación 3d",
     mat3: "Materia X",
@@ -59,16 +59,16 @@ function App() {
           <Route path="/Produccionmultimedia">
             <AreaSpe info={area4} />
           </Route>
-          <Route path="/Docentes/TransformacionDigital">
+          <Route path="/DocentesTD">
             <Docentes />
           </Route>
-          <Route path="/Docentes/Procesamientodeanalisisdeinformacionmultimedia">
+          <Route path="/DocentesAIM">
             <Docentes2 />
           </Route>
-          <Route path="/Docentes/Sistemasinteractivos">
+          <Route path="/DocentesSI">
             <Docentes3 />
           </Route>
-          <Route path="/Docentes/Produccionmultimedia">
+          <Route path="/DocentesPM">
             <Docentes4 />
           </Route>
         </Switch>

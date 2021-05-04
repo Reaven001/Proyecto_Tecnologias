@@ -90,9 +90,9 @@ export default class AreaSpe extends React.Component {
                             background: "#620CE8",
                             border: "#0DBFFF",
                           }}
-                          href="/Docentes/TransformacionDigital"
+                          href="/DocentesTD"
                         >
-                          Docentes
+                          Docentes Transformacion Digital
                         </Button>
                       )}
                       {this.props.info.titulo ==
@@ -103,9 +103,9 @@ export default class AreaSpe extends React.Component {
                             background: "#620CE8",
                             border: "#0DBFFF",
                           }}
-                          href="/Docentes/Procesamientodeanalisisdeinformacionmultimedia"
+                          href="/DocentesAIM"
                         >
-                          Docentes Procesamiento
+                          Docentes Procesamiento de análisis
                         </Button>
                       )}
                       {this.props.info.titulo == "Sistemas interactivos" && (
@@ -115,7 +115,7 @@ export default class AreaSpe extends React.Component {
                             background: "#620CE8",
                             border: "#0DBFFF",
                           }}
-                          href="/Docentes/Sistemasinteractivos"
+                          href="DocentesSI"
                         >
                           Docentes Sistemas interactivos
                         </Button>
@@ -127,9 +127,9 @@ export default class AreaSpe extends React.Component {
                             background: "#620CE8",
                             border: "#0DBFFF",
                           }}
-                          href="/Docentes/Produccionmultimedia"
+                          href="/DocentesPM"
                         >
-                          Docentes Produccion Multimedia
+                          Docentes Producción Multimedia
                         </Button>
                       )}
                     </Row>
