@@ -10,28 +10,20 @@ import cubo from "./assets/cubo.png";
 import "./css/Asignatura.css";
 
 export default class Asignatura extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="contentAsig" style={{ backgroundColor: "#620CE8" }}>
         <Container>
           <Row className="justify-content-between py-5">
             <Col lg={8} sm={12}>
-              <h2 className="tituloAsig"> Asignatura </h2>
-              <p className="parrAsig">
-                Fusce luctus malesuada laoreet. Proin viverra dui ac nulla
-                laoreet tincidunt. Donec euismod mollis risus vel facilisis.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                ac dictum lacus. Proin pulvinar commodo lectus nec viverra.
-                Donec rutrum scelerisque nulla sit amet vestibulum. Ut eget
-                ornare nulla. Nulla tincidunt placerat dictum. Vivamus turpis
-                ex, vestibulum sit amet pulvinar ut, viverra quis felis.
-                Curabitur aliquet ex orci, vel tempus nisi pretium eget.
-                Suspendisse quam dolor, efficitur non felis eu, tincidunt
-                gravida velit.
-              </p>
+              <h2 className="tituloAsig"> {this.props.info.titulo} </h2>
+              <p className="parrAsig">{this.props.info.descripcion}</p>
               <div className="partDoc">
                 <h3 className="tituloAsig2">Docentes</h3>
-                <p className="parrafoD">Profesor X</p>
+                <p className="parrafoD">{this.props.info.profesores}</p>
               </div>
             </Col>
             <Col lg={4} sm={12} className="align-self-center">
@@ -121,10 +113,11 @@ export default class Asignatura extends React.Component {
                 borderRadius: "20px",
                 fontSize: "15px",
               }}
-              href=""
-            >
-              PUBLICAR
-            </Button>
+              as="input"
+              type="submit"
+              value="PUBLICAR"
+            ></Button>
+            {""}
           </Row>
         </Container>
       </div>

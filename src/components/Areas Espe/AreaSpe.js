@@ -3,18 +3,17 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+
 import cubo from "../../assets/cubo.png";
 import Docentes from "../DocentesxArea/Docentes.js";
+import Asignatura1 from "../../Asignatura";
 import "../../css/areas.css";
 
 import "fullpage.js/vendors/scrolloverflow";
 import ReactFullpage from "@fullpage/react-fullpage";
 
 export default class AreaSpe extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="areaspe">
@@ -44,9 +43,44 @@ export default class AreaSpe extends React.Component {
                           />
                         </Row>
                         <Row className="justify-content-center">
-                          <h3 className="text-center asig">
-                            {this.props.info.mat1}
-                          </h3>
+                          {this.props.info.mat1 ==
+                            "Tecnologias de internet" && (
+                            <Link
+                              to="/TecnologiasdeInternet"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat1}
+                            </Link>
+                          )}
+                          {this.props.info.mat1 ==
+                            "Procesamiento de imagenes" && (
+                            <Link
+                              to="/ProcesamientodeImagenes"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat1}
+                            </Link>
+                          )}
+                          {this.props.info.mat1 == "Diseño" && (
+                            <Link
+                              to="/Diseno"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat1}
+                            </Link>
+                          )}
+                          {this.props.info.mat1 == "Render" && (
+                            <Link
+                              to="/Render"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat1}
+                            </Link>
+                          )}
                         </Row>
                       </Col>
                       <Col lg={4} md={12} sm={12}>
@@ -60,9 +94,43 @@ export default class AreaSpe extends React.Component {
                           />
                         </Row>
                         <Row className="justify-content-center">
-                          <h3 className="text-center asig">
-                            {this.props.info.mat2}
-                          </h3>
+                          {this.props.info.mat2 == "Multimedia educativa" && (
+                            <Link
+                              to="/MultimediaEducativa"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat2}
+                            </Link>
+                          )}
+                          {this.props.info.mat2 ==
+                            "Inteligencia artificial" && (
+                            <Link
+                              to="/InteligenciaArtificial"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat2}
+                            </Link>
+                          )}
+                          {this.props.info.mat2 == "Diseño de interfaces" && (
+                            <Link
+                              to="/DisenodeInterfaces"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat2}
+                            </Link>
+                          )}
+                          {this.props.info.mat2 == "Animación 3D" && (
+                            <Link
+                              to="/Animacion3D"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat2}
+                            </Link>
+                          )}
                         </Row>
                       </Col>
                       <Col lg={4} md={12} sm={12}>
@@ -76,9 +144,42 @@ export default class AreaSpe extends React.Component {
                           />
                         </Row>
                         <Row className="justify-content-center">
-                          <h3 className="text-center asig">
-                            {this.props.info.mat3}
-                          </h3>
+                          {this.props.info.mat3 == "Materia X1" && (
+                            <Link
+                              to="/Materiax1"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat3}
+                            </Link>
+                          )}
+                          {this.props.info.mat3 == "Materia X2" && (
+                            <Link
+                              to="/Materiax2"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat3}
+                            </Link>
+                          )}
+                          {this.props.info.mat3 == "Materia X3" && (
+                            <Link
+                              to="/Materiax3"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat3}
+                            </Link>
+                          )}
+                          {this.props.info.mat3 == "Materia X4" && (
+                            <Link
+                              to="/Materiax4"
+                              style={{ textDecoration: "none" }}
+                              className="text-center asig"
+                            >
+                              {this.props.info.mat3}
+                            </Link>
+                          )}
                         </Row>
                       </Col>
                     </Row>
