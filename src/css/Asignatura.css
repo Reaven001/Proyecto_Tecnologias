@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.tituloAsig {
+  font-family: "Fredoka One";
+  color: #e8910c;
+  font-size: 50pt;
+}
+
+.parrAsig,
+.parrafoD {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  font-size: 20px;
+}
+
+.tituloAsig2 {
+  font-family: "Press Start 2P", cursive;
+  color: #e8910c;
+  font-size: 30pt;
+}
+
+.btnShare {
+  font-family: "Press Start 2P", cursive;
+}
+
+.btnPublicar {
+  font-family: "Press Start 2P", cursive;
+}
+
+.tituloComent {
+  font-family: "Press Start 2P", cursive;
+  color: #e8910c;
+  font-size: 30pt;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.NameUser {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+.comentario {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  font-size: 15px;
+  padding-left: 150px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
