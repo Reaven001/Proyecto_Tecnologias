@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 
 import doc1 from "../../assets/iconoPersona.jpg";
 import doc2 from "../../assets/urregoxd.png";
-import doc3 from "../../assets/marce.png";
+import doc3 from "../../assets/marcela.jpg";
 import doc4 from "../../assets/Gfe.jpeg";
 import "../../css/docentes.css";
 import { CardColumns, CardDeck } from "react-bootstrap";

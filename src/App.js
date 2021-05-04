@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
 import Home from "./Home.js";
 import Areas from "./components/Areas.js";
 import Docentes from "./components/DocentesxArea/Docentes.js";
@@ -11,18 +16,7 @@ import Docentes4 from "./components/DocentesxArea/Docentes4.js";
 import AreaSpe from "./components/Areas Espe/AreaSpe.js";
 import Inicio from "./Inicio.js";
 import Menu from "./components/Menu.js";
-import Asignatura1 from "./Asignatura.js";
-import Asignatura2 from "./Asignatura.js";
-import Asignatura3 from "./Asignatura.js";
-import Asignatura4 from "./Asignatura.js";
-import Asignatura5 from "./Asignatura.js";
-import Asignatura6 from "./Asignatura.js";
-import Asignatura7 from "./Asignatura.js";
-import Asignatura8 from "./Asignatura.js";
-import Asignatura9 from "./Asignatura.js";
-import Asignatura10 from "./Asignatura.js";
-import Asignatura11 from "./Asignatura.js";
-import Asignatura12 from "./Asignatura.js";
+import Asignatura from "./Asignatura.js";
 
 function App() {
   const area1 = {
@@ -115,10 +109,14 @@ function App() {
   return (
     <Router>
       <div>
+        <Container>
+          <Row>
+            <Button href="/Inicio">Iniciar Aplicación</Button>{" "}
+          </Row>
+        </Container>
         <Switch>
           <Route path={"/Inicio"} component={Inicio}></Route>
           <Route path={"/Areas"} component={Areas}></Route>
-
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>
@@ -144,40 +142,40 @@ function App() {
             <Docentes4 />
           </Route>
           <Route path="/TecnologiasdeInternet">
-            <Asignatura1 info={asig1} />
+            <Asignatura info={asig1} />
           </Route>
           <Route path="/ProcesamientodeImagenes">
-            <Asignatura1 info={asig2} />
+            <Asignatura info={asig2} />
           </Route>
           <Route path="/Diseno">
-            <Asignatura1 info={asig3} />
+            <Asignatura info={asig3} />
           </Route>
           <Route path="/Render">
-            <Asignatura1 info={asig4} />
+            <Asignatura info={asig4} />
           </Route>
           <Route path="/MultimediaEducativa">
-            <Asignatura1 info={asig5} />
+            <Asignatura info={asig5} />
           </Route>
           <Route path="/InteligenciaArtificial">
-            <Asignatura1 info={asig6} />
+            <Asignatura info={asig6} />
           </Route>
           <Route path="/DisenodeInterfaces">
-            <Asignatura1 info={asig7} />
+            <Asignatura info={asig7} />
           </Route>
           <Route path="/Animacion3D">
-            <Asignatura1 info={asig8} />
+            <Asignatura info={asig8} />
           </Route>
           <Route path="/Materiax1">
-            <Asignatura1 info={asig9} />
+            <Asignatura info={asig9} />
           </Route>
           <Route path="/Materiax2">
-            <Asignatura1 info={asig10} />
+            <Asignatura info={asig10} />
           </Route>
           <Route path="/Materiax3">
-            <Asignatura1 info={asig11} />
+            <Asignatura info={asig11} />
           </Route>
           <Route path="/Materiax4">
-            <Asignatura1 info={asig12} />
+            <Asignatura info={asig12} />
           </Route>
         </Switch>
       </div>

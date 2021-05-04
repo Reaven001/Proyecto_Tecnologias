@@ -21,7 +21,11 @@ class Nav extends React.Component {
                 Inicio
               </Link>
             </li>
-
+            <li className="list">
+              <Link to="" style={{ textDecoration: "none", color: "#000000" }}>
+                Areas
+              </Link>
+            </li>
             <li className="list">
               <Link to="" style={{ textDecoration: "none", color: "#000000" }}>
                 Subir Archivos

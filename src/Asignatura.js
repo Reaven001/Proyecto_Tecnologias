@@ -15,7 +15,7 @@ export default class Asignatura extends React.Component {
   }
   render() {
     return (
-      <div className="contentAsig" style={{ backgroundColor: "#620CE8" }}>
+      <div className="contentAsig">
         <Container>
           <Row className="justify-content-between py-5">
             <Col lg={8} sm={12}>
