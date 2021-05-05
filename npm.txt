@@ -5,3 +5,5 @@ npm install --save @types/styled-components
 npm install react-router-dom
 npm install react-scroll
 npm install react-bootstrap bootstrap
+npm i three react-three-fiber
+npm i @react-three/drei
