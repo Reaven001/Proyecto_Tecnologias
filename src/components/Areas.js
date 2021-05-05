@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-
+import Hexagoncard from "./Hexagono/Hexagono"
 import "../css/areas.css";
 
 export default class Areas extends React.Component {
@@ -23,26 +23,30 @@ export default class Areas extends React.Component {
             <Col lg={8}>
               <Row className="justify-content-between py-5">
                 <Col>
+                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'warehouse'} ></Hexagoncard>
                   <Button href="/TransformacionDigital">
                     Transformación Digital
                   </Button>{" "}
                 </Col>
                 <Col>
-                  <Button href="/Procesamientodeanalisisdeinformacionmultimedia">
+                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'park'}></Hexagoncard>
+                  {/* <Button href="/Procesamientodeanalisisdeinformacionmultimedia">
                     Procesamiento de análisis de información multimedia
-                  </Button>{" "}
+                  </Button>{" "} */}
                 </Col>
               </Row>
               <Row className="justify-content-between py-5">
                 <Col>
-                  <Button href="/Sistemasinteractivos">
+                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'lobby'}></Hexagoncard>
+                  {/* <Button href="/Sistemasinteractivos">
                     Sistemas interactivos
-                  </Button>{" "}
+                  </Button>{" "} */}
                 </Col>
                 <Col>
-                  <Button href="/Produccionmultimedia">
+                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'sunset'}></Hexagoncard>
+                  {/* <Button href="/Produccionmultimedia">
                     Producción multimedia
-                  </Button>{" "}
+                  </Button>{" "} */}
                 </Col>
               </Row>
             </Col>

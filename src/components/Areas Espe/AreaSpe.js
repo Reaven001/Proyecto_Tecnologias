@@ -10,8 +10,10 @@ import Docentes from "../DocentesxArea/Docentes.js";
 import Asignatura1 from "../../Asignatura";
 import "../../css/areas.css";
 
+
 import "fullpage.js/vendors/scrolloverflow";
 import ReactFullpage from "@fullpage/react-fullpage";
+import Hexagoncard from "../Hexagono/Hexagono";
 
 export default class AreaSpe extends React.Component {
   render() {
@@ -34,13 +36,14 @@ export default class AreaSpe extends React.Component {
                     <Row className="justify-content-center">
                       <Col lg={4} md={12} sm={12}>
                         <Row className="justify-content-center">
-                          <img
+                          {/* <img
                             width={200}
                             height={200}
                             src={cubo}
                             alt="Model 3D"
                             className="modelo"
-                          />
+                          /> */}
+                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'sunset'}></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat1 ==
@@ -85,13 +88,14 @@ export default class AreaSpe extends React.Component {
                       </Col>
                       <Col lg={4} md={12} sm={12}>
                         <Row className="justify-content-center">
-                          <img
+                          {/* <img
                             width={200}
                             height={200}
                             src={cubo}
                             alt="Model 3D"
                             className="modelo"
-                          />
+                          /> */}
+                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'city'}></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat2 == "Multimedia educativa" && (
@@ -135,13 +139,15 @@ export default class AreaSpe extends React.Component {
                       </Col>
                       <Col lg={4} md={12} sm={12}>
                         <Row className="justify-content-center">
-                          <img
+                          {/* <img
                             width={200}
                             height={200}
                             src={cubo}
                             alt="Model 3D"
                             className="modelo"
-                          />
+                          /> */}
+                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'park'}></Hexagoncard>
+                          
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat3 == "Materia X1" && (

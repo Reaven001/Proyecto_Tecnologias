@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 import cubo from "./assets/cubo.png";
 import "./css/Asignatura.css";
+import Hexagoncard from "./components/Hexagono/Hexagono";
 
 export default class Asignatura extends React.Component {
   constructor(props) {
@@ -28,13 +29,14 @@ export default class Asignatura extends React.Component {
             </Col>
             <Col lg={4} sm={12} className="align-self-center">
               <Row className="justify-content-center">
-                <img
+                {/* <img
                   width={200}
                   height={200}
                   src={cubo}
                   alt="Model 3D"
                   className="modelo"
-                />
+                /> */}
+                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'lobby'}></Hexagoncard>
               </Row>
             </Col>
           </Row>
