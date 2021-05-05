@@ -110,8 +110,9 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path={"/Inicio"} component={Inicio}></Route>
-          <Route path={"/Areas"} component={Areas}></Route>
+          <Route path="/" component={Inicio} exact/>
+          <Route path="/Inicio" component={Inicio} exact />
+          <Route path="/Areas" component={Areas} exact />
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>
