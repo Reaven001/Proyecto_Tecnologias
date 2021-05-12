@@ -8,3 +8,4 @@ npm install react-bootstrap bootstrap
 npm i three react-three-fiber
 npm i @react-three/drei
 npm install -g firebase-tools
+npm install --save firebase

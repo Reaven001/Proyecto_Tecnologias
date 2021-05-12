@@ -8,6 +8,7 @@
   height: 2.7rem;
   border-radius: 0.5rem;
   position: fixed;
+  z-index: 100;
   top: 50%;
   left: 5%;
   transition: left 0.7s;
@@ -46,6 +47,7 @@
   justify-content: center;
   transition: left 0.4s;
   font-family: "Roboto Condensed", sans-serif;
+  z-index: 100;
 }
 
 .checkbox:checked ~ .left-panel {

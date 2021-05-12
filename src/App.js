@@ -17,6 +17,7 @@ import AreaSpe from "./components/Areas Espe/AreaSpe.js";
 import Inicio from "./Inicio.js";
 import Menu from "./components/Menu.js";
 import Asignatura from "./Asignatura.js";
+import Login from "./Login.js";
 
 function App() {
   const area1 = {
@@ -110,9 +111,10 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" component={Inicio} exact/>
+          <Route path="/" component={Inicio} exact />
           <Route path="/Inicio" component={Inicio} exact />
           <Route path="/Areas" component={Areas} exact />
+          <Route path="/IniciarSesion" component={Login} exact />
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>
