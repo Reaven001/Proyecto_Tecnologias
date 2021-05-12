@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Hexagoncard from "./Hexagono/Hexagono";
 import "../css/areas.css";
+import Camara from "./modelos/camara_01";
+import morado from "../assets/morado.png"
 
 export default class Areas extends React.Component {
   render() {
@@ -23,9 +25,10 @@ export default class Areas extends React.Component {
                 <Col>
                   <Hexagoncard
                     logo={
-                      "https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"
+                      morado
                     }
                     envio={"warehouse"}
+                    modelo={Camara}
                   ></Hexagoncard>
                   <Button href="/TransformacionDigital">
                     Transformación Digital
@@ -34,7 +37,7 @@ export default class Areas extends React.Component {
                 <Col>
                   <Hexagoncard
                     logo={
-                      "https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"
+                      morado
                     }
                     envio={"park"}
                   ></Hexagoncard>
@@ -47,7 +50,7 @@ export default class Areas extends React.Component {
                 <Col>
                   <Hexagoncard
                     logo={
-                      "https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"
+                      morado
                     }
                     envio={"lobby"}
                   ></Hexagoncard>
@@ -58,7 +61,7 @@ export default class Areas extends React.Component {
                 <Col>
                   <Hexagoncard
                     logo={
-                      "https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"
+                      morado
                     }
                     envio={"sunset"}
                   ></Hexagoncard>

@@ -3,6 +3,8 @@ import { Canvas } from "react-three-fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import "../../css/hexagon.css";
 import Camara from "../modelos/camara_01";
+import Audios from "../modelos/Area_prodmultimedia_01";
+
 const Hexagoncard = (props) => {
   return (
     <Fragment>
@@ -14,7 +16,7 @@ const Hexagoncard = (props) => {
               <Canvas
                 shadows
                 dpr={[1, 2]}
-                camera={{ position: [0, 5, 15], fov: 50 }}
+                camera={{ position: [0, 0, 15]}}
               >
                 <Suspense fallback={null}>
                   <ambientLight intensity={0.4} />
@@ -26,9 +28,9 @@ const Hexagoncard = (props) => {
                     castShadow
                   />
                   <Environment preset={props.envio}></Environment>
-                  <Camara></Camara>
+                  <Audios></Audios>
                 </Suspense>
-                <OrbitControls></OrbitControls>
+                <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={false} enablePan={false}></OrbitControls>
               </Canvas>
             </div>
           </div>

@@ -9,6 +9,7 @@ import doc1 from "../../assets/iconoPersona.jpg";
 import doc2 from "../../assets/urregoxd.png";
 import doc3 from "../../assets/marcela.jpg";
 import doc4 from "../../assets/Gfe.jpeg";
+import doc5 from "../../assets/jaramillo.png";
 import "../../css/docentes.css";
 import { CardColumns, CardDeck } from "react-bootstrap";
 
@@ -37,9 +38,9 @@ export default class Docentes extends React.Component {
             <div className="tarjetas">
               <CardColumns>
                 <Card style={{ background: "#0DBFFF" }}>
-                  <Card.Img variant="top" src={doc1} />
+                  <Card.Img variant="top" src={doc5} />
                   <Card.Body>
-                    <Card.Title style={styleCard}>Docente 1</Card.Title>
+                    <Card.Title style={styleCard}>Jorge Jaramillo</Card.Title>
                     <Card.Text style={{ color: "#620CE8" }}>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Maecenas nibh elit, porta sit amet nisl faucibus, interdum
@@ -51,7 +52,7 @@ export default class Docentes extends React.Component {
                   </Card.Body>
                 </Card>
                 <Card style={{ background: "#0DBFFF" }}>
-                  <Card.Img variant="top" src={doc2} />
+                  <Card.Img variant="top" src={doc1} />
                   <Card.Body>
                     <Card.Title style={styleCard}>Docente 2</Card.Title>
                     <Card.Text style={{ color: "#620CE8" }}>
@@ -65,7 +66,7 @@ export default class Docentes extends React.Component {
                   </Card.Body>
                 </Card>
                 <Card style={{ background: "#0DBFFF" }}>
-                  <Card.Img variant="top" src={doc3} />
+                  <Card.Img variant="top" src={doc1} />
                   <Card.Body>
                     <Card.Title style={styleCard}>Docente 3</Card.Title>
                     <Card.Text style={{ color: "#620CE8" }}>
@@ -79,7 +80,7 @@ export default class Docentes extends React.Component {
                   </Card.Body>
                 </Card>
                 <Card style={{ background: "#0DBFFF" }}>
-                  <Card.Img variant="top" src={doc4} />
+                  <Card.Img variant="top" src={doc1} />
                   <Card.Body>
                     <Card.Title style={styleCard}>Docente 4</Card.Title>
                     <Card.Text style={{ color: "#620CE8" }}>

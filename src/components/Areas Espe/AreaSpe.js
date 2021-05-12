@@ -15,6 +15,8 @@ import "fullpage.js/vendors/scrolloverflow";
 import ReactFullpage from "@fullpage/react-fullpage";
 import Hexagoncard from "../Hexagono/Hexagono";
 
+import morado from "../../assets/morado.png"
+
 export default class AreaSpe extends React.Component {
   render() {
     return (
@@ -43,7 +45,7 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'sunset'}></Hexagoncard>
+                          <Hexagoncard logo={morado} envio={'sunset'}></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat1 ==
@@ -95,7 +97,7 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'city'}></Hexagoncard>
+                          <Hexagoncard logo={morado} envio={'city'}></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat2 == "Multimedia educativa" && (
@@ -146,7 +148,7 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'park'}></Hexagoncard>
+                          <Hexagoncard logo={morado} envio={'park'}></Hexagoncard>
                           
                         </Row>
                         <Row className="justify-content-center">

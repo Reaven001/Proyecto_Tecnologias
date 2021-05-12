@@ -5,8 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import amarillo from "./assets/amarillo.png"
 
-import cubo from "./assets/cubo.png";
 import "./css/Asignatura.css";
 import Hexagoncard from "./components/Hexagono/Hexagono";
 
@@ -36,7 +36,7 @@ export default class Asignatura extends React.Component {
                   alt="Model 3D"
                   className="modelo"
                 /> */}
-                <Hexagoncard logo={"https://dam.smashmexico.com.mx/wp-content/uploads/2017/11/aquaman-diferentes-versiones-dc-comics.jpg"} envio={'lobby'}></Hexagoncard>
+                <Hexagoncard logo={amarillo} envio={'lobby'}></Hexagoncard>
               </Row>
             </Col>
           </Row>
