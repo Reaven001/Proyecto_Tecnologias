@@ -30,6 +30,13 @@
   padding-top: 100px;
 }
 
+.subarea {
+  font-family: "Press Start 2P", cursive;
+  color: #e1ff00;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .asig:hover {
   color: #620ce8;
 }
