@@ -136,7 +136,7 @@ class Login extends React.Component {
             </div>
 
             <div className="form-container sign-in-container">
-              <form>
+              <form className="formLogin">
                 <h1 className="titulosLogin">Inicia sesión</h1>
                 <div className="social-container">
                   <Link onClick={this.handleAuth}>

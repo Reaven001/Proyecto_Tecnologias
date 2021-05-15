@@ -70,7 +70,7 @@ class Nav extends React.Component {
               </li>
               <li className="list">
                 <Link
-                  to="/"
+                  to="/SubirArchivos"
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   Subir Archivos
@@ -116,7 +116,7 @@ class Nav extends React.Component {
               </li>
               <li className="list">
                 <Link
-                  to="/"
+                  to="/SubirArchivos"
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   Subir Archivos

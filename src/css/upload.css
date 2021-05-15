@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.SubirArchivos {
+  background: #0dbfff;
+}
+
+.ParrUpload {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  padding-top: 50px;
+}
+
+.tituloUpload {
+  font-family: "Fredoka One";
+  color: #620ce8;
+  font-size: 50pt;
+  border-bottom: 10px solid #620ce8;
+  width: auto;
+  padding-bottom: 10px;
+}
+
+.titleDes {
+  font-family: "Press Start 2P", cursive;
+  color: #ff0000;
+  font-size: 30pt;
+}
+
+.formUpload {
+  background-color: #620ce8;
+  border: 1px solid #620ce8;
+  border-radius: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-upload {
+  font-family: "Roboto Condensed", sans-serif;
+  padding-bottom: 50px;
+}

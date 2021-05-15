@@ -10,12 +10,11 @@ import Docentes from "../DocentesxArea/Docentes.js";
 import Asignatura1 from "../../Asignatura";
 import "../../css/areas.css";
 
-
 import "fullpage.js/vendors/scrolloverflow";
 import ReactFullpage from "@fullpage/react-fullpage";
 import Hexagoncard from "../Hexagono/Hexagono";
 
-import morado from "../../assets/morado.png"
+import morado from "../../assets/morado.png";
 
 export default class AreaSpe extends React.Component {
   render() {
@@ -45,7 +44,10 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={morado} envio={'sunset'}></Hexagoncard>
+                          <Hexagoncard
+                            logo={morado}
+                            envio={"sunset"}
+                          ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat1 ==
@@ -97,7 +99,10 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={morado} envio={'city'}></Hexagoncard>
+                          <Hexagoncard
+                            logo={morado}
+                            envio={"city"}
+                          ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
                           {this.props.info.mat2 == "Multimedia educativa" && (
@@ -148,40 +153,43 @@ export default class AreaSpe extends React.Component {
                             alt="Model 3D"
                             className="modelo"
                           /> */}
-                          <Hexagoncard logo={morado} envio={'park'}></Hexagoncard>
-                          
+                          <Hexagoncard
+                            logo={morado}
+                            envio={"park"}
+                          ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
-                          {this.props.info.mat3 == "Materia X1" && (
+                          {this.props.info.mat3 == "Museos" && (
                             <Link
-                              to="/Materiax1"
+                              to="/Museos"
                               style={{ textDecoration: "none" }}
                               className="text-center asig"
                             >
                               {this.props.info.mat3}
                             </Link>
                           )}
-                          {this.props.info.mat3 == "Materia X2" && (
+                          {this.props.info.mat3 ==
+                            "Procesamiento de señales" && (
                             <Link
-                              to="/Materiax2"
+                              to="/ProcesamientodeSeñales"
                               style={{ textDecoration: "none" }}
                               className="text-center asig"
                             >
                               {this.props.info.mat3}
                             </Link>
                           )}
-                          {this.props.info.mat3 == "Materia X3" && (
+                          {this.props.info.mat3 == "Guiones" && (
                             <Link
-                              to="/Materiax3"
+                              to="/Guiones"
                               style={{ textDecoration: "none" }}
                               className="text-center asig"
                             >
                               {this.props.info.mat3}
                             </Link>
                           )}
-                          {this.props.info.mat3 == "Materia X4" && (
+                          {this.props.info.mat3 == "Modelado 3D" && (
                             <Link
-                              to="/Materiax4"
+                              to="/Modelado3D"
                               style={{ textDecoration: "none" }}
                               className="text-center asig"
                             >

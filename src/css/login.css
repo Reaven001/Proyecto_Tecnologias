@@ -67,7 +67,7 @@ button.ghost {
   transition: transform 80ms ease-in;
 }
 
-form {
+.formLogin {
   background-color: #e1ff00;
   color: #e8910c;
   display: flex;

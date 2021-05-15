@@ -18,33 +18,34 @@ import Inicio from "./Inicio.js";
 import Menu from "./components/Menu.js";
 import Asignatura from "./Asignatura.js";
 import Login from "./Login.js";
+import Upload from "./Upload";
 
 function App() {
   const area1 = {
     titulo: "Transformación Digital",
     mat1: "Tecnologias de internet",
     mat2: "Multimedia educativa",
-    mat3: "Materia X1",
+    mat3: "Museos",
   };
 
   const area2 = {
     titulo: "Procesamiento de análisis de información multimedia",
     mat1: "Procesamiento de imagenes",
     mat2: "Inteligencia artificial",
-    mat3: "Materia X2",
+    mat3: "Procesamiento de señales",
   };
 
   const area3 = {
     titulo: "Sistemas Interactivos",
     mat1: "Diseño",
     mat2: "Diseño de interfaces",
-    mat3: "Materia X3",
+    mat3: "Guiones",
   };
   const area4 = {
     titulo: "Producción Multimedia",
     mat1: "Render",
     mat2: "Animación 3D",
-    mat3: "Materia X4",
+    mat3: "Modelado 3D",
   };
   const asig1 = {
     titulo: "Tecnologias de Internet",
@@ -87,24 +88,24 @@ function App() {
     profesores: "Carlos Rocha, .... etc etc",
   };
   const asig9 = {
-    titulo: "Materia X 1",
-    descripcion: "Esta sera la descripcion de Materia X1",
+    titulo: "Museos",
+    descripcion: "Esta sera la descripcion de Museos",
     profesores: "Profesor X, .... etc etc",
   };
   const asig10 = {
-    titulo: "Materia X 2",
-    descripcion: "Esta sera la descripcion de Materia X2",
-    profesores: "Profesor X, .... etc etc",
+    titulo: "Procesamiento de señales",
+    descripcion: "Esta sera la descripcion de Procesamiento de señales",
+    profesores: "Ricardo, .... etc etc",
   };
   const asig11 = {
-    titulo: "Materia X 3",
-    descripcion: "Esta sera la descripcion de Materia X3",
+    titulo: "Guiones",
+    descripcion: "Esta sera la descripcion de Guiones",
     profesores: "Profesor X, .... etc etc",
   };
   const asig12 = {
-    titulo: "Materia X 4",
-    descripcion: "Esta sera la descripcion de Materia X4",
-    profesores: "Profesor X, .... etc etc",
+    titulo: "Modelado 3D",
+    descripcion: "Esta sera la descripcion de Modelado 3D",
+    profesores: "Carlos Rocha, .... etc etc",
   };
 
   return (
@@ -115,6 +116,7 @@ function App() {
           <Route path="/Inicio" component={Inicio} exact />
           <Route path="/Areas" component={Areas} exact />
           <Route path="/IniciarSesion" component={Login} exact />
+          <Route path="/SubirArchivos" component={Upload} />
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>
@@ -163,16 +165,16 @@ function App() {
           <Route path="/Animacion3D">
             <Asignatura info={asig8} />
           </Route>
-          <Route path="/Materiax1">
+          <Route path="/Museos">
             <Asignatura info={asig9} />
           </Route>
-          <Route path="/Materiax2">
+          <Route path="/ProcesamientodeSeñales">
             <Asignatura info={asig10} />
           </Route>
-          <Route path="/Materiax3">
+          <Route path="/Guiones">
             <Asignatura info={asig11} />
           </Route>
-          <Route path="/Materiax4">
+          <Route path="/Modelado3D">
             <Asignatura info={asig12} />
           </Route>
         </Switch>
