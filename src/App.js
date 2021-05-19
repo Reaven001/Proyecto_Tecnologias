@@ -26,11 +26,10 @@ function App() {
     titulo: "Transformación Digital",
     mat1: "Tecnologias de internet",
     mat2: "Multimedia educativa",
-    mat3: "Integracion multimedia",
+    mat3: "Integración Multimedia",
     modelasig1: "html",
     modelasig2: "libro",
-    modelasig3: "html"
-
+    modelasig3: "html",
   };
 
   const area2 = {
