@@ -159,9 +159,9 @@ export default class AreaSpe extends React.Component {
                           ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
-                          {this.props.info.mat3 == "Museos" && (
+                          {this.props.info.mat3 == "Integración Multimedia" && (
                             <Link
-                              to="/Museos"
+                              to="/IntegracionMultimedia"
                               style={{ textDecoration: "none" }}
                               className="text-center asig"
                             >
@@ -232,7 +232,7 @@ export default class AreaSpe extends React.Component {
                             background: "#620CE8",
                             border: "#0DBFFF",
                           }}
-                          href="DocentesSI"
+                          href="/DocentesSI"
                         >
                           Docentes Sistemas interactivos
                         </Button>

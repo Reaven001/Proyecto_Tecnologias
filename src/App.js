@@ -19,13 +19,14 @@ import Menu from "./components/Menu.js";
 import Asignatura from "./Asignatura.js";
 import Login from "./Login.js";
 import Upload from "./Upload";
+import Register from "./components/Register";
 
 function App() {
   const area1 = {
     titulo: "Transformación Digital",
     mat1: "Tecnologias de internet",
     mat2: "Multimedia educativa",
-    mat3: "Museos",
+    mat3: "Integración Multimedia",
   };
 
   const area2 = {
@@ -88,8 +89,8 @@ function App() {
     profesores: "Carlos Rocha, .... etc etc",
   };
   const asig9 = {
-    titulo: "Museos",
-    descripcion: "Esta sera la descripcion de Museos",
+    titulo: "Integración Multimedia",
+    descripcion: "Esta sera la descripcion de Integracion Multimedia",
     profesores: "Profesor X, .... etc etc",
   };
   const asig10 = {
@@ -117,6 +118,7 @@ function App() {
           <Route path="/Areas" component={Areas} exact />
           <Route path="/IniciarSesion" component={Login} exact />
           <Route path="/SubirArchivos" component={Upload} />
+          <Route path="/Registrarse" component={Register} />
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>
@@ -165,7 +167,7 @@ function App() {
           <Route path="/Animacion3D">
             <Asignatura info={asig8} />
           </Route>
-          <Route path="/Museos">
+          <Route path="/IntegracionMultimedia">
             <Asignatura info={asig9} />
           </Route>
           <Route path="/ProcesamientodeSeñales">
