@@ -5,8 +5,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Hexagoncard from "./Hexagono/Hexagono";
+
 import "../css/areas.css";
-import Camara from "./modelos/camara_01";
+
 import morado from "../assets/morado.png";
 
 export default class Areas extends React.Component {
@@ -27,7 +28,11 @@ export default class Areas extends React.Component {
                     <Hexagoncard
                       logo={morado}
                       envio={"warehouse"}
-                    ></Hexagoncard>
+                      namemodel={"digital"}
+
+                    >
+                      
+                    </Hexagoncard>
                     <Link
                       to="/TransformacionDigital"
                       style={{
@@ -42,7 +47,7 @@ export default class Areas extends React.Component {
                   </Row>
                 </Col>
                 <Col>
-                  <Hexagoncard logo={morado} envio={"park"}></Hexagoncard>
+                  <Hexagoncard esmodel='camara' logo={morado} envio={"park"} namemodel={"lupa"}></Hexagoncard>
                   <Link
                     to="/Procesamientodeanalisisdeinformacionmultimedia"
                     style={{ textDecoration: "none", fontSize: "10pt" }}
@@ -54,7 +59,7 @@ export default class Areas extends React.Component {
               </Row>
               <Row className="justify-content-between">
                 <Col>
-                  <Hexagoncard logo={morado} envio={"lobby"}></Hexagoncard>
+                  <Hexagoncard logo={morado} envio={"sunset"} namemodel={"bombillo"}></Hexagoncard>
                   <Link
                     to="/Sistemasinteractivos"
                     style={{
@@ -68,7 +73,7 @@ export default class Areas extends React.Component {
                   </Link>
                 </Col>
                 <Col>
-                  <Hexagoncard logo={morado} envio={"sunset"}></Hexagoncard>
+                  <Hexagoncard logo={morado} envio={"lobby"} namemodel={"audios"}> </Hexagoncard>
                   <Link
                     to="/Produccionmultimedia"
                     style={{
