@@ -47,6 +47,8 @@ export default class AreaSpe extends React.Component {
                           <Hexagoncard
                             logo={morado}
                             envio={"sunset"}
+                            namemodel={this.props.info.modelasig1}
+
                           ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
@@ -102,6 +104,7 @@ export default class AreaSpe extends React.Component {
                           <Hexagoncard
                             logo={morado}
                             envio={"city"}
+                            namemodel={this.props.info.modelasig2}
                           ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">
@@ -156,6 +159,7 @@ export default class AreaSpe extends React.Component {
                           <Hexagoncard
                             logo={morado}
                             envio={"park"}
+                            namemodel={this.props.info.modelasig3}
                           ></Hexagoncard>
                         </Row>
                         <Row className="justify-content-center">

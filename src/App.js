@@ -26,6 +26,9 @@ function App() {
     mat1: "Tecnologias de internet",
     mat2: "Multimedia educativa",
     mat3: "Museos",
+    modelasig1: "html",
+    modelasig2: "libro",
+    modelasig3: "html"
   };
 
   const area2 = {
@@ -33,6 +36,9 @@ function App() {
     mat1: "Procesamiento de imagenes",
     mat2: "Inteligencia artificial",
     mat3: "Procesamiento de señales",
+    modelasig1: "imagenes",
+    modelasig2: "cerebro",
+    modelasig3: "imagenes"
   };
 
   const area3 = {
@@ -40,72 +46,90 @@ function App() {
     mat1: "Diseño",
     mat2: "Diseño de interfaces",
     mat3: "Guiones",
+    modelasig1: "diseño",
+    modelasig2: "inter",
+    modelasig3: "diseño"
   };
   const area4 = {
     titulo: "Producción Multimedia",
     mat1: "Render",
     mat2: "Animación 3D",
     mat3: "Modelado 3D",
+    modelasig1: "render",
+    modelasig2: "tetera",
+    modelasig3: "tetera"
   };
   const asig1 = {
     titulo: "Tecnologias de Internet",
     descripcion: "Esta sera la descripcion de Tecnologias de Internet",
     profesores: "Karen Linares, .... etc etc",
+    modelasig: "html"
   };
   const asig2 = {
     titulo: "Procesamiento de imagenes",
     descripcion: "Esta sera la descripcion de Procesamiento de imagenes",
     profesores: "Marcela Iregui, .... etc etc",
+    modelasig: "imagenes"
   };
   const asig3 = {
     titulo: "Diseño",
     descripcion: "Esta sera la descripcion de Diseño",
     profesores: "German Garnica, .... etc etc",
+    modelasig: "diseño"
   };
   const asig4 = {
     titulo: "Render",
     descripcion: "Esta sera la descripcion de Render",
     profesores: "Karen Linares, .... etc etc",
+    modelasig: "render"
   };
   const asig5 = {
     titulo: "Multimedia Educativa",
     descripcion: "Esta sera la descripcion de Multimedia Educativa",
     profesores: "Jorge Jaramillo, .... etc etc",
+    modelasig: "libro"
   };
   const asig6 = {
     titulo: "Inteligencia Artificial",
     descripcion: "Esta sera la descripcion de Inteligencia Artificial",
     profesores: "Helioth Sanchez, .... etc etc",
+    modelasig: "cerebro"
   };
   const asig7 = {
     titulo: "Diseño de Interfaces",
     descripcion: "Esta sera la descripcion de Diseño de Interfaces",
     profesores: "Karen Linares, .... etc etc",
+    modelasig: "inter"
   };
   const asig8 = {
     titulo: "Animación 3D",
     descripcion: "Esta sera la descripcion de Animación 3D",
     profesores: "Carlos Rocha, .... etc etc",
+    modelasig: "tetera"
   };
   const asig9 = {
     titulo: "Museos",
     descripcion: "Esta sera la descripcion de Museos",
     profesores: "Profesor X, .... etc etc",
+    modelasig: "tetera"
   };
   const asig10 = {
     titulo: "Procesamiento de señales",
     descripcion: "Esta sera la descripcion de Procesamiento de señales",
     profesores: "Ricardo, .... etc etc",
+    modelasig: "imagenes"
   };
   const asig11 = {
     titulo: "Guiones",
     descripcion: "Esta sera la descripcion de Guiones",
     profesores: "Profesor X, .... etc etc",
+    modelasig: "tetera"
   };
   const asig12 = {
     titulo: "Modelado 3D",
     descripcion: "Esta sera la descripcion de Modelado 3D",
     profesores: "Carlos Rocha, .... etc etc",
+    modelasig: "tetera"
   };
 
   return (

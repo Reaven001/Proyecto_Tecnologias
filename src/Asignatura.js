@@ -36,7 +36,7 @@ export default class Asignatura extends React.Component {
                   alt="Model 3D"
                   className="modelo"
                 /> */}
-                <Hexagoncard logo={amarillo} envio={"lobby"}></Hexagoncard>
+                <Hexagoncard logo={amarillo} envio={"lobby"} namemodel={this.props.info.modelasig}></Hexagoncard>
               </Row>
             </Col>
           </Row>
