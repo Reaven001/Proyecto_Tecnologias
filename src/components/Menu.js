@@ -41,6 +41,7 @@ class Nav extends React.Component {
           <div className="left-panel">
             <ul>
               <div style={{ textAlign: "center" }}>
+                <p>{this.state.user.email}</p>
                 <Image
                   src={this.state.user.photoURL}
                   alt={this.state.user.displayName}
