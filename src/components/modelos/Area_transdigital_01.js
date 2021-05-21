@@ -9,7 +9,7 @@ export default function Digital(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/area_transdigital_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 4, 0]} scale={1.4}>
+    <group ref={group} {...props} dispose={null} position={[0, 4, 0]} scale={1.4} rotation={[0, -2 , 0]}>
       <mesh
         geometry={nodes.numeralblend.geometry}
         material={materials['Material.003']}

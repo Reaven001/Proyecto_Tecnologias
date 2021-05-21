@@ -9,7 +9,7 @@ export default function Diseño(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_diseño_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0,4,4.3]} scale={0.8}>
+    <group ref={group} {...props} dispose={null} position={[0,4,3.5]} scale={0.8} rotation={[0, -0.3 , 0]}>
       <group position={[-0.53, 3.46, -6.13]} rotation={[Math.PI / 2, 0, 0]}>
         <mesh geometry={nodes.libretavox_1.geometry} material={materials['Material.001']} />
         <mesh geometry={nodes.libretavox_2.geometry} material={materials['Material.002']} />

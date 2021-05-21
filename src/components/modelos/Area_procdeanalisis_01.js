@@ -9,7 +9,7 @@ export default function Lupa(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/area_procdeanalisis_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[-0.5, 4.2, 0]} scale={1.3}>
+    <group ref={group} {...props} dispose={null} position={[0.6, 4.2, -1]} scale={1.3} rotation={[0, -2 , 0]}>
       <group position={[0.84, 0, 0.04]} rotation={[0, Math.PI / 2, 0]}>
         <mesh geometry={nodes['LUPAMAG-0-lupa_1'].geometry} material={materials['Material.009']} />
         <mesh geometry={nodes['LUPAMAG-0-lupa_2'].geometry} material={materials['Material.010']} />

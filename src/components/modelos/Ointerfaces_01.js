@@ -9,7 +9,7 @@ export default function Inter(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_diseñointerfaces_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0,6.8,0]} scale={0.85}>
+    <group ref={group} {...props} dispose={null} position={[0,6.8,0]} scale={0.85} rotation={[0, 1.5 , 0]}>
       <group position={[0, 0, 0]}>
         <mesh geometry={nodes['PHONE-0-celular_1'].geometry} material={materials['Material.001']} />
         <mesh geometry={nodes['PHONE-0-celular_2'].geometry} material={materials['Material.002']} />

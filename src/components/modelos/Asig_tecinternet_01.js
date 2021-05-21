@@ -9,7 +9,7 @@ export default function Html5(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_tecinternet_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0,4,-0.3]} scale={1.1}>
+    <group ref={group} {...props} dispose={null} position={[0.5 ,3.65,-0.3]} scale={1.2} rotation={[0, -2 , 0]}>
       <mesh
         geometry={nodes['HTMLLL-0-html5'].geometry}
         material={materials['Material.011']}

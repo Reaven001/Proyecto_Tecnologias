@@ -9,7 +9,7 @@ export default function Imagenes(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_procimagenes_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 4.5, 0]} scale={1.1}>
+    <group ref={group} {...props} dispose={null} position={[0, 4, 0]} scale={1.4}>
       <mesh geometry={nodes['cara-0-Cara_de_Helios'].geometry} material={materials['Material.002']} />
     </group>
   )

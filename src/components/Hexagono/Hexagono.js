@@ -15,6 +15,10 @@ import Imagenes from "../modelos/Asig_procimagenes_01";
 import Diseño from "../modelos/O_01";
 import Inter from "../modelos/Ointerfaces_01";
 import Render from "../modelos/Asig_render_01";
+import Integra from "../modelos/Asig_integra";
+import Señales from "../modelos/Ales";
+import Guion from "../modelos/Asig_guiones";
+import Modelado from "../modelos/Asig_model3d";
 
 
 
@@ -44,6 +48,10 @@ function Modelomos(props) {
   if (isLoggedIn == "html") {
     return <Html5 />;
   }
+  if (isLoggedIn == "integra") {
+    return <Integra />;
+  }
+
 
   // asignaturas procesamiento analisis multimedia
   if (isLoggedIn == "cerebro") {
@@ -51,6 +59,9 @@ function Modelomos(props) {
   }
   if (isLoggedIn == "imagenes") {
     return <Imagenes />;
+  }
+  if (isLoggedIn == "señales") {
+    return <Señales />;
   }
 
   // asignaturas sistemas interactivos
@@ -60,6 +71,10 @@ function Modelomos(props) {
   if (isLoggedIn == "inter") {
     return <Inter />;
   }
+  if (isLoggedIn == "guiones") {
+    return <Guion />;
+  }
+  
 
   //Produccion multimedia
   if (isLoggedIn == "render") {
@@ -67,6 +82,9 @@ function Modelomos(props) {
   }
   if (isLoggedIn == "tetera") {
     return <Tetera />;
+  }
+  if (isLoggedIn == "modelado") {
+    return <Modelado />;
   }
 }
 

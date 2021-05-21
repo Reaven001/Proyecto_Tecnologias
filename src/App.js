@@ -29,7 +29,7 @@ function App() {
     mat3: "Integración Multimedia",
     modelasig1: "html",
     modelasig2: "libro",
-    modelasig3: "html",
+    modelasig3: "integra",
   };
 
   const area2 = {
@@ -39,7 +39,7 @@ function App() {
     mat3: "Procesamiento de señales",
     modelasig1: "imagenes",
     modelasig2: "cerebro",
-    modelasig3: "imagenes",
+    modelasig3: "señales",
   };
 
   const area3 = {
@@ -49,7 +49,7 @@ function App() {
     mat3: "Guiones",
     modelasig1: "diseño",
     modelasig2: "inter",
-    modelasig3: "diseño",
+    modelasig3: "guiones",
   };
   const area4 = {
     titulo: "Producción Multimedia",
@@ -58,7 +58,7 @@ function App() {
     mat3: "Modelado 3D",
     modelasig1: "render",
     modelasig2: "tetera",
-    modelasig3: "tetera",
+    modelasig3: "modelado",
   };
   const asig1 = {
     titulo: "Tecnologias de Internet",
@@ -112,25 +112,25 @@ function App() {
     titulo: "Integración Multimedia",
     descripcion: "Esta sera la descripcion de Integracion Multimedia",
     profesores: "Profesor X, .... etc etc",
-    modelasig: "tetera",
+    modelasig: "integra",
   };
   const asig10 = {
     titulo: "Procesamiento de señales",
     descripcion: "Esta sera la descripcion de Procesamiento de señales",
     profesores: "Ricardo, .... etc etc",
-    modelasig: "imagenes",
+    modelasig: "señales",
   };
   const asig11 = {
     titulo: "Guiones",
     descripcion: "Esta sera la descripcion de Guiones",
     profesores: "Profesor X, .... etc etc",
-    modelasig: "tetera",
+    modelasig: "guiones",
   };
   const asig12 = {
     titulo: "Modelado 3D",
     descripcion: "Esta sera la descripcion de Modelado 3D",
     profesores: "Carlos Rocha, .... etc etc",
-    modelasig: "tetera",
+    modelasig: "modelado",
   };
 
   return (

@@ -9,7 +9,7 @@ export default function Audios(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/area_prodmultimedia_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 4.5, 0]} scale={0.9}>
+    <group ref={group} {...props} dispose={null} position={[0, 4.5, 0]} scale={0.9} rotation={[0, -0.1 , 0]}>
       <mesh
         geometry={nodes['BOXAUDIFONOS-0-AUDIFONOIS'].geometry}
         material={materials['Material.003']}
