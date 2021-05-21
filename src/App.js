@@ -22,6 +22,106 @@ import Upload from "./Upload";
 import Register from "./components/Register";
 
 function App() {
+
+
+  const texasig1 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig2 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig3 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig4 = (
+    <div>
+      <p>
+      En la clase de Render se busca crear imágenes digitales a partir de escenarios 3D realizados en Maya, con apariencia realistas desde cualquier perspectiva, para lograr estas imágenes se necesita realizar diferentes procesos de técnicas de distribución, texturizado de materiales, iluminación y efectos ópticos que se asemeje a un espacio específico real. Al finalizar el curso los estudiantes deben estar en la capacidad de realizar todo el proceso creativo, a partir de una idea, pasar a la composición y diseño, después texturizar e iluminar para finalmente, producir una imagen o imágenes en secuencia. 
+      </p>
+    </div>
+  );
+
+  const texasig5 = (
+    <div>
+      <p>
+      La electiva en “Multimedia Educativa” promueve el desarrollo de competencias necesarias para proponer, diseñar e implementar productos interactivos que medien procesos de aprendizaje, aplicando en forma efectiva tecnologías digitales en combinación con las teorías educativas apropiadas, logrando así una manera más entretenida de cómo aprende el ser humano. Como parte de las tecnologías multimedia que el estudiante puede aplicar, están: la realidad aumentada, entornos virtuales inmersivos, objetos virtuales de aprendizaje, aulas virtuales o cursos e-learning, videojuegos, libros electrónicos (ebooks), entre otros. Con la aplicación de estos entornos educativos interactivos, se pretende que el estudiante abandone su actitud pasiva frente al aprendizaje, y adopte un rol activo y entretenido en su acceso al conocimiento, generando aprendizajes significativos.
+      </p>
+    </div>
+  );
+
+  const texasig6 = (
+    <div>
+      <p>
+      La asignatura de Inteligencia Artificial se centra en aportar a la formación fundamental de futuros ingenieros multimedia en la experiencia teórica y práctica con la programación de agentes inteligentes, como algoritmos de búsqueda, juegos y problemas lógicos. El objetivo es adquirir conocimientos y habilidades sobre métodos de formalización de conocimiento, razonamiento, técnicas de aprendizaje automático y aplicaciones prácticas de la IA. 
+      </p>
+    </div>
+  );
+
+  const texasig7 = (
+    <div>
+      <p>
+      En la clase de Render se busca crear imágenes digitales a partir de escenarios 3D realizados en Maya, con apariencia realistas desde cualquier perspectiva, para lograr estas imágenes se necesita realizar diferentes procesos de técnicas de distribución, texturizado de materiales, iluminación y efectos ópticos que se asemeje a un espacio específico real. Al finalizar el curso los estudiantes deben estar en la capacidad de realizar todo el proceso creativo, a partir de una idea, pasar a la composición y diseño, después texturizar e iluminar para finalmente, producir una imagen o imágenes en secuencia. 
+      </p>
+    </div>
+  );
+
+  const texasig8 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig9 = (
+    <div>
+      <p>
+      La clase de Integración Multimedia, proporciona a los estudiantes diferentes conceptos y herramientas para la creación de productos innovadores en el mercado, pensando en el usuario final que recibirá la marca, estrategias y diseño. Los estudiantes deben realizar un proyecto multimedia que solucione un problema específico en los usuarios, implementando el diseño, desarrollo, producción, estrategia de medios y distribución del mismo.
+      </p>
+    </div>
+  );
+
+  const texasig10 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig11 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  const texasig12 = (
+    <div>
+      <p>
+
+      </p>
+    </div>
+  );
+
+  
+
   const area1 = {
     titulo: "Transformación Digital",
     mat1: "Tecnologias de internet",
@@ -62,73 +162,73 @@ function App() {
   };
   const asig1 = {
     titulo: "Tecnologias de Internet",
-    descripcion: "Esta sera la descripcion de Tecnologias de Internet",
+    descripcion: texasig1,
     profesores: "Karen Linares, .... etc etc",
     modelasig: "html",
   };
   const asig2 = {
     titulo: "Procesamiento de imagenes",
-    descripcion: "Esta sera la descripcion de Procesamiento de imagenes",
+    descripcion: texasig2,
     profesores: "Marcela Iregui, .... etc etc",
     modelasig: "imagenes",
   };
   const asig3 = {
     titulo: "Diseño",
-    descripcion: "Esta sera la descripcion de Diseño",
+    descripcion: texasig3,
     profesores: "German Garnica, .... etc etc",
     modelasig: "diseño",
   };
   const asig4 = {
     titulo: "Render",
-    descripcion: "Esta sera la descripcion de Render",
+    descripcion: texasig4,
     profesores: "Karen Linares, .... etc etc",
     modelasig: "render",
   };
   const asig5 = {
     titulo: "Multimedia Educativa",
-    descripcion: "Esta sera la descripcion de Multimedia Educativa",
+    descripcion: texasig5,
     profesores: "Jorge Jaramillo, .... etc etc",
     modelasig: "libro",
   };
   const asig6 = {
     titulo: "Inteligencia Artificial",
-    descripcion: "Esta sera la descripcion de Inteligencia Artificial",
+    descripcion: texasig6,
     profesores: "Helioth Sanchez, .... etc etc",
     modelasig: "cerebro",
   };
   const asig7 = {
     titulo: "Diseño de Interfaces",
-    descripcion: "Esta sera la descripcion de Diseño de Interfaces",
+    descripcion: texasig7,
     profesores: "Karen Linares, .... etc etc",
     modelasig: "inter",
   };
   const asig8 = {
     titulo: "Animación 3D",
-    descripcion: "Esta sera la descripcion de Animación 3D",
+    descripcion: texasig8,
     profesores: "Carlos Rocha, .... etc etc",
     modelasig: "tetera",
   };
   const asig9 = {
     titulo: "Integración Multimedia",
-    descripcion: "Esta sera la descripcion de Integracion Multimedia",
+    descripcion: texasig9,
     profesores: "Profesor X, .... etc etc",
     modelasig: "integra",
   };
   const asig10 = {
     titulo: "Procesamiento de señales",
-    descripcion: "Esta sera la descripcion de Procesamiento de señales",
+    descripcion: texasig10,
     profesores: "Ricardo, .... etc etc",
     modelasig: "señales",
   };
   const asig11 = {
     titulo: "Guiones",
-    descripcion: "Esta sera la descripcion de Guiones",
+    descripcion: texasig11,
     profesores: "Profesor X, .... etc etc",
     modelasig: "guiones",
   };
   const asig12 = {
     titulo: "Modelado 3D",
-    descripcion: "Esta sera la descripcion de Modelado 3D",
+    descripcion: texasig12,
     profesores: "Carlos Rocha, .... etc etc",
     modelasig: "modelado",
   };
