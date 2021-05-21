@@ -1,10 +1,12 @@
 import React from "react";
+import firebase from "firebase";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import amarillo from "./assets/amarillo.png";
 
 import "./css/Asignatura.css";
@@ -13,6 +15,20 @@ import Hexagoncard from "./components/Hexagono/Hexagono";
 export default class Asignatura extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      pictures: [],
+    };
+  }
+  componentWillMount() {
+    firebase
+      .database()
+      .ref("pictures")
+      .on("child_added", (snapshot) => {
+        this.setState({
+          pictures: this.state.pictures.concat(snapshot.val()),
+        });
+      });
   }
   render() {
     return (
@@ -36,13 +52,27 @@ export default class Asignatura extends React.Component {
                   alt="Model 3D"
                   className="modelo"
                 /> */}
-                <Hexagoncard logo={amarillo} envio={"lobby"} namemodel={this.props.info.modelasig}></Hexagoncard>
+                <Hexagoncard
+                  logo={amarillo}
+                  envio={"lobby"}
+                  namemodel={this.props.info.modelasig}
+                ></Hexagoncard>
               </Row>
             </Col>
           </Row>
           <Row className="justify-content-center">
-            <div className="galeria">
-              <p>Aqui va la galeria</p>
+            <div className="img-grid">
+              {this.state.pictures
+                .map((picture) => (
+                  <div className="img-wrap">
+                    <img src={picture.image} width="500" />
+                    <br />
+                    <img src={picture.photoURL} alt={picture.displayName} />
+                    <br />
+                    <span>{picture.displayName}</span>
+                  </div>
+                ))
+                .reverse()}
             </div>
           </Row>
           <Row className="justify-content-center py-5 btnShare">

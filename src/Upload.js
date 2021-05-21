@@ -15,17 +15,46 @@ export default class Upload extends React.Component {
   constructor() {
     super();
     this.state = {
+      user: null,
       uploadValue: 0,
-      picture: null,
+      pictures: [],
+      pictureUP: null,
     };
 
     this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ user: user });
+    });
+
+    firebase
+      .database()
+      .ref("pictures")
+      .on("child_added", (snapshot) => {
+        this.setState({
+          pictures: this.state.pictures.concat(snapshot.val()),
+        });
+      });
   }
 
   handleUpload(event) {
     const file = event.target.files[0];
     const storageRef = firebase.storage().ref(`/Fotos/${file.name}`);
     const task = storageRef.put(file);
+    var asignatura = "Asignatura";
+    switch (asignatura) {
+      case "Tecnologias de internet":
+        console.log("La asignatura es Tecnologias de internet");
+        break;
+      case "Multimedia educativa":
+        console.log("La asignatura es Multimedia educativa");
+        break;
+      case "Asignatura":
+        alert("Elige una asignatura");
+        break;
+    }
 
     task.on(
       "state_changed",
@@ -41,17 +70,30 @@ export default class Upload extends React.Component {
       },
       async () => {
         const url = await storageRef.getDownloadURL();
+
         this.setState({
           uploadValue: 100,
-          picture: url,
+          pictureUP: url,
         });
+
+        const record = {
+          photoURL: this.state.user.photoURL,
+          displayName: this.state.user.displayName,
+          image: url,
+        };
+
+        const dbRef = firebase.database().ref("pictures");
+        const newPicture = dbRef.push();
+        newPicture.set(record);
+
+        console.log(record);
+        console.log(newPicture);
       }
     );
   }
 
   userLog() {
-    var user = firebase.auth().currentUser;
-    if (user) {
+    if (this.state.user) {
       //Si esta logueado:
       return (
         <div className="SubirArchivos">
@@ -94,7 +136,7 @@ export default class Upload extends React.Component {
                       onChange={this.handleUpload}
                     />
                     <div>
-                      <img width="200" src={this.state.picture} alt="" />
+                      <img width="200" src={this.state.pictureUP} alt="" />
                     </div>
                     <div
                       style={{
@@ -116,7 +158,12 @@ export default class Upload extends React.Component {
                 <Form className="formUpload">
                   <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>¿De que asignatura es tu proyecto?</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control
+                      as="select"
+                      defaultValue="Asignatura"
+                      name="asignatura"
+                    >
+                      <option>Asignatura...</option>
                       <option>Tecnologias de internet</option>
                       <option>Multimedia educativa</option>
                       <option>Museos</option>
