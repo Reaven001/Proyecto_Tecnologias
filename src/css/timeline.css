@@ -27,6 +27,11 @@
   text-align: justify;
 }
 
+.imagenTL {
+  width: 85%;
+  height: 85%;
+}
+
 @media (max-width: 640px) {
   /* Los estilos aquí contenidos solo se aplicarán a partir
   del tamaño de pantalla indicado */
@@ -43,7 +48,7 @@
   }
 
   .imagenTL {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 }

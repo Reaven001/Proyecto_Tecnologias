@@ -169,7 +169,7 @@ function App() {
   const asig2 = {
     titulo: "Procesamiento de imágenes",
     descripcion: texasig2,
-    profesores: "Wilman Helioth Sanchez, Alexander Cerón Correa, Hilda Marcela Iregui.",
+    profesores: "Wilman Helioth Sanchez, Alexander Cerón Correa, Hilda Marcela Iregui, Ricardo Enrique Gutiérrez.",
     modelasig: "imagenes",
   };
   const asig3 = {
@@ -193,7 +193,7 @@ function App() {
   const asig6 = {
     titulo: "Inteligencia Artificial",
     descripcion: texasig6,
-    profesores: "Wilman Helioth Sanchez.",
+    profesores: "Wilman Helioth Sanchez, Ricardo Enrique Gutiérrez.",
     modelasig: "cerebro",
   };
   const asig7 = {
@@ -217,7 +217,7 @@ function App() {
   const asig10 = {
     titulo: "Procesamiento de señales",
     descripcion: texasig10,
-    profesores: "Alexander Cerón Correa, Ricardo Enrique Gutiérrez.",
+    profesores: "Alexander Cerón Correa, Ricardo Enrique Gutiérrez, Hilda Marcela Iregui.",
     modelasig: "señales",
   };
   const asig11 = {
