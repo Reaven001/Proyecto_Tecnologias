@@ -161,75 +161,75 @@ function App() {
     modelasig3: "modelado",
   };
   const asig1 = {
-    titulo: "Tecnologias de Internet",
+    titulo: "Tecnologías de Internet",
     descripcion: texasig1,
-    profesores: "Karen Linares, .... etc etc",
+    profesores: "Karen Linares Luque, Carlos Aranzazu López.",
     modelasig: "html",
   };
   const asig2 = {
-    titulo: "Procesamiento de imagenes",
+    titulo: "Procesamiento de imágenes",
     descripcion: texasig2,
-    profesores: "Marcela Iregui, .... etc etc",
+    profesores: "Wilman Helioth Sanchez, Alexander Cerón Correa, Hilda Marcela Iregui.",
     modelasig: "imagenes",
   };
   const asig3 = {
     titulo: "Diseño",
     descripcion: texasig3,
-    profesores: "German Garnica, .... etc etc",
+    profesores: "Germán Andrés Garnica.",
     modelasig: "diseño",
   };
   const asig4 = {
     titulo: "Render",
     descripcion: texasig4,
-    profesores: "Karen Linares, .... etc etc",
+    profesores: "Karen Linares Luque.",
     modelasig: "render",
   };
   const asig5 = {
     titulo: "Multimedia Educativa",
     descripcion: texasig5,
-    profesores: "Jorge Jaramillo, .... etc etc",
+    profesores: "Jorge Augusto Jaramillo.",
     modelasig: "libro",
   };
   const asig6 = {
     titulo: "Inteligencia Artificial",
     descripcion: texasig6,
-    profesores: "Helioth Sanchez, .... etc etc",
+    profesores: "Wilman Helioth Sanchez.",
     modelasig: "cerebro",
   };
   const asig7 = {
     titulo: "Diseño de Interfaces",
     descripcion: texasig7,
-    profesores: "Karen Linares, .... etc etc",
+    profesores: "Carlos Aranzazu López.",
     modelasig: "inter",
   };
   const asig8 = {
     titulo: "Animación 3D",
     descripcion: texasig8,
-    profesores: "Carlos Rocha, .... etc etc",
+    profesores: "Carlos Alberto Rocha.",
     modelasig: "tetera",
   };
   const asig9 = {
     titulo: "Integración Multimedia",
     descripcion: texasig9,
-    profesores: "Profesor X, .... etc etc",
+    profesores: "Carlos Aranzazu López.",
     modelasig: "integra",
   };
   const asig10 = {
     titulo: "Procesamiento de señales",
     descripcion: texasig10,
-    profesores: "Ricardo, .... etc etc",
+    profesores: "Alexander Cerón Correa, Ricardo Enrique Gutiérrez.",
     modelasig: "señales",
   };
   const asig11 = {
     titulo: "Guiones",
     descripcion: texasig11,
-    profesores: "Profesor X, .... etc etc",
+    profesores: "María Martha Gama, Adriana Martínez Herrán.",
     modelasig: "guiones",
   };
   const asig12 = {
     titulo: "Modelado 3D",
     descripcion: texasig12,
-    profesores: "Carlos Rocha, .... etc etc",
+    profesores: "Carlos Alberto Rocha.",
     modelasig: "modelado",
   };
 
