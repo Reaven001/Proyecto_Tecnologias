@@ -11,8 +11,6 @@ import amarillo from "./assets/amarillo.png";
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
-
-
 export default class Asignatura extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +21,7 @@ export default class Asignatura extends React.Component {
       pictures: [],
       coments: [],
       comenttext: null,
+      admins: [],
     };
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -83,6 +82,7 @@ export default class Asignatura extends React.Component {
         referenciacoment = "comentarios/modelado3d";
         break;
     }
+    //Conectar con la base de datos de las imagenes
     firebase
       .database()
       .ref(referencia)
@@ -91,9 +91,11 @@ export default class Asignatura extends React.Component {
           pictures: this.state.pictures.concat(snapshot.val()),
         });
       });
+
     console.log("Referencia: " + referencia);
     console.log(this.state.pictures);
 
+    //Conectar con la base de datos de comentarios
     firebase
       .database()
       .ref(referenciacoment)
@@ -104,13 +106,31 @@ export default class Asignatura extends React.Component {
       });
     console.log("Referencia: " + referenciacoment);
     console.log(this.state.coments);
-  }
 
+    //Conectar con la base de datos de admins
+    const dbRef = firebase.database().ref();
+    dbRef
+      .child("Admins")
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+          this.setState({
+            admins: snapshot.val(),
+          });
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    console.log("ADministradores" + this.state.admins);
+  }
 
   handleChangeTextA(event) {
     this.setState({
       comenttext: event.target.value,
-      
     });
     console.log(this.state.coments);
   }
@@ -204,214 +224,203 @@ export default class Asignatura extends React.Component {
 
   Asig() {
     if (this.state.user) {
-      return(
+      return (
         <div className="contentAsig">
-        <Container>
-          <Row className="justify-content-between py-5">
-            <Col lg={8} sm={12}>
-              <h2 className="tituloAsig"> {this.props.info.titulo} </h2>
-              <p className="parrAsig">{this.props.info.descripcion}</p>
-              <div className="partDoc">
-                <h3 className="tituloAsig2">Docentes</h3>
-                <p className="parrafoD">{this.props.info.profesores}</p>
-              </div>
-            </Col>
-            <Col lg={4} sm={12} className="align-self-center">
-              <Row className="justify-content-center">
-                <Hexagoncard2
-                  logo={amarillo}
-                  envio={"lobby"}
-                  namemodel={this.props.info.modelasig}
-                ></Hexagoncard2>
-              </Row>
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <div className="img-grid">
-              {this.state.pictures
-                .map((picture) => (
-                  <div className="img-wrap">
-                    <img
-                      src={picture.image}
-                      width="500"
-                      style={{ borderRadius: "20px" }}
-                    />
-                    <br />
-                    <span>{picture.email}</span>
-                    <br />
-                    <p>{picture.descripcion}</p>
-                  </div>
-                ))
-                .reverse()}
-            </div>
-          </Row>
-          <Row className="justify-content-center py-5 btnShare">
-            <Button
-              style={{
-                color: "#620CE8",
-                backgroundColor: "#E8910C",
-                border: "#0DBFFF",
-                borderRadius: "20px",
-                padding: "15px",
-                fontSize: "15px",
-              }}
-              href="/SubirArchivos"
-            >
-              Comparte tus proyectos
-            </Button>
-          </Row>
-          <Row>
-            <h3 className="tituloComent"> Comentarios </h3>
-          </Row>
-          <Row>
+          <Container>
+            <Row className="justify-content-between py-5">
               <Col lg={8} sm={12}>
-                {this.state.coments
-                  .map((coment) => (
-
-                    <div>
-                      <div>
-                        <h4 className="NameUser">{coment.correo}</h4>
-                      </div>
-                      <p className="comentario">
-                        {coment.comentario}
-                      </p>
+                <h2 className="tituloAsig"> {this.props.info.titulo} </h2>
+                <p className="parrAsig">{this.props.info.descripcion}</p>
+                <div className="partDoc">
+                  <h3 className="tituloAsig2">Docentes</h3>
+                  <p className="parrafoD">{this.props.info.profesores}</p>
+                </div>
+              </Col>
+              <Col lg={4} sm={12} className="align-self-center">
+                <Row className="justify-content-center">
+                  <Hexagoncard2
+                    logo={amarillo}
+                    envio={"lobby"}
+                    namemodel={this.props.info.modelasig}
+                  ></Hexagoncard2>
+                </Row>
+              </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <div className="img-grid">
+                {this.state.pictures
+                  .map((picture) => (
+                    <div className="img-wrap">
+                      <img
+                        src={picture.image}
+                        width="500"
+                        style={{ borderRadius: "20px" }}
+                      />
+                      <br />
+                      <span>{picture.email}</span>
+                      <br />
+                      <p>{picture.descripcion}</p>
                     </div>
                   ))
                   .reverse()}
-            </Col>
-          </Row>
-          <Row>
-            <h3 className="tituloComent">
-              <u>Comparte tus ideas</u>
-            </h3>
-          </Row>
-          <Form className="formUpload" onSubmit={this.handleSubmit}>
-            <Row>
-              <Form.Control
-                as="textarea"
-                rows={6}
-                placeholder="¿Qué te parecieron estos proyectos?"
-                style={{
-                  backgroundColor: "#0DBFFF",
-                  color: "#E1FF00",
-                  borderRadius: "20px",
-                }}
-                onChange={this.handleChangeTextA}
-              />
+              </div>
             </Row>
             <Row className="justify-content-center py-5 btnShare">
               <Button
                 style={{
-                  color: "#FF0000",
-                  backgroundColor: "transparent",
-                  border: "3px solid #FF0000",
+                  color: "#620CE8",
+                  backgroundColor: "#E8910C",
+                  border: "#0DBFFF",
                   borderRadius: "20px",
+                  padding: "15px",
                   fontSize: "15px",
                 }}
-                type="submit"
+                href="/SubirArchivos"
               >
-                PUBLICAR
+                Comparte tus proyectos
               </Button>
             </Row>
-          </Form>
-        </Container>
-      </div>
-      );
-
-    }
-    else {
-      return(
-        <div className="contentAsig">
-        <Container>
-          <Row className="justify-content-between py-5">
-            <Col lg={8} sm={12}>
-              <h2 className="tituloAsig"> {this.props.info.titulo} </h2>
-              <p className="parrAsig">{this.props.info.descripcion}</p>
-              <div className="partDoc">
-                <h3 className="tituloAsig2">Docentes</h3>
-                <p className="parrafoD">{this.props.info.profesores}</p>
-              </div>
-            </Col>
-            <Col lg={4} sm={12} className="align-self-center">
-              <Row className="justify-content-center">
-                <Hexagoncard2
-                  logo={amarillo}
-                  envio={"lobby"}
-                  namemodel={this.props.info.modelasig}
-                ></Hexagoncard2>
-              </Row>
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <div className="img-grid">
-              {this.state.pictures
-                .map((picture) => (
-                  <div className="img-wrap">
-                    <img
-                      src={picture.image}
-                      width="500"
-                      style={{ borderRadius: "20px" }}
-                    />
-                    <br />
-                    <span>{picture.email}</span>
-                    <br />
-                    <p>{picture.descripcion}</p>
-                  </div>
-                ))
-                .reverse()}
-            </div>
-          </Row>
-          <Row className="justify-content-center py-5 btnShare">
-            <Button
-              style={{
-                color: "#620CE8",
-                backgroundColor: "#E8910C",
-                border: "#0DBFFF",
-                borderRadius: "20px",
-                padding: "15px",
-                fontSize: "15px",
-              }}
-              href="/SubirArchivos"
-            >
-              Comparte tus proyectos
-            </Button>
-          </Row>
-          <Row>
-            <h3 className="tituloComent"> Comentarios </h3>
-          </Row>
-          <Row>
+            <Row>
+              <h3 className="tituloComent"> Comentarios </h3>
+            </Row>
+            <Row>
               <Col lg={8} sm={12}>
                 {this.state.coments
                   .map((coment) => (
-
                     <div>
                       <div>
                         <h4 className="NameUser">{coment.correo}</h4>
                       </div>
-                      <p className="comentario">
-                        {coment.comentario}
-                      </p>
+                      <p className="comentario">{coment.comentario}</p>
                     </div>
                   ))
                   .reverse()}
-            </Col>
-          </Row>
-          <Row>
-            <h3 className="tituloComent">
-              <u>Comparte tus ideas</u>
-            </h3>
-          </Row>
-         <h1>Para comentar inicia sesion</h1>
-        </Container>
-      </div>
+              </Col>
+            </Row>
+            <Row>
+              <h3 className="tituloComent">
+                <u>Comparte tus ideas</u>
+              </h3>
+            </Row>
+            <Form className="formUpload" onSubmit={this.handleSubmit}>
+              <Row>
+                <Form.Control
+                  as="textarea"
+                  rows={6}
+                  placeholder="¿Qué te parecieron estos proyectos?"
+                  style={{
+                    backgroundColor: "#0DBFFF",
+                    color: "#E1FF00",
+                    borderRadius: "20px",
+                  }}
+                  onChange={this.handleChangeTextA}
+                />
+              </Row>
+              <Row className="justify-content-center py-5 btnShare">
+                <Button
+                  style={{
+                    color: "#FF0000",
+                    backgroundColor: "transparent",
+                    border: "3px solid #FF0000",
+                    borderRadius: "20px",
+                    fontSize: "15px",
+                  }}
+                  type="submit"
+                >
+                  PUBLICAR
+                </Button>
+              </Row>
+            </Form>
+          </Container>
+        </div>
       );
-
+    } else {
+      return (
+        <div className="contentAsig">
+          <Container>
+            <Row className="justify-content-between py-5">
+              <Col lg={8} sm={12}>
+                <h2 className="tituloAsig"> {this.props.info.titulo} </h2>
+                <p className="parrAsig">{this.props.info.descripcion}</p>
+                <div className="partDoc">
+                  <h3 className="tituloAsig2">Docentes</h3>
+                  <p className="parrafoD">{this.props.info.profesores}</p>
+                </div>
+              </Col>
+              <Col lg={4} sm={12} className="align-self-center">
+                <Row className="justify-content-center">
+                  <Hexagoncard2
+                    logo={amarillo}
+                    envio={"lobby"}
+                    namemodel={this.props.info.modelasig}
+                  ></Hexagoncard2>
+                </Row>
+              </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <div className="img-grid">
+                {this.state.pictures
+                  .map((picture) => (
+                    <div className="img-wrap">
+                      <img
+                        src={picture.image}
+                        width="500"
+                        style={{ borderRadius: "20px" }}
+                      />
+                      <br />
+                      <span>{picture.email}</span>
+                      <br />
+                      <p>{picture.descripcion}</p>
+                    </div>
+                  ))
+                  .reverse()}
+              </div>
+            </Row>
+            <Row className="justify-content-center py-5 btnShare">
+              <Button
+                style={{
+                  color: "#620CE8",
+                  backgroundColor: "#E8910C",
+                  border: "#0DBFFF",
+                  borderRadius: "20px",
+                  padding: "15px",
+                  fontSize: "15px",
+                }}
+                href="/SubirArchivos"
+              >
+                Comparte tus proyectos
+              </Button>
+            </Row>
+            <Row>
+              <h3 className="tituloComent"> Comentarios </h3>
+            </Row>
+            <Row>
+              <Col lg={8} sm={12}>
+                {this.state.coments
+                  .map((coment) => (
+                    <div>
+                      <div>
+                        <h4 className="NameUser">{coment.correo}</h4>
+                      </div>
+                      <p className="comentario">{coment.comentario}</p>
+                    </div>
+                  ))
+                  .reverse()}
+              </Col>
+            </Row>
+            <Row>
+              <h3 className="tituloComent">
+                <u>Comparte tus ideas</u>
+              </h3>
+            </Row>
+            <h1>Para comentar inicia sesion</h1>
+          </Container>
+        </div>
+      );
     }
-  };
+  }
 
-
-  
   render() {
-      return <div>{this.Asig()}</div>;
+    return <div>{this.Asig()}</div>;
   }
 }
