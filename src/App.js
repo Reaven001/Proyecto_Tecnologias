@@ -27,7 +27,7 @@ function App() {
   const texasig1 = (
     <div>
       <p>
-
+        La clase de tecnologías de internet proporciona a los estudiantes conceptos y técnicas para la elaboración de diseño web, así como también estrategias para el trabajo en equipo y desarrollo de software colaborativo, pensando en entregar un producto final detallado que cumpla con los requerimientos dados por un cliente, implementando técnicas de producción, diseño, arte digital y programación web.
       </p>
     </div>
   );
@@ -35,7 +35,7 @@ function App() {
   const texasig2 = (
     <div>
       <p>
-
+       La asignatura de procesamiento de imágenes comprende algunos de los temas de procesamiento de señales pero ahora orientados a señales bidimensionales. El estudiante aprenderá conceptos sobre cómo tratar y transformar imágenes, desde agregar filtros en el dominio del espacio o la frecuencia, comprender cómo funcionan algoritmos de compresión de imágenes como jpg, png, JPEG2000 entre otros.
       </p>
     </div>
   );
@@ -43,7 +43,7 @@ function App() {
   const texasig3 = (
     <div>
       <p>
-
+       La asignatura de diseño se divide en tres etapas, en esta clase el estudiante obtiene los conocimientos para ser capaz de elaborar productos, estéticos, funcionales y útiles. Se realizan proyectos los cuales capacitan al estudiante para poder diseñar un producto desde cero, teniendo en cuenta todas las etapas requeridas para el desarrollo del mismo, desde el planteamiento de una idea hasta el desarrollo, producción, estrategia de medios y distribución del mismo.
       </p>
     </div>
   );
@@ -75,7 +75,7 @@ function App() {
   const texasig7 = (
     <div>
       <p>
-      En la clase de Render se busca crear imágenes digitales a partir de escenarios 3D realizados en Maya, con apariencia realistas desde cualquier perspectiva, para lograr estas imágenes se necesita realizar diferentes procesos de técnicas de distribución, texturizado de materiales, iluminación y efectos ópticos que se asemeje a un espacio específico real. Al finalizar el curso los estudiantes deben estar en la capacidad de realizar todo el proceso creativo, a partir de una idea, pasar a la composición y diseño, después texturizar e iluminar para finalmente, producir una imagen o imágenes en secuencia. 
+        El diseño de interfaces multimedia es la técnica que hace posible usar productos multimedia mediante el uso de estrategias creativas, compositivas y narrativas en el diseño de productos interactivos. Mediante la combinación de técnicas específicas y conceptos de diseño gráfico, navegación, usabilidad e Ingeniería de software, el profesional de la multimedia puede elaborar productos efectivos, de impacto y que cumplan con los objetivos finales asignados al diseño de un producto digital. La asignatura busca entonces dotar a los estudiantes con los fundamentos teóricos y técnicas sobre el diseño de interfaces gráficas de usuario utilizando recursos tecnológicos para composición gráfica y programación, aplicando conceptos adquiridos en otras cátedras, tales como: elaboración de guiones, animación 2D, laboratorio de video, laboratorio de Sonido, talleres de animación, integración Multimedia, entre otras. 
       </p>
     </div>
   );
@@ -83,7 +83,7 @@ function App() {
   const texasig8 = (
     <div>
       <p>
-
+       La asignatura de animación 	3D y dinámicas se centra en aportar al estudiante los conceptos y herramientas para realizar animaciones elaboradas bien sea a personajes, objetos y partículas así como también emplear conceptos de simulación para realizar interacciones de partículas en una escena tridimensional. Al final del curso los estudiantes presentan un cortometraje 3D en el cual se incluyan técnicas de narración visual, principios de animación, storytellling, dinámica de partículas, texturizado de objetos 3D y producción audiovisual.
       </p>
     </div>
   );
@@ -99,7 +99,7 @@ function App() {
   const texasig10 = (
     <div>
       <p>
-
+        El procesamiento de señales se refiere al tratamiento e interpretación de una señal, en esta asignatura se abordan conceptos para procesar señales unidimensionales, desde el muestreo, compresión, codificación y manipulación de una señal.
       </p>
     </div>
   );
@@ -107,7 +107,7 @@ function App() {
   const texasig11 = (
     <div>
       <p>
-
+        La asignatura de guiones capacitará al estudiante con conceptos y técnicas de narrativa, desarrollo de personajes, creación de un escenario literario y estructuras en un relato, así como también se aprenderán conocimientos y procesos necesarios para la producción de contenidos audiovisuales.
       </p>
     </div>
   );
@@ -115,7 +115,7 @@ function App() {
   const texasig12 = (
     <div>
       <p>
-
+        El modelado 3D es el proceso de desarrollo de una representación de un objeto tridimensional en un entorno de desarrollo digital, en la asignatura de Modelado 3D se obtienen los conocimientos necesarios para realizar un proceso de trabajo adecuado en esta área empleando técnicas y teniendo en cuenta los conceptos para realizar un modelado apropiadamente que sea optimizado y adecuado para exportar a otros software de modelado, animación  e interacción multimedia.
       </p>
     </div>
   );
@@ -169,7 +169,7 @@ function App() {
   const asig2 = {
     titulo: "Procesamiento de imágenes",
     descripcion: texasig2,
-    profesores: "Wilman Helioth Sanchez, Alexander Cerón Correa, Hilda Marcela Iregui.",
+    profesores: "Wilman Helioth Sanchez, Alexander Cerón Correa, Hilda Marcela Iregui, Ricardo Enrique Gutiérrez.",
     modelasig: "imagenes",
   };
   const asig3 = {
@@ -193,7 +193,7 @@ function App() {
   const asig6 = {
     titulo: "Inteligencia Artificial",
     descripcion: texasig6,
-    profesores: "Wilman Helioth Sanchez.",
+    profesores: "Wilman Helioth Sanchez, Ricardo Enrique Gutiérrez.",
     modelasig: "cerebro",
   };
   const asig7 = {
@@ -217,7 +217,7 @@ function App() {
   const asig10 = {
     titulo: "Procesamiento de señales",
     descripcion: texasig10,
-    profesores: "Alexander Cerón Correa, Ricardo Enrique Gutiérrez.",
+    profesores: "Alexander Cerón Correa, Ricardo Enrique Gutiérrez, Hilda Marcela Iregui.",
     modelasig: "señales",
   };
   const asig11 = {
