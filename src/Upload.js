@@ -19,9 +19,13 @@ export default class Upload extends React.Component {
       uploadValue: 0,
       pictures: [],
       pictureUP: null,
+      asigselect: "tecnologiasdeinternet",
+      descrip: null,
     };
 
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleChangeSelect = this.handleChangeSelect.bind(this);
+    this.handleChangeTextA = this.handleChangeTextA.bind(this);
   }
 
   componentWillMount() {
@@ -39,22 +43,29 @@ export default class Upload extends React.Component {
       });
   }
 
+  handleChangeSelect(event) {
+    this.setState({
+      asigselect: event.target.value,
+    });
+  }
+
+  handleChangeTextA(event) {
+    this.setState({
+      descrip: event.target.value,
+    });
+  }
+
+  handleSubmit(event) {
+    const img = this.state.pictureUP;
+    console.log(img);
+    event.preventDefault();
+  }
+
   handleUpload(event) {
+    //Subide de archivos multiemdia
     const file = event.target.files[0];
     const storageRef = firebase.storage().ref(`/Fotos/${file.name}`);
     const task = storageRef.put(file);
-    var asignatura = "Asignatura";
-    switch (asignatura) {
-      case "Tecnologias de internet":
-        console.log("La asignatura es Tecnologias de internet");
-        break;
-      case "Multimedia educativa":
-        console.log("La asignatura es Multimedia educativa");
-        break;
-      case "Asignatura":
-        alert("Elige una asignatura");
-        break;
-    }
 
     task.on(
       "state_changed",
@@ -76,7 +87,7 @@ export default class Upload extends React.Component {
           pictureUP: url,
         });
 
-        const record = {
+        /*const record = {
           photoURL: this.state.user.photoURL,
           displayName: this.state.user.displayName,
           image: url,
@@ -87,17 +98,23 @@ export default class Upload extends React.Component {
         newPicture.set(record);
 
         console.log(record);
-        console.log(newPicture);
+        console.log(newPicture);*/
       }
     );
   }
 
   userLog() {
+    const styleArchivos = {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    };
+
     if (this.state.user) {
       //Si esta logueado:
       return (
         <div className="SubirArchivos">
-          <Container>
+          <Container className="SubirArchivos">
             <Row className="justify-content-center py-5">
               <Col sm={12} lg={8}>
                 <h1 className="tituloUpload">Comparte tus proyectos</h1>
@@ -126,69 +143,80 @@ export default class Upload extends React.Component {
               </Col>
             </Row>
           </Container>
-          <Container>
-            <Row className="justify-content-center py-5">
-              <Col lg={6} className="align-self-center">
-                <Form className="formUpload">
-                  <Form.Group>
-                    <Form.File
-                      id="controlFormFile"
-                      onChange={this.handleUpload}
-                    />
+          <Container className="SubirArchivos">
+            <Form className="formUpload" onSubmit={this.handleSubmit}>
+              <Row className="justify-content-around">
+                <Col lg={4} sm={5} className="align-self-center Form">
+                  <div>
                     <div>
+                      <Form.Group controlId="formArchivos">
+                        <Form.File
+                          id="controlFormFile"
+                          onChange={this.handleUpload}
+                        />
+                      </Form.Group>
+                    </div>
+                    <div style={styleArchivos}>
                       <img width="200" src={this.state.pictureUP} alt="" />
                     </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingTop: "50px",
-                      }}
-                    >
+                    <div style={styleArchivos}>
                       <progress
                         value={this.state.uploadValue}
                         max="100"
                       ></progress>
                     </div>
-                  </Form.Group>
-                </Form>
-              </Col>
-              <Col lg={6} className="align-self-center">
-                <Form className="formUpload">
-                  <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>¿De que asignatura es tu proyecto?</Form.Label>
-                    <Form.Control
-                      as="select"
-                      defaultValue="Asignatura"
-                      name="asignatura"
-                    >
-                      <option>Asignatura...</option>
-                      <option>Tecnologias de internet</option>
-                      <option>Multimedia educativa</option>
-                      <option>Museos</option>
-                      <option>Procesamiento de imagenes</option>
-                      <option>Inteligencia artificial</option>
-                      <option>Procesamiento de señales</option>
-                      <option>Diseño </option>
-                      <option>Diseño de Interfaces</option>
-                      <option>Guiones</option>
-                      <option>Render</option>
-                      <option>Animación 3D</option>
-                      <option>Modelado 3D</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Form>
-              </Col>
-            </Row>
-            <Row className="py-5">
-              <Col lg={12}>
-                <Form>
+                  </div>
+                </Col>
+                <Col lg={4} sm={5} className="align-self-center Form">
+                  <Row className="justify-content-center">
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                      <Form.Label>
+                        ¿De que asignatura es tu proyecto?
+                      </Form.Label>
+                      <Form.Control
+                        as="select"
+                        defaultValue="Asignatura"
+                        name="asignatura"
+                        value={this.state.asigselect}
+                        onChange={this.handleChangeSelect}
+                      >
+                        <option>Asignatura...</option>
+                        <option value="tecnologiasdeinternet">
+                          Tecnologias de internet
+                        </option>
+                        <option value="multimediaeducativa">
+                          Multimedia educativa
+                        </option>
+                        <option value="museos">Museos</option>
+                        <option value="procesamientodeimagenes">
+                          Procesamiento de imagenes
+                        </option>
+                        <option value="inteligenciaartificial">
+                          Inteligencia artificial
+                        </option>
+                        <option value="procesamientodeseñales">
+                          Procesamiento de señales
+                        </option>
+                        <option value="diseño">Diseño </option>
+                        <option value="diseñodeinterfaces">
+                          Diseño de Interfaces
+                        </option>
+                        <option value="guiones">Guiones</option>
+                        <option value="render">Render</option>
+                        <option value="animacion3d">Animación 3D</option>
+                        <option value="modelado3d">Modelado 3D</option>
+                      </Form.Control>
+                    </Form.Group>
+                  </Row>
+                </Col>
+              </Row>
+              <Row className="py-5">
+                <Col lg={12}>
                   <Form.Group>
                     <Form.Label className="titleDes">Descripción</Form.Label>
                     <Form.Control
                       as="textarea"
-                      rows={6}
+                      rows={8}
                       placeholder="Danos una descripción de tu proyecto, quien lo hizo, como se hizo..."
                       style={{
                         backgroundColor: "#620CE8",
@@ -196,31 +224,32 @@ export default class Upload extends React.Component {
                         borderRadius: "20px",
                         border: "1px solid #620ce8",
                       }}
+                      onChange={this.handleChangeTextA}
                     />
                   </Form.Group>
-                </Form>
-              </Col>
-            </Row>
-            <Row className="btn-upload">
-              <Button
-                style={{
-                  borderRadius: "10px",
-                  border: "1px solid #E8910C",
-                  backgroundColor: "#E8910C",
-                  color: "#620CE8",
-                  fontSize: "15px",
-                  width: "auto",
-                  paddingRight: "50px",
-                  paddingLeft: "50px",
-                  paddingTop: "12px",
-                  paddingBottom: "12px",
-                  fontWeight: "bold",
-                }}
-                as="input"
-                type="submit"
-                value="COMPARTIR"
-              ></Button>
-            </Row>
+                </Col>
+              </Row>
+              <Row className="btn-upload">
+                <Button
+                  style={{
+                    borderRadius: "10px",
+                    border: "1px solid #E8910C",
+                    backgroundColor: "#E8910C",
+                    color: "#620CE8",
+                    fontSize: "15px",
+                    width: "auto",
+                    paddingRight: "50px",
+                    paddingLeft: "50px",
+                    paddingTop: "12px",
+                    paddingBottom: "12px",
+                    fontWeight: "bold",
+                  }}
+                  type="submit"
+                >
+                  COMPARTIR
+                </Button>
+              </Row>
+            </Form>
           </Container>
         </div>
       );

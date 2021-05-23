@@ -27,19 +27,30 @@
   font-size: 30pt;
 }
 
-.formUpload {
+.Form {
+  border-radius: 20px;
   background-color: #620ce8;
   border: 1px solid #620ce8;
-  border-radius: 20px;
-  font-family: "Roboto Condensed", sans-serif;
-  color: #e1ff00;
   height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-right: 10px;
+}
+
+.formUpload {
+  border-radius: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e1ff00;
 }
 
 .btn-upload {
   font-family: "Roboto Condensed", sans-serif;
   padding-bottom: 50px;
+}
+
+.archivos {
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
 }
