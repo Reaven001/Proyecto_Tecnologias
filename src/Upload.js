@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import cubo from "./assets/cubo.png";
+
 import "./css/upload.css";
 
 import Login from "./Login.js";
@@ -28,6 +28,7 @@ export default class Upload extends React.Component {
     this.handleUpload = this.handleUpload.bind(this);
     this.handleChangeSelect = this.handleChangeSelect.bind(this);
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -141,7 +142,12 @@ export default class Upload extends React.Component {
                     alt="Model 3D"
                     className="modelo"
                   /> */}
-                  <Hexagoncard esmodel='mul' logo={morado} envio={"park"} namemodel={"mul"}></Hexagoncard>
+                  <Hexagoncard
+                    esmodel="mul"
+                    logo={morado}
+                    envio={"park"}
+                    namemodel={"mul"}
+                  ></Hexagoncard>
                 </Row>
               </Col>
             </Row>
