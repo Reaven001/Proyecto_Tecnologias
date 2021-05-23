@@ -41,6 +41,14 @@
   color: #620ce8;
 }
 
+
+@media (min-width: 991px){
+  .vertical{
+    width:1px;
+    word-wrap: break-word;
+    white-space:pre-wrap; 
+  }
+}
 @media (max-width: 640px) {
   /* Los estilos aquí contenidos solo se aplicarán a partir
   del tamaño de pantalla indicado */

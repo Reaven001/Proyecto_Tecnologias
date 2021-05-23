@@ -10,7 +10,7 @@ export default function Señales(props) {
   const { nodes, materials } = useGLTF('/asig_señales.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0,6.5, 0]} rotation={[-Math.PI, 1.4, -Math.PI]} scale={0.8}>
+      <group position={[0,6.5, 0]} rotation={[-Math.PI, 3, -Math.PI]} scale={0.8}>
         <mesh geometry={nodes['antena_001-1-Antena_1'].geometry} material={materials['Material.001']} />
         <mesh geometry={nodes['antena_001-1-Antena_2'].geometry} material={materials['Material.002']} />
         <mesh geometry={nodes['antena_001-1-Antena_3'].geometry} material={materials['Material.003']} />

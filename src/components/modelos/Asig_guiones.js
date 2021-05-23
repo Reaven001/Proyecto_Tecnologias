@@ -9,32 +9,16 @@ export default function Guion(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_guiones.gltf')
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 4.3, 0]} scale={0.8} >
-      <mesh
-        geometry={nodes['carrete_vox-0-carrete001'].geometry}
-        material={materials['Material.004']}
-        position={[1.91, 2.09, 0]}
-        scale={[1.06, 1.06, 0.88]}
-      />
-      <mesh
-        geometry={nodes['carrete_vox-0-carrete002'].geometry}
-        material={materials['Material.001']}
-        position={[0, 0, 2.29]}
-      />
-      <group position={[0, 0, -2.03]}>
-        <mesh geometry={nodes['carrete_vox-0-carrete003_1'].geometry} material={materials['Material.006']} />
-        <mesh geometry={nodes['carrete_vox-0-carrete003_2'].geometry} material={materials['Material.009']} />
+    <group ref={group} {...props} dispose={null} position={[-0.5, 4.5, 0]} scale={0.8}>
+      <group position={[2.76, 2.09, 0]} scale={[1.06, 1.06, 0.88]}>
+        <mesh geometry={nodes['carrete_vox-0-carrete001_1'].geometry} material={materials['Material.004']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_2'].geometry} material={materials['Material.001']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_3'].geometry} material={materials['Material.006']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_4'].geometry} material={materials['Material.009']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_5'].geometry} material={materials['Material.007']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_6'].geometry} material={materials['Material.008']} />
+        <mesh geometry={nodes['carrete_vox-0-carrete001_7'].geometry} material={materials['Material.005']} />
       </group>
-      <group position={[0, -15, 2.02]}>
-        <mesh geometry={nodes['carrete_vox-0-carrete004_1'].geometry} material={materials['Material.007']} />
-        <mesh geometry={nodes['carrete_vox-0-carrete004_2'].geometry} material={materials['Material.008']} />
-      </group>
-      <mesh
-        geometry={nodes['carrete_vox-0-carrete005'].geometry}
-        material={materials['Material.005']}
-        position={[-1.92, 4.11, 0.02]}
-        scale={[0.96, 0.96, 0.96]}
-      />
     </group>
   )
 }

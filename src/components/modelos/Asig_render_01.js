@@ -8,18 +8,12 @@ import { useGLTF } from '@react-three/drei'
 export default function Render(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/asig_render_01.gltf')
+  
   return (
-    <group ref={group} {...props} dispose={null}  position={[0, 6, 0]} scale={0.6}>
-      <group position={[-2, 4, 2]} rotation={[0.32, -0.08, 0.27]}>
-        <mesh geometry={nodes['rendervox-0-render_1'].geometry} material={materials['Material.003']} />
-        <mesh geometry={nodes['rendervox-0-render_2'].geometry} material={materials['Material.004']} />
-      </group>
-      <mesh
-        geometry={nodes['rendervox-0-render001'].geometry}
-        material={materials['Material.005']}
-        position={[0, 0, 0]}
-        scale={[0.78, 0.78, 0.78]}
-      />
+    <group ref={group} {...props} dispose={null} position={[0, 6.8, 0]} scale={0.8}>
+      <mesh geometry={nodes.voxlamp001_1.geometry} material={materials['Material.001']} />
+      <mesh geometry={nodes.voxlamp001_2.geometry} material={materials['Material.002']} />
+      <mesh geometry={nodes.voxlamp001_3.geometry} material={materials['Material.003']} />
     </group>
   )
 }
