@@ -98,7 +98,11 @@ export default class Asignatura extends React.Component {
               {this.state.pictures
                 .map((picture) => (
                   <div className="img-wrap">
-                    <img src={picture.image} width="500" />
+                    <img
+                      src={picture.image}
+                      width="500"
+                      style={{ borderRadius: "20px" }}
+                    />
                     <br />
                     <span>{picture.email}</span>
                     <br />
