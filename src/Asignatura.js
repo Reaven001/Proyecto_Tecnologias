@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
 import amarillo from "./assets/amarillo.png";
 
 import "./css/Asignatura.css";
@@ -21,14 +20,55 @@ export default class Asignatura extends React.Component {
     };
   }
   componentWillMount() {
+    var referencia = null;
+    switch (this.props.info.titulo) {
+      case "Tecnologías de Internet":
+        referencia = "proyectos/tecnologias";
+        break;
+      case "Procesamiento de imágenes":
+        referencia = "proyectos/proImage";
+        break;
+      case "Diseño":
+        referencia = "proyectos/design";
+        break;
+      case "Render":
+        referencia = "proyectos/render";
+        break;
+      case "Multimedia Educativa":
+        referencia = "proyectos/multimediaEd";
+        break;
+      case "Inteligencia Artificial":
+        referencia = "proyectos/inteArt";
+        break;
+      case "Diseño de Interfaces":
+        referencia = "proyectos/designInter";
+        break;
+      case "Animación 3D":
+        referencia = "proyectos/animacion3d";
+        break;
+      case "Integración Multimedia":
+        referencia = "proyectos/integracionMul";
+        break;
+      case "Procesamiento de señales":
+        referencia = "proyectos/proSignal";
+        break;
+      case "Guiones":
+        referencia = "proyectos/guiones";
+        break;
+      case "Modelado 3D":
+        referencia = "proyectos/modelado3d";
+        break;
+    }
     firebase
       .database()
-      .ref("pictures")
+      .ref(referencia)
       .on("child_added", (snapshot) => {
         this.setState({
           pictures: this.state.pictures.concat(snapshot.val()),
         });
       });
+    console.log("Referencia: " + referencia);
+    console.log(this.state.pictures);
   }
   render() {
     return (
@@ -45,13 +85,6 @@ export default class Asignatura extends React.Component {
             </Col>
             <Col lg={4} sm={12} className="align-self-center">
               <Row className="justify-content-center">
-                {/* <img
-                  width={200}
-                  height={200}
-                  src={cubo}
-                  alt="Model 3D"
-                  className="modelo"
-                /> */}
                 <Hexagoncard2
                   logo={amarillo}
                   envio={"lobby"}
@@ -67,9 +100,9 @@ export default class Asignatura extends React.Component {
                   <div className="img-wrap">
                     <img src={picture.image} width="500" />
                     <br />
-                    <img src={picture.photoURL} alt={picture.displayName} />
+                    <span>{picture.email}</span>
                     <br />
-                    <span>{picture.displayName}</span>
+                    <p>{picture.descripcion}</p>
                   </div>
                 ))
                 .reverse()}

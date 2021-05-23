@@ -21,7 +21,7 @@ export default class Upload extends React.Component {
       uploadValue: 0,
       pictures: [],
       pictureUP: null,
-      asigselect: "tecnologiasdeinternet",
+      asigselect: null,
       descrip: null,
     };
 
@@ -35,15 +35,6 @@ export default class Upload extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
-
-    firebase
-      .database()
-      .ref("pictures")
-      .on("child_added", (snapshot) => {
-        this.setState({
-          pictures: this.state.pictures.concat(snapshot.val()),
-        });
-      });
   }
 
   handleChangeSelect(event) {
@@ -58,16 +49,10 @@ export default class Upload extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    const img = this.state.pictureUP;
-    console.log(img);
-    event.preventDefault();
-  }
-
   handleUpload(event) {
-    //Subide de archivos multiemdia
+    //Subida de archivos multiemdia
     const file = event.target.files[0];
-    const storageRef = firebase.storage().ref(`/Fotos/${file.name}`);
+    const storageRef = firebase.storage().ref(`/proyectos/${file.name}`);
     const task = storageRef.put(file);
 
     task.on(
@@ -89,21 +74,77 @@ export default class Upload extends React.Component {
           uploadValue: 100,
           pictureUP: url,
         });
-
-        /*const record = {
-          photoURL: this.state.user.photoURL,
-          displayName: this.state.user.displayName,
-          image: url,
-        };
-
-        const dbRef = firebase.database().ref("pictures");
-        const newPicture = dbRef.push();
-        newPicture.set(record);
-
-        console.log(record);
-        console.log(newPicture);*/
       }
     );
+  }
+
+  handleSubmit(event) {
+    const record = {
+      email: this.state.user.email,
+      descripcion: this.state.descrip,
+      image: this.state.pictureUP,
+    };
+
+    var dbRef = null;
+
+    switch (this.state.asigselect) {
+      case "tecnologiasdeinternet":
+        dbRef = firebase.database().ref("proyectos/tecnologias");
+        console.log("Se subio a tecnologias");
+        break;
+      case "multimediaeducativa":
+        dbRef = firebase.database().ref("proyectos/multimediaEd");
+        console.log("Se subio a multimedia educativa");
+        break;
+      case "integracionmultimedia":
+        dbRef = firebase.database().ref("proyectos/integracionMul");
+        console.log("Se subio a integracion multimedia");
+        break;
+      case "procesamientodeimagenes":
+        dbRef = firebase.database().ref("proyectos/proImage");
+        console.log("Se subio a procesamiento de imagenes");
+        break;
+      case "inteligenciaartificial":
+        dbRef = firebase.database().ref("proyectos/inteArt");
+        console.log("Se subio a integracion multimedia");
+        break;
+      case "procesamientodeseñales":
+        dbRef = firebase.database().ref("proyectos/proSignal");
+        console.log("Se subio a procesamiento de señales");
+        break;
+      case "diseño":
+        dbRef = firebase.database().ref("proyectos/design");
+        console.log("Se subio a diseño");
+        break;
+      case "diseñodeinterfaces":
+        dbRef = firebase.database().ref("proyectos/designInter");
+        console.log("Se subio a diseño de interfaces");
+        break;
+      case "guiones":
+        dbRef = firebase.database().ref("proyectos/guiones");
+        console.log("Se subio a guiones");
+        break;
+      case "render":
+        dbRef = firebase.database().ref("proyectos/render");
+        console.log("Se subio a render");
+        break;
+      case "animacion3d":
+        dbRef = firebase.database().ref("proyectos/animacion3d");
+        console.log("Se subio a animacion 3D");
+        break;
+      case "modelado3d":
+        dbRef = firebase.database().ref("proyectos/modelado3d");
+        console.log("Se subio a modelado 3D");
+        break;
+    }
+    const newPicture = dbRef.push();
+    newPicture.set(record);
+
+    console.log(record);
+    console.log(newPicture);
+    alert("Archivos subidos correctamente...");
+    //window.location.href = window.location.href;
+    event.preventDefault();
   }
 
   userLog() {
@@ -135,13 +176,6 @@ export default class Upload extends React.Component {
               </Col>
               <Col sm={12} lg={4} className="align-self-center">
                 <Row className="justify-content-center">
-                  {/* <img
-                    width={200}
-                    height={200}
-                    src={cubo}
-                    alt="Model 3D"
-                    className="modelo"
-                  /> */}
                   <Hexagoncard
                     esmodel="mul"
                     logo={morado}
@@ -196,7 +230,9 @@ export default class Upload extends React.Component {
                         <option value="multimediaeducativa">
                           Multimedia educativa
                         </option>
-                        <option value="museos">Museos</option>
+                        <option value="integracionmultimedia">
+                          Integracion Multimedia
+                        </option>
                         <option value="procesamientodeimagenes">
                           Procesamiento de imagenes
                         </option>
@@ -206,7 +242,7 @@ export default class Upload extends React.Component {
                         <option value="procesamientodeseñales">
                           Procesamiento de señales
                         </option>
-                        <option value="diseño">Diseño </option>
+                        <option value="diseño">Diseño</option>
                         <option value="diseñodeinterfaces">
                           Diseño de Interfaces
                         </option>
