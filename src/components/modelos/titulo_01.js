@@ -5,7 +5,7 @@ export default function Titulo(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/home_titulo_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} >
       <mesh
         geometry={nodes.Text.geometry}
         material={materials['Material.001']}

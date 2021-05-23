@@ -8,6 +8,7 @@ import Hexagoncard from "./Hexagono/Hexagono";
 
 import "../css/areas.css";
 
+
 import morado from "../assets/morado.png";
 
 export default class Areas extends React.Component {
@@ -17,9 +18,11 @@ export default class Areas extends React.Component {
         <Container>
           <Row className="justify-content-between">
             <Col lg={4} className="align-self-center">
-              <h1 className="titleArea" style={{ width: "1em" }}>
-                Á R E A S
-              </h1>
+              <div className="vertical">
+              <h2 className="titleArea" style={{ width: "1em" }}>
+                ÁREAS
+              </h2>
+              </div>
             </Col>
             <Col lg={8}>
               <Row>

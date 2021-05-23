@@ -5,24 +5,28 @@ import "../../css/hexagon.css";
 import Camara from "../modelos/camara_01";
 import Audios from "../modelos/Area_prodmultimedia_01";
 import Tetera from "../modelos/Asig_modelado3d_01";
-import Bombillo from "../modelos/Area_sistemasinteractivos_01";
+import Bombillo from "../modelos/Area_interactive_01";
 import Lupa from "../modelos/Area_procdeanalisis_01";
 import Digital from "../modelos/Area_transdigital_01";
 import Libro from "../modelos/Asig_muleducativa_01";
 import Html5 from "../modelos/Asig_tecinternet_01";
-import Cerebro from "../modelos/Asig_inteligenciaarti_01";
-import Imagenes from "../modelos/Asig_procimagenes_01";
+import Cerebro from "../modelos/Asig_inteligencia_01";
+import Imagenes from "../modelos/Asig_imagenes_01";
 import Diseño from "../modelos/O_01";
-import Inter from "../modelos/Ointerfaces_01";
+import Interfa from "../modelos/Asig_intefaz_01";
 import Render from "../modelos/Asig_render_01";
 import Integra from "../modelos/Asig_integra";
 import Señales from "../modelos/Ales";
 import Guion from "../modelos/Asig_guiones";
 import Modelado from "../modelos/Asig_model3d";
+import Mul from "../modelos/Mul_01";
 
 
 
-function Modelomos(props) {
+function Modelomos2(props) {
+
+
+  
   const isLoggedIn = props.medio;
   if (isLoggedIn == "audios") {
     return <Audios />;
@@ -69,7 +73,7 @@ function Modelomos(props) {
     return <Diseño />;
   }
   if (isLoggedIn == "inter") {
-    return <Inter />;
+    return <Interfa />;
   }
   if (isLoggedIn == "guiones") {
     return <Guion />;
@@ -86,9 +90,14 @@ function Modelomos(props) {
   if (isLoggedIn == "modelado") {
     return <Modelado />;
   }
+
+  if (isLoggedIn == "mul") {
+    return <Mul />;
+  }
+
 }
 
-const Hexagoncard = (props) => {
+const Hexagoncard2 = (props) => {
  const escogemol = props.namemodel;
  console.log(props.namemodel);
   return (
@@ -116,7 +125,7 @@ const Hexagoncard = (props) => {
                   <Environment preset={props.envio}></Environment>
 
                   
-                  <Modelomos medio={props.namemodel}/>
+                  <Modelomos2 medio={props.namemodel}/>
 
                 </Suspense>
                 {/* <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={false} enablePan={false}></OrbitControls> */}
@@ -130,4 +139,4 @@ const Hexagoncard = (props) => {
   );
 };
 
-export default Hexagoncard;
+export default Hexagoncard2;

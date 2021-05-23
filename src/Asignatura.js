@@ -10,7 +10,7 @@ import Image from "react-bootstrap/Image";
 import amarillo from "./assets/amarillo.png";
 
 import "./css/Asignatura.css";
-import Hexagoncard from "./components/Hexagono/Hexagono";
+import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
 export default class Asignatura extends React.Component {
   constructor(props) {
@@ -52,11 +52,11 @@ export default class Asignatura extends React.Component {
                   alt="Model 3D"
                   className="modelo"
                 /> */}
-                <Hexagoncard
+                <Hexagoncard2
                   logo={amarillo}
                   envio={"lobby"}
                   namemodel={this.props.info.modelasig}
-                ></Hexagoncard>
+                ></Hexagoncard2>
               </Row>
             </Col>
           </Row>

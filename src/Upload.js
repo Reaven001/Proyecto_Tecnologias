@@ -10,6 +10,8 @@ import cubo from "./assets/cubo.png";
 import "./css/upload.css";
 
 import Login from "./Login.js";
+import morado from "./assets/morado.png";
+import Hexagoncard from "./components/Hexagono/Hexagono2";
 
 export default class Upload extends React.Component {
   constructor() {
@@ -132,13 +134,14 @@ export default class Upload extends React.Component {
               </Col>
               <Col sm={12} lg={4} className="align-self-center">
                 <Row className="justify-content-center">
-                  <img
+                  {/* <img
                     width={200}
                     height={200}
                     src={cubo}
                     alt="Model 3D"
                     className="modelo"
-                  />
+                  /> */}
+                  <Hexagoncard esmodel='mul' logo={morado} envio={"park"} namemodel={"mul"}></Hexagoncard>
                 </Row>
               </Col>
             </Row>
