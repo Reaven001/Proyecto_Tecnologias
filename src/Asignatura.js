@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
 import firebase from "firebase";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,8 +10,16 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { FaPencilAlt } from 'react-icons/fa'
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
+import { db } from "./index";
+
+
+
+
+
 
 export default class Asignatura extends React.Component {
+ 
+ 
   constructor(props) {
     super(props);
 
@@ -21,16 +28,23 @@ export default class Asignatura extends React.Component {
       uploadValue: 0,
       pictures: [],
       coments: [],
-      comenttext: null,
+      comenttext: "",
       admins: [],
     };
+    this.stateinit = {
+      comenttext: "",
+    };
+
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+   
   }
   componentWillMount() {
+   
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
+    
     var referencia = null;
     var referenciacoment = null;
     switch (this.props.info.titulo) {
@@ -126,7 +140,9 @@ export default class Asignatura extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-    console.log("ADministradores" + this.state.admins);
+    // console.log("ADministradores" + this.state.admins);
+    // const database = firebase.database()
+  
   }
 
   handleChangeTextA(event) {
@@ -221,11 +237,17 @@ export default class Asignatura extends React.Component {
     alert("Comentario publicado correctamente...");
     //window.location.href = window.location.href;
     event.preventDefault();
+
+    this.state.comenttext=this.stateinit.comenttext;
   }
 
   Asig() {
+
+
     if (this.state.user) {
+     
       return (
+        
         <div className="contentAsig">
           <Container>
             <Row className="justify-content-between py-5">
@@ -349,12 +371,14 @@ export default class Asignatura extends React.Component {
                   as="textarea"
                   rows={6}
                   placeholder="¿Qué te parecieron estos proyectos?"
+                 
                   style={{
                     backgroundColor: "#0DBFFF",
                     color: "#E1FF00",
                     borderRadius: "20px",
                   }}
                   onChange={this.handleChangeTextA}
+                  value={this.state.comenttext}
                 />
               </Row>
               <Row className="justify-content-center py-5 btnShare">
