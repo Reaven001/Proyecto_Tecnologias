@@ -64,16 +64,52 @@ button:active {
 .img-grid {
   margin: 20px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 40px;
 }
-
 .img-wrap {
-  /*overflow: hidden;
+  overflow: hidden;
   height: 0;
   padding: 50% 0;
+  /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
-  opacity: 0.8;*/
+  opacity: 0.8;
+}
+
+.img-wrap img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 150%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*.popUp {
+  position: absolute;
+  top: "50%";
+  left: "50%";
+  transform: "translate(-50%, -50%)";
+}*/
+
+.imgPop img {
+  width: 800px;
+}
+
+.info h4 {
+  padding-left: 10px;
+}
+
+.info p {
+  padding-left: 50px;
+}
+
+.btnExit {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-family: "Fredoka One";
 }
 
 @media (max-width: 640px) {
@@ -119,5 +155,17 @@ button:active {
     font-size: 10pt;
     padding-left: 60px;
     padding-right: 30px;
+  }
+
+  /* image grid styles */
+  .img-grid {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+
+  .imgPop img {
+    width: 500px;
   }
 }

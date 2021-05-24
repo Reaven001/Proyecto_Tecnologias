@@ -8,6 +8,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import amarillo from "./assets/amarillo.png";
 
+import Modal from "react-bootstrap/Modal";
+
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
@@ -22,11 +24,18 @@ export default class Asignatura extends React.Component {
       coments: [],
       comenttext: null,
       admins: [],
+      show: false,
+      setShow: false,
+      selectedImg: null,
+      selectedEmail: null,
+      selectedDescrip: null,
     };
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
-  componentWillMount() {
+
+  componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
@@ -91,10 +100,6 @@ export default class Asignatura extends React.Component {
           pictures: this.state.pictures.concat(snapshot.val()),
         });
       });
-
-    console.log("Referencia: " + referencia);
-    console.log(this.state.pictures);
-
     //Conectar con la base de datos de comentarios
     firebase
       .database()
@@ -104,8 +109,6 @@ export default class Asignatura extends React.Component {
           coments: this.state.coments.concat(snapshot.val()),
         });
       });
-    console.log("Referencia: " + referenciacoment);
-    console.log(this.state.coments);
 
     //Conectar con la base de datos de admins
     const dbRef = firebase.database().ref();
@@ -125,33 +128,13 @@ export default class Asignatura extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-    console.log("ADministradores" + this.state.admins);
+    console.log("Imagen seleccionada" + this.state.selectedImg);
   }
 
   handleChangeTextA(event) {
     this.setState({
       comenttext: event.target.value,
     });
-    console.log(this.state.coments);
-  }
-
-  handleUpload(event) {
-    //Subida de archivos multiemdia
-    const file = event.target.files[0];
-    const storageRef = firebase.storage().ref(`/proyectos/${file.name}`);
-    const task = storageRef.put(file);
-
-    task.on(
-      "state_changed",
-      (error) => {
-        console.log(error.message);
-      },
-      async () => {
-        this.setState({
-          comenttext: this.state.comenttext,
-        });
-      }
-    );
   }
 
   handleSubmit(event) {
@@ -222,7 +205,23 @@ export default class Asignatura extends React.Component {
     event.preventDefault();
   }
 
+  handleClose() {
+    this.setState({
+      setShow: false,
+    });
+  }
+
   Asig() {
+    const imageClick = (url, descrip, correo) => {
+      console.log("Click en la imagen:  " + url);
+      this.setState({
+        selectedImg: url,
+        setShow: true,
+        selectedDescrip: descrip,
+        selectedEmail: correo,
+      });
+      console.log("setShow: " + this.state.setShow);
+    };
     if (this.state.user) {
       return (
         <div className="contentAsig">
@@ -250,19 +249,50 @@ export default class Asignatura extends React.Component {
               <div className="img-grid">
                 {this.state.pictures
                   .map((picture) => (
-                    <div className="img-wrap">
-                      <img
-                        src={picture.image}
-                        width="500"
-                        style={{ borderRadius: "20px" }}
-                      />
-                      <br />
-                      <span>{picture.email}</span>
-                      <br />
-                      <p>{picture.descripcion}</p>
+                    <div>
+                      <div className="img-wrap">
+                        <img
+                          src={picture.image}
+                          onClick={() =>
+                            imageClick(
+                              picture.image,
+                              picture.descripcion,
+                              picture.email
+                            )
+                          }
+                        />
+                        <br />
+                        <span>{picture.email}</span>
+                        <br />
+                        <p>{picture.descripcion}</p>
+                      </div>
                     </div>
                   ))
                   .reverse()}
+              </div>
+              <div className="popUp">
+                <Modal
+                  show={this.state.setShow}
+                  onHide={this.handleClose}
+                  animation={false}
+                  size="lg"
+                  aria-labelledby="contained-modal-title-vcenter"
+                  centered
+                >
+                  <div className="imgPop">
+                    <img
+                      src={this.state.selectedImg}
+                      alt="image select Gallery"
+                    />
+                  </div>
+                  <div onClick={this.handleClose} className="btnExit">
+                    <p>X</p>
+                  </div>
+                  <div className="info">
+                    <h4>{this.state.selectedEmail}</h4>
+                    <p>{this.state.selectedDescrip}</p>
+                  </div>
+                </Modal>
               </div>
             </Row>
             <Row className="justify-content-center py-5 btnShare">
@@ -361,19 +391,50 @@ export default class Asignatura extends React.Component {
               <div className="img-grid">
                 {this.state.pictures
                   .map((picture) => (
-                    <div className="img-wrap">
-                      <img
-                        src={picture.image}
-                        width="500"
-                        style={{ borderRadius: "20px" }}
-                      />
-                      <br />
-                      <span>{picture.email}</span>
-                      <br />
-                      <p>{picture.descripcion}</p>
+                    <div>
+                      <div className="img-wrap">
+                        <img
+                          src={picture.image}
+                          onClick={() =>
+                            imageClick(
+                              picture.image,
+                              picture.descripcion,
+                              picture.email
+                            )
+                          }
+                        />
+                        <br />
+                        <span>{picture.email}</span>
+                        <br />
+                        <p>{picture.descripcion}</p>
+                      </div>
                     </div>
                   ))
                   .reverse()}
+              </div>
+              <div className="popUp">
+                <Modal
+                  show={this.state.setShow}
+                  onHide={this.handleClose}
+                  animation={false}
+                  size="lg"
+                  aria-labelledby="contained-modal-title-vcenter"
+                  centered
+                >
+                  <div className="imgPop">
+                    <img
+                      src={this.state.selectedImg}
+                      alt="image select Gallery"
+                    />
+                  </div>
+                  <div onClick={this.handleClose} className="btnExit">
+                    <p>X</p>
+                  </div>
+                  <div className="info">
+                    <h4>{this.state.selectedEmail}</h4>
+                    <p>{this.state.selectedDescrip}</p>
+                  </div>
+                </Modal>
               </div>
             </Row>
             <Row className="justify-content-center py-5 btnShare">
