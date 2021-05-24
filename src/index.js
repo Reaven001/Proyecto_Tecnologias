@@ -5,6 +5,7 @@ import "firebase/storage";
 import "firebase/firestore";
 
 import App from "./App.js";
+import Admins from "./admins"
 // Importing the Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -21,7 +22,7 @@ const fb = firebase.initializeApp(firebaseconfig);
 
 const storage = firebase.storage();
 const database = firebase.database();
-const db=fb.database().ref();
-export { storage, database, db};
+const firebasedb=fb.database().ref();
+export { storage, database, firebasedb};
 
 ReactDOM.render(<App />, document.getElementById("root"));
