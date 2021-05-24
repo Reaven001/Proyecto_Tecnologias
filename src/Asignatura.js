@@ -277,10 +277,6 @@ export default class Asignatura extends React.Component {
                             )
                           }
                         />
-                        <br />
-                        <span>{picture.email}</span>
-                        <br />
-                        <p>{picture.descripcion}</p>
                       </div>
                     </div>
                   ))
@@ -454,10 +450,6 @@ export default class Asignatura extends React.Component {
                             )
                           }
                         />
-                        <br />
-                        <span>{picture.email}</span>
-                        <br />
-                        <p>{picture.descripcion}</p>
                       </div>
                     </div>
                   ))
