@@ -7,7 +7,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import amarillo from "./assets/amarillo.png";
-
+import { FaTrashAlt } from 'react-icons/fa'
+import { FaPencilAlt } from 'react-icons/fa'
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
@@ -283,19 +284,59 @@ export default class Asignatura extends React.Component {
             <Row>
               <h3 className="tituloComent"> Comentarios </h3>
             </Row>
-            <Row>
-              <Col lg={8} sm={12}>
+            <Row className="justify-content-between py-5">
+              <Col lg={12} sm={12}>
                 {this.state.coments
                   .map((coment) => (
-                    <div>
-                      <div>
-                        <h4 className="NameUser">{coment.correo}</h4>
-                      </div>
-                      <p className="comentario">{coment.comentario}</p>
-                    </div>
+                    <Row className="justify-content-between">
+                      <Col lg={10} sm={12} className="align-self-center">
+                        <div>
+                          <h4 className="NameUser">{coment.correo}</h4>
+                        </div>
+                        <p className="comentario">{coment.comentario}</p>
+                      </Col>
+                      <Col lg={2} sm={12} className="align-self-center">
+                        <Row className="justify-content-around">
+                          <Col lg={1} sm={12} className="align-self-center">
+                            <Button
+                              style={{
+                                color: "#E1FF00",
+                                backgroundColor: "transparent",
+                                border: "3px solid #E1FF00",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              type="submit"
+                            >
+                              <FaPencilAlt />
+                            </Button>
+
+                          </Col>
+                          <Col lg={1} sm={12} className="align-self-center">
+                            <Button
+                              style={{
+                                color: "#FF0000",
+                                backgroundColor: "transparent",
+                                border: "3px solid #FF0000",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              type="submit"
+                            >
+                              <FaTrashAlt />
+                            </Button>
+
+                          </Col>
+                        </Row>
+                        
+                      </Col>
+                    </Row>
                   ))
                   .reverse()}
+                  
               </Col>
+               
+              
             </Row>
             <Row>
               <h3 className="tituloComent">
@@ -347,7 +388,7 @@ export default class Asignatura extends React.Component {
                   <p className="parrafoD">{this.props.info.profesores}</p>
                 </div>
               </Col>
-              <Col lg={4} sm={12} className="align-self-center">
+              <Col lg={8} sm={12} className="align-self-center">
                 <Row className="justify-content-center">
                   <Hexagoncard2
                     logo={amarillo}
