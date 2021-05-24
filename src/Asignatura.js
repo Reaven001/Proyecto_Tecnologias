@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import firebase from "firebase";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,8 +9,12 @@ import amarillo from "./assets/amarillo.png";
 
 import Modal from "react-bootstrap/Modal";
 
+import { FaTrashAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
+import { db } from "./index";
 
 export default class Asignatura extends React.Component {
   constructor(props) {
@@ -22,7 +25,7 @@ export default class Asignatura extends React.Component {
       uploadValue: 0,
       pictures: [],
       coments: [],
-      comenttext: null,
+      comenttext: "",
       admins: [],
       show: false,
       setShow: false,
@@ -30,15 +33,22 @@ export default class Asignatura extends React.Component {
       selectedEmail: null,
       selectedDescrip: null,
     };
+    this.stateinit = {
+      comenttext: "",
+    };
+
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
     this.handleClose = this.handleClose.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount() {}
+  componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
+
     var referencia = null;
     var referenciacoment = null;
     switch (this.props.info.titulo) {
@@ -129,6 +139,9 @@ export default class Asignatura extends React.Component {
         console.error(error);
       });
     console.log("Imagen seleccionada" + this.state.selectedImg);
+
+    // console.log("ADministradores" + this.state.admins);
+    // const database = firebase.database()
   }
 
   handleChangeTextA(event) {
@@ -203,6 +216,8 @@ export default class Asignatura extends React.Component {
     alert("Comentario publicado correctamente...");
     //window.location.href = window.location.href;
     event.preventDefault();
+
+    this.state.comenttext = this.stateinit.comenttext;
   }
 
   handleClose() {
@@ -222,6 +237,7 @@ export default class Asignatura extends React.Component {
       });
       console.log("setShow: " + this.state.setShow);
     };
+
     if (this.state.user) {
       return (
         <div className="contentAsig">
@@ -313,16 +329,50 @@ export default class Asignatura extends React.Component {
             <Row>
               <h3 className="tituloComent"> Comentarios </h3>
             </Row>
-            <Row>
-              <Col lg={8} sm={12}>
+            <Row className="justify-content-between py-5">
+              <Col lg={12} sm={12}>
                 {this.state.coments
                   .map((coment) => (
-                    <div>
-                      <div>
-                        <h4 className="NameUser">{coment.correo}</h4>
-                      </div>
-                      <p className="comentario">{coment.comentario}</p>
-                    </div>
+                    <Row className="justify-content-between">
+                      <Col lg={10} sm={12} className="align-self-center">
+                        <div>
+                          <h4 className="NameUser">{coment.correo}</h4>
+                        </div>
+                        <p className="comentario">{coment.comentario}</p>
+                      </Col>
+                      <Col lg={2} sm={12} className="align-self-center">
+                        <Row className="justify-content-around">
+                          <Col lg={1} sm={12} className="align-self-center">
+                            <Button
+                              style={{
+                                color: "#E1FF00",
+                                backgroundColor: "transparent",
+                                border: "3px solid #E1FF00",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              type="submit"
+                            >
+                              <FaPencilAlt />
+                            </Button>
+                          </Col>
+                          <Col lg={1} sm={12} className="align-self-center">
+                            <Button
+                              style={{
+                                color: "#FF0000",
+                                backgroundColor: "transparent",
+                                border: "3px solid #FF0000",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              type="submit"
+                            >
+                              <FaTrashAlt />
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
                   ))
                   .reverse()}
               </Col>
@@ -344,6 +394,7 @@ export default class Asignatura extends React.Component {
                     borderRadius: "20px",
                   }}
                   onChange={this.handleChangeTextA}
+                  value={this.state.comenttext}
                 />
               </Row>
               <Row className="justify-content-center py-5 btnShare">
@@ -377,7 +428,7 @@ export default class Asignatura extends React.Component {
                   <p className="parrafoD">{this.props.info.profesores}</p>
                 </div>
               </Col>
-              <Col lg={4} sm={12} className="align-self-center">
+              <Col lg={8} sm={12} className="align-self-center">
                 <Row className="justify-content-center">
                   <Hexagoncard2
                     logo={amarillo}

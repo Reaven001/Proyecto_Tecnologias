@@ -24,12 +24,23 @@ export default class Upload extends React.Component {
       asigselect: null,
       descrip: null,
     };
+    this.stateinit = {
+      user: null,
+      uploadValue: 0,
+      pictures: [],
+      pictureUP: null,
+      asigselect: "",
+      descrip: "",
+    };
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleChangeSelect = this.handleChangeSelect.bind(this);
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+   
+
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -145,9 +156,12 @@ export default class Upload extends React.Component {
     alert("Archivos subidos correctamente...");
     //window.location.href = window.location.href;
     event.preventDefault();
+    this.state.descrip=this.stateinit.descrip;
+    this.state.asigselect=this.stateinit.asigselect;
+    this.state.pictureUP=this.stateinit.pictureUP;
   }
 
-  userLog() {
+  userLog() {    
     const styleArchivos = {
       display: "flex",
       alignItems: "center",
@@ -196,6 +210,8 @@ export default class Upload extends React.Component {
                         <Form.File
                           id="controlFormFile"
                           onChange={this.handleUpload}
+                          velue={this.stateinit.pictureUP}
+
                         />
                       </Form.Group>
                     </div>
@@ -220,8 +236,8 @@ export default class Upload extends React.Component {
                         as="select"
                         defaultValue="Asignatura"
                         name="asignatura"
-                        value={this.state.asigselect}
                         onChange={this.handleChangeSelect}
+                        value={this.state.asigselect}
                       >
                         <option>Asignatura...</option>
                         <option value="tecnologiasdeinternet">
@@ -270,6 +286,7 @@ export default class Upload extends React.Component {
                         border: "1px solid #620ce8",
                       }}
                       onChange={this.handleChangeTextA}
+                      value={this.state.descrip}
                     />
                   </Form.Group>
                 </Col>

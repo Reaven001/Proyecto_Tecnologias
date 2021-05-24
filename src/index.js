@@ -17,11 +17,11 @@ const firebaseconfig = {
   appId: "1:713624690093:web:6a0dbd05bd9f7e0c03d524",
   databaseURL: "https://center-memory-default-rtdb.firebaseio.com/",
 };
-firebase.initializeApp(firebaseconfig);
+const fb = firebase.initializeApp(firebaseconfig);
 
 const storage = firebase.storage();
 const database = firebase.database();
-
-export { storage, database };
+const db=fb.database().ref();
+export { storage, database, db};
 
 ReactDOM.render(<App />, document.getElementById("root"));
