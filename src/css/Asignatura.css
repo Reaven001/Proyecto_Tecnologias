@@ -104,6 +104,11 @@ button:active {
   padding-left: 50px;
 }
 
+.botonesinfo{
+  position: relative;
+  left: 85%;
+}
+
 .btnExit {
   position: absolute;
   top: 10px;

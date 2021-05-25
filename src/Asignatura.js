@@ -474,7 +474,8 @@ export default class Asignatura extends React.Component {
                             imageClick(
                               picture.image,
                               picture.descripcion,
-                              picture.email
+                              picture.email,
+                              
                             )
                           }
                         />
@@ -482,6 +483,7 @@ export default class Asignatura extends React.Component {
                         <span>{picture.email}</span>
                         <br />
                         <p>{picture.descripcion}</p>
+                        
                       </div>
                     </div>
                   ))
@@ -508,6 +510,40 @@ export default class Asignatura extends React.Component {
                   <div className="info">
                     <h4>{this.state.selectedEmail}</h4>
                     <p>{this.state.selectedDescrip}</p>
+
+                    <div className='botonesinfo'>
+                      <Button
+                        style={{
+                          color: "#E1FF00",
+                          backgroundColor: "transparent",
+                          border: "3px solid #E1FF00",
+                          borderRadius: "15px",
+                          fontSize: "15px",
+                        }}
+                        onClick={() => this.seleccionarCanal('Editar')}
+                      >
+                        <FaPencilAlt />
+                      </Button>
+
+                      <Button
+                        style={{
+                          color: "#FF0000",
+                          backgroundColor: "transparent",
+                          border: "3px solid #FF0000",
+                          borderRadius: "15px",
+                          fontSize: "15px",
+                        }}
+                        onClick={() => this.seleccionarCanal('Eliminar')}
+                      >
+                        <FaTrashAlt />
+
+                      </Button>
+
+
+                    </div>
+                    
+                    
+                    
                   </div>
                 </Modal>
               </div>
