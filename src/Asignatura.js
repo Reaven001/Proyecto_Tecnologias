@@ -12,7 +12,7 @@ import Modal from "react-bootstrap/Modal";
 
 import { FaTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
-
+import {firebasedb} from "./index"
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
@@ -21,6 +21,7 @@ export default class Asignatura extends React.Component {
     super(props);
 
     this.state = {
+      data: [],
       user: null,
       uploadValue: 0,
       pictures: [],
@@ -32,13 +33,226 @@ export default class Asignatura extends React.Component {
       selectedImg: null,
       selectedEmail: null,
       selectedDescrip: null,
+      form:{
+        comentario: '',
+        correo: '',
+   
+      },
+      id:""
     };
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  peticionGet = () => {
+    
+    var referenciacoment = null;
+    switch (this.props.info.titulo) {
+      case "Tecnologías de Internet":
+        referenciacoment = "comentarios/tecnologias";
+        break;
+      case "Procesamiento de imágenes":
+      
+        referenciacoment = "comentarios/proImage";
+        break;
+      case "Diseño":
+       
+        referenciacoment = "comentarios/design";
+        break;
+      case "Render":
+       
+        referenciacoment = "comentarios/render";
+        break;
+      case "Multimedia Educativa":
+       
+        referenciacoment = "comentarios/multimediaEd";
+        break;
+      case "Inteligencia Artificial":
+       
+        referenciacoment = "comentarios/inteArt";
+        break;
+      case "Diseño de Interfaces":
+        
+        referenciacoment = "comentarios/designInter";
+        break;
+      case "Animación 3D":
+       
+        referenciacoment = "comentarios/animacion3d";
+        break;
+      case "Integración Multimedia":
+      
+        referenciacoment = "comentarios/integracionMul";
+        break;
+      case "Procesamiento de señales":
+        
+        referenciacoment = "comentarios/proSignal";
+        break;
+      case "Guiones":
+       
+        referenciacoment = "comentarios/guiones";
+        break;
+      case "Modelado 3D":
+      
+        referenciacoment = "comentarios/modelado3d";
+        break;
+    }
+    firebasedb.child(referenciacoment).on("value", (comentario) => {
+      if (comentario.val() !== null) {
+        this.setState({ ...this.state.data, data: comentario.val() });
+      } else {
+        this.setState({ data: [] });
+      }
+    });
+  };
+
+  peticionPut=()=>{
+    var referenciacoment = null;
+    switch (this.props.info.titulo) {
+      case "Tecnologías de Internet":
+        referenciacoment = "comentarios/tecnologias";
+        break;
+      case "Procesamiento de imágenes":
+      
+        referenciacoment = "comentarios/proImage";
+        break;
+      case "Diseño":
+       
+        referenciacoment = "comentarios/design";
+        break;
+      case "Render":
+       
+        referenciacoment = "comentarios/render";
+        break;
+      case "Multimedia Educativa":
+       
+        referenciacoment = "comentarios/multimediaEd";
+        break;
+      case "Inteligencia Artificial":
+       
+        referenciacoment = "comentarios/inteArt";
+        break;
+      case "Diseño de Interfaces":
+        
+        referenciacoment = "comentarios/designInter";
+        break;
+      case "Animación 3D":
+       
+        referenciacoment = "comentarios/animacion3d";
+        break;
+      case "Integración Multimedia":
+      
+        referenciacoment = "comentarios/integracionMul";
+        break;
+      case "Procesamiento de señales":
+        
+        referenciacoment = "comentarios/proSignal";
+        break;
+      case "Guiones":
+       
+        referenciacoment = "comentarios/guiones";
+        break;
+      case "Modelado 3D":
+      
+        referenciacoment = "comentarios/modelado3d";
+        break;
+    }
+    firebasedb.child(`${referenciacoment}/${this.state.id}`).set(
+      this.state.form,
+      error=>{
+        if(error)console.log(error)
+      });
+      this.setState({modalEditar: false});
+  }
+
+  peticionDelete=()=>{
+  
+    var referenciacoment = null;
+    switch (this.props.info.titulo) {
+      case "Tecnologías de Internet":
+       
+        referenciacoment = "comentarios/tecnologias";
+        break;
+      case "Procesamiento de imágenes":
+    
+        referenciacoment = "comentarios/proImage";
+        break;
+      case "Diseño":
+        
+        referenciacoment = "comentarios/design";
+        break;
+      case "Render":
+        
+        referenciacoment = "comentarios/render";
+        break;
+      case "Multimedia Educativa":
+        
+        referenciacoment = "comentarios/multimediaEd";
+        break;
+      case "Inteligencia Artificial":
+       
+        referenciacoment = "comentarios/inteArt";
+        break;
+      case "Diseño de Interfaces":
+        
+        referenciacoment = "comentarios/designInter";
+        break;
+      case "Animación 3D":
+   
+        referenciacoment = "comentarios/animacion3d";
+        break;
+      case "Integración Multimedia":
+     
+        referenciacoment = "comentarios/integracionMul";
+        break;
+      case "Procesamiento de señales":
+       
+        referenciacoment = "comentarios/proSignal";
+        break;
+      case "Guiones":
+      
+        referenciacoment = "comentarios/guiones";
+        break;
+      case "Modelado 3D":
+       
+        referenciacoment = "comentarios/modelado3d";
+        break;
+    }
+    if(window.confirm(`Estás seguro que deseas eliminar el comentario ${this.state.form.comentario}?`))
+    {
+      firebasedb.child(`${referenciacoment}/${this.state.id}`).remove(
+      error=>{
+        if(error)console.log(error)
+      });
+    }
+    console.log("id   " + this.state.id);
+   
+  }
+  
+  handleChange=e=>{
+    this.setState({form:{
+      ...this.state.form,
+      [e.target.name]: e.target.value
+    }})
+    console.log(this.state.form);
+  }
+
+
+  seleccionarCanal=async(comentario, id, caso)=>{
+
+    await this.setState({form: comentario, id: id});
+
+    (caso==="Editar")?this.setState({modalEditar: true}):
+    this.peticionDelete()
+
+  }
+
+
+
+
   componentDidMount() {
+    this.peticionGet();
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
@@ -317,19 +531,16 @@ export default class Asignatura extends React.Component {
               <h3 className="tituloComent"> Comentarios </h3>
             </Row>
             <Row className="justify-content-between py-5">
-              <Col lg={12} sm={12}>
-                {this.state.coments
-                  .map((coment) => (
-                    <Row className="justify-content-between">
-                      <Col lg={10} sm={12} className="align-self-center">
-                        <div>
-                          <h4 className="NameUser">{coment.correo}</h4>
-                        </div>
-                        <p className="comentario">{coment.comentario}</p>
-                      </Col>
-                      <Col lg={2} sm={12} className="align-self-center">
-                        <Row className="justify-content-around">
-                          <Col lg={1} sm={12} className="align-self-center">
+             
+              {Object.keys(this.state.data).map(i=>{
+                
+                  
+                console.log("i"+i);
+                     return <tr key={i}>
+                          <h4 className="NameUser">{this.state.data[i].correo}</h4>
+                        
+                        <p className="comentario">{this.state.data[i].comentario}</p>
+                     
                             <Button
                               style={{
                                 color: "#E1FF00",
@@ -338,12 +549,11 @@ export default class Asignatura extends React.Component {
                                 borderRadius: "15px",
                                 fontSize: "15px",
                               }}
-                              type="submit"
-                            >
+                              onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}
+                              >
                               <FaPencilAlt />
                             </Button>
-                          </Col>
-                          <Col lg={1} sm={12} className="align-self-center">
+                        
                             <Button
                               style={{
                                 color: "#FF0000",
@@ -352,17 +562,27 @@ export default class Asignatura extends React.Component {
                                 borderRadius: "15px",
                                 fontSize: "15px",
                               }}
-                              type="submit"
-                            >
+                              onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
+                              >
                               <FaTrashAlt />
+                              
                             </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  ))
-                  .reverse()}
-              </Col>
+                            </tr>
+                              
+                      
+                    })}
+                  
+                  <div className="form-group">
+          <label>Comentario: </label>
+          <br />
+          <input type="text" className="form-control" name="comentario" onChange={this.handleChange} value={this.state.form.comentario}/>
+          <br />
+        </div>
+      
+     
+        <button className="btn btn-primary" onClick={()=>this.peticionPut()}>Editar</button>
+        <button className="btn btn-danger">Cancelar</button>
+              
             </Row>
             <Row>
               <h3 className="tituloComent">

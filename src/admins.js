@@ -12,7 +12,6 @@ class Admins extends Component {
     form:{
       comentario: '',
       correo: '',
- 
     },
     id: 0
   };
@@ -52,6 +51,7 @@ class Admins extends Component {
         if(error)console.log(error)
       });
     }
+    console.log("id   " + this.state.id);
   }
 
   handleChange=e=>{
@@ -83,30 +83,28 @@ class Admins extends Component {
         <br />
         <br />
 
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>Comentario</th>
-              <th>correo</th>
+     
+          
+              <h1>Comentarios</h1>
+              
              
-            </tr>
-          </thead>
-          <tbody>
+           
+          
             {Object.keys(this.state.data).map(i=>{
-             // console.log(i);
+              console.log("i"+i);
               return <tr key={i}>
-                {/* <p>{this.state.data[i].comentario}</p>
-                <p>{this.state.data[i].correo}</p> */}
+                <p>{this.state.data[i].comentario}</p>
+                <p>{this.state.data[i].correo}</p>
     
                 
-                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}>Editar</button> {"   "}
+                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}>Editar</button> 
                   <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}>Eliminar</button>
                 
 
               </tr>
             })}
-          </tbody>
-        </table>
+          
+        
 
 
         
@@ -138,7 +136,7 @@ class Admins extends Component {
         </div>
       
      
-        <button className="btn btn-primary" onClick={()=>this.peticionPut()}>Editar</button>{"   "}
+        <button className="btn btn-primary" onClick={()=>this.peticionPut()}>Editar</button>
         <button className="btn btn-danger" onClick={()=>this.setState({modalEditar: false})}>Cancelar</button>
       
     
