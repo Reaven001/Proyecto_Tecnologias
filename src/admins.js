@@ -8,26 +8,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class Admins extends Component {
   state = {
-    data: [],
-    form:{
-      comentario: '',
-      correo: '',
+    data2: [],
+    formpop:{
+      descripcion: '',
+      email: '',
+      image: '',
     },
-    id: 0
+    id2: 0
   };
 
   peticionGet = () => {
-    firebasedb.child("/comentarios/render").on("value", (comentario) => {
-      if (comentario.val() !== null) {
-        this.setState({ ...this.state.data, data: comentario.val() });
+    firebasedb.child("/proyectos/animacion3d").on("value", (descripcion) => {
+      if (descripcion.val() !== null) {
+        this.setState({ ...this.state.data2, data2: descripcion.val() });
       } else {
-        this.setState({ data: [] });
+        this.setState({ data2: [] });
       }
     });
   };
 
   peticionPost=()=>{
-    firebasedb.child("/comentarios/render").push(this.state.form,
+    firebasedb.child("/proyectos/animacion3d").push(this.state.formpop,
       error=>{
         if(error)console.log(error)
       });
@@ -35,8 +36,8 @@ class Admins extends Component {
   }
 
   peticionPut=()=>{
-    firebasedb.child(`/comentarios/render/${this.state.id}`).set(
-      this.state.form,
+    firebasedb.child(`/proyectos/animacion3d/${this.state.id2}`).set(
+      this.state.formpop,
       error=>{
         if(error)console.log(error)
       });
@@ -44,27 +45,27 @@ class Admins extends Component {
   }
 
   peticionDelete=()=>{
-    if(window.confirm(`Estás seguro que deseas eliminar el comentario ${this.state.form && this.state.form.comentario}?`))
+    if(window.confirm(`Estás seguro que deseas eliminar el comentario ${this.state.formpop && this.state.formpop.descripcion}?`))
     {
-      firebasedb.child(`/comentarios/render/${this.state.id}`).remove(
+      firebasedb.child(`/proyectos/animacion3d/${this.state.id2}`).remove(
       error=>{
         if(error)console.log(error)
       });
     }
-    console.log("id   " + this.state.id);
+    console.log("id2   " + this.state.id2);
   }
 
   handleChange=e=>{
-    this.setState({form:{
-      ...this.state.form,
+    this.setState({formpop:{
+      ...this.state.formpop,
       [e.target.name]: e.target.value
     }})
-    console.log(this.state.form);
+    console.log(this.state.formpop);
   }
 
-  seleccionarCanal=async(comentario, id, caso)=>{
+  seleccionarCanal=async(descripcion, id2, caso)=>{
 
-    await this.setState({form: comentario, id: id});
+    await this.setState({formpop: descripcion, id2: id2});
 
     (caso==="Editar")?this.setState({modalEditar: true}):
     this.peticionDelete()
@@ -90,18 +91,21 @@ class Admins extends Component {
              
            
           
-            {Object.keys(this.state.data).map(i=>{
+            {Object.keys(this.state.data2).map(i=>{
               console.log("i"+i);
-              return <tr key={i}>
-                <p>{this.state.data[i].comentario}</p>
-                <p>{this.state.data[i].correo}</p>
-    
+              return <div key={i}>
+                <p>{this.state.data2[i].descripcion}</p>
+                <p>{this.state.data2[i].email}</p>
+                <img
+                      src={this.state.data2[i].image}
+                      alt="image select Gallery"
+                    />
                 
-                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}>Editar</button> 
-                  <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}>Eliminar</button>
+                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data2[i], i, 'Editar')}>Editar</button> 
+                  <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data2[i], i, 'Eliminar')}>Eliminar</button>
                 
 
-              </tr>
+              </div>
             })}
           
         
@@ -113,7 +117,7 @@ class Admins extends Component {
         <div className="form-group">
           <label>Comentario: </label>
           <br />
-          <input type="text" className="form-control" name="comentario" onChange={this.handleChange}/>
+          <input type="text" className="form-control" name="descripcion" onChange={this.handleChange}/>
           <br />
         </div>
       
@@ -131,7 +135,7 @@ class Admins extends Component {
         <div className="form-group">
           <label>Comentario: </label>
           <br />
-          <input type="text" className="form-control" name="comentario" onChange={this.handleChange} value={this.state.form && this.state.form.comentario}/>
+          <input type="text" className="form-control" name="descripcion" onChange={this.handleChange} value={this.state.formpop && this.state.formpop.comentario}/>
           <br />
         </div>
       
