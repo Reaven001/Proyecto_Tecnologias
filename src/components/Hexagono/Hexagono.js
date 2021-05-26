@@ -98,7 +98,13 @@ function Modelomos2(props) {
 }
 
 const Hexagoncard2 = (props) => {
- const escogemol = props.namemodel;
+
+ var altura = window.screen.height;
+  var ancho=window.screen.width;
+  var position1=[-10,10,10];
+  
+  console.log(altura);
+  console.log(ancho);
  console.log(props.namemodel);
   return (
     <Fragment>
@@ -110,7 +116,8 @@ const Hexagoncard2 = (props) => {
               <Canvas
                 shadows
                 dpr={[1, 2]}
-                camera={{ fov: 75, position: [-10, 10, 10] }}
+
+                camera={{ fov: 75, position: position1 }}
               >
                  
                 <Suspense fallback={null}>

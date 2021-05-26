@@ -94,8 +94,12 @@ function Modelomos(props) {
 }
 
 const Hexagoncard = (props) => {
- 
+  var altura = window.screen.height;
+  var ancho=window.screen.width;
  console.log(props.namemodel);
+ console.log(altura);
+ console.log(ancho);
+
   return (
     <Fragment>
       <div className="tarjeta">

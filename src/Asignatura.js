@@ -19,8 +19,14 @@ import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 export default class Asignatura extends React.Component {
   constructor(props) {
     super(props);
-
+    this.stateinit = {
+      comenttext: "",
+      comentario: "",
+      descripcion: ""
+    };
     this.state = {
+      modalEditarimg: false,
+      modalEditarcoment: false,
       data: [],
       user: null,
       uploadValue: 0,
@@ -45,7 +51,8 @@ export default class Asignatura extends React.Component {
         image: '',
       },
       id: "",
-      id2: ""
+      id2: "",
+      Admos: []
     };
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,7 +67,7 @@ export default class Asignatura extends React.Component {
 
   peticionGetimg = () => {
     var referencia = null;
-   
+
     switch (this.props.info.titulo) {
       case "Tecnologías de Internet":
         referencia = "proyectos/tecnologias";
@@ -120,9 +127,21 @@ export default class Asignatura extends React.Component {
     });
   };
 
+  peticionadmins = () => {
+    firebasedb.child("Administra").on("value", (email) => {
+      if (email.val() !== null) {
+        this.setState({ ...this.state.Admos, Admos: email.val() });
+      } else {
+        this.setState({ Admos: [] });
+      }
+    });
+
+  }
+
+
   peticionDeleteimg = () => {
     var referencia = null;
-   
+
     switch (this.props.info.titulo) {
       case "Tecnologías de Internet":
         referencia = "proyectos/tecnologias";
@@ -188,14 +207,14 @@ export default class Asignatura extends React.Component {
 
     await this.setState({ formpop: descripcion, id2: id2 });
 
-    (caso === "Editar") ? this.setState({ modalEditar: true }) :
+    (caso === "Editar") ? this.setState({ modalEditarimg: true }) :
       this.peticionDeleteimg()
 
   }
 
   peticionPutimg = () => {
     var referencia = null;
-   
+
     switch (this.props.info.titulo) {
       case "Tecnologías de Internet":
         referencia = "proyectos/tecnologias";
@@ -252,6 +271,8 @@ export default class Asignatura extends React.Component {
         if (error) console.log(error)
       });
     this.setState({ modalEditar: false });
+    this.state.formpop.descripcion = this.stateinit.descripcion
+
   }
 
 
@@ -379,6 +400,7 @@ export default class Asignatura extends React.Component {
         if (error) console.log(error)
       });
     this.setState({ modalEditar: false });
+    this.state.form.comentario = this.stateinit.comentario;
   }
 
   peticionDelete = () => {
@@ -440,7 +462,9 @@ export default class Asignatura extends React.Component {
           if (error) console.log(error)
         });
     }
+
     console.log("id   " + this.state.id);
+
 
   }
 
@@ -459,16 +483,18 @@ export default class Asignatura extends React.Component {
 
     await this.setState({ form: comentario, id: id });
 
-    (caso === "Editar") ? this.setState({ modalEditar: true }) :
+    (caso === "Editar") ? this.setState({ modalEditarcoment: true }) :
       this.peticionDelete()
 
   }
 
-  handleChangeimg=e=>{
-    this.setState({formpop:{
-      ...this.state.formpop,
-      [e.target.name]: e.target.value
-    }})
+  handleChangeimg = e => {
+    this.setState({
+      formpop: {
+        ...this.state.formpop,
+        [e.target.name]: e.target.value
+      }
+    })
     console.log(this.state.formpop);
   }
 
@@ -479,6 +505,7 @@ export default class Asignatura extends React.Component {
 
 
   componentDidMount() {
+    this.peticionadmins();
     this.peticionGet();
     this.peticionGetimg();
     firebase.auth().onAuthStateChanged((user) => {
@@ -562,6 +589,7 @@ export default class Asignatura extends React.Component {
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
+          console.log("admins" + this.state.Admos);
           console.log(snapshot.val());
           this.setState({
             admins: snapshot.val(),
@@ -574,6 +602,7 @@ export default class Asignatura extends React.Component {
         console.error(error);
       });
     console.log("Imagen seleccionada" + this.state.selectedImg);
+
   }
 
   handleChangeTextA(event) {
@@ -642,12 +671,12 @@ export default class Asignatura extends React.Component {
     }
     const newComent = dbRef.push();
     newComent.set(record);
-
     console.log(record);
     console.log(newComent);
     alert("Comentario publicado correctamente...");
     //window.location.href = window.location.href;
     event.preventDefault();
+    this.state.comenttext = this.stateinit.comenttext;
   }
 
   handleClose() {
@@ -693,6 +722,7 @@ export default class Asignatura extends React.Component {
             <Row className="justify-content-center">
               <div className="img-grid">
 
+                {/* obtener id para las fotos */}
                 {Object.keys(this.state.data2).map(i => {
                   console.log("i" + i);
                   return <div key={i}>
@@ -709,53 +739,83 @@ export default class Asignatura extends React.Component {
                             )
                           }
                         />
-
+                        <br />
+                        <span>{this.state.data2[i].email}</span>
+                        <br />
+                        <p>{this.state.data2[i].descripcion}</p>
                       </div>
                     </div>
 
-                    <Button
-                      style={{
-                        color: "#E1FF00",
-                        backgroundColor: "transparent",
-                        border: "3px solid #E1FF00",
-                        borderRadius: "15px",
-                        fontSize: "15px",
-                      }}
-                      onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Editar')}
-                    >
-                      <FaPencilAlt />
-                    </Button>
+                    {/* usuario administrador */}
+                    {Object.keys(this.state.Admos).map(x => {
 
-                    <Button
-                      style={{
-                        color: "#FF0000",
-                        backgroundColor: "transparent",
-                        border: "3px solid #FF0000",
-                        borderRadius: "15px",
-                        fontSize: "15px",
-                      }}
-                      onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Eliminar')}
-                    >
-                      <FaTrashAlt />
+                      return <div key={x}>
 
-                    </Button>
+
+                        {console.log(this.state.Admos[x].email)}
+
+                        {this.state.user.email == this.state.Admos[x].email &&
+                          <div>
+
+                            <Button
+                              style={{
+                                color: "#E1FF00",
+                                backgroundColor: "transparent",
+                                border: "3px solid #E1FF00",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Editar')}
+                            >
+                              <FaPencilAlt />
+                            </Button>
+                            <Button
+                              style={{
+                                color: "#FF0000",
+                                backgroundColor: "transparent",
+                                border: "3px solid #FF0000",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Eliminar')}
+                            >
+                              <FaTrashAlt />
+
+                            </Button>
+
+                          </div>
+                        }
+
+                      </div>
+
+
+                    })}
+
+
+
+
+
+
 
 
 
                   </div>
                 }).reverse()}
+              </div>
+              <Modal show={this.state.modalEditarimg}>
+
                 <div className="form-group">
                   <label>Descripcion: </label>
                   <br />
-                  <input type="text" className="form-control" name="descripcion" onChange={this.handleChangeimg} value={this.state.formpop && this.state.formpop.comentario} />
+                  <input type="text" className="form-control" name="descripcion" onChange={this.handleChangeimg} value={this.state.formpop.descripcion} />
                   <br />
                 </div>
 
 
-                <button className="btn btn-primary" onClick={() => this.peticionPutimg()}>Editar</button>
-                <button className="btn btn-danger" onClick={() => this.setState({ modalEditar: false })}>Cancelar</button>
+                <button className="btn btn-primary" onClick={() => this.peticionPutimg()} >Editar</button>{"   "}
+                <button className="btn btn-danger" onClick={() => this.setState({ modalEditarimg: false })}>Cerrar</button>
+              </Modal>
 
-              </div>
               <div className="popUp">
                 <Modal
                   show={this.state.setShow}
@@ -802,6 +862,7 @@ export default class Asignatura extends React.Component {
             </Row>
             <Row className="justify-content-between py-5">
 
+              {/* Obtenemos el id y pintamos los comentarios */}
               {Object.keys(this.state.data).map(i => {
 
 
@@ -811,47 +872,73 @@ export default class Asignatura extends React.Component {
 
                   <p className="comentario">{this.state.data[i].comentario}</p>
 
-                  <Button
-                    style={{
-                      color: "#E1FF00",
-                      backgroundColor: "transparent",
-                      border: "3px solid #E1FF00",
-                      borderRadius: "15px",
-                      fontSize: "15px",
-                    }}
-                    onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Editar')}
-                  >
-                    <FaPencilAlt />
-                  </Button>
+                  {/* usuario administrador */}
+                  {Object.keys(this.state.Admos).map(x => {
 
-                  <Button
-                    style={{
-                      color: "#FF0000",
-                      backgroundColor: "transparent",
-                      border: "3px solid #FF0000",
-                      borderRadius: "15px",
-                      fontSize: "15px",
-                    }}
-                    onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
-                  >
-                    <FaTrashAlt />
+                    return <div key={x}>
 
-                  </Button>
+
+                      {console.log(this.state.Admos[x].email)}
+
+                      {this.state.user.email == this.state.Admos[x].email &&
+                        <div>
+
+                          <Button
+                            style={{
+                              color: "#E1FF00",
+                              backgroundColor: "transparent",
+                              border: "3px solid #E1FF00",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Editar')}
+                          >
+                            <FaPencilAlt />
+                          </Button>
+
+                          <Button
+                            style={{
+                              color: "#FF0000",
+                              backgroundColor: "transparent",
+                              border: "3px solid #FF0000",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
+                          >
+                            <FaTrashAlt />
+
+                          </Button>
+
+                        </div>
+                      }
+
+                    </div>
+
+
+                  })}
+
+
+
+
                 </tr>
 
 
               })}
+              <Modal show={this.state.modalEditarcoment}>
 
-              <div className="form-group">
-                <label>Comentario: </label>
-                <br />
-                <input type="text" className="form-control" name="comentario" onChange={this.handleChange} value={this.state.form.comentario} />
-                <br />
-              </div>
+                <div className="form-group">
+                  <label>Editar comentario: </label>
+                  <br />
+                  <input type="text" className="form-control" name="comentario" onChange={this.handleChange} value={this.state.form.comentario} />
+                  <br />
+                </div>
 
 
-              <button className="btn btn-primary" onClick={() => this.peticionPut()}>Editar</button>
-              <button className="btn btn-danger">Cancelar</button>
+                <button className="btn btn-primary" onClick={() => this.peticionPut()}>Editar</button>
+                <button className="btn btn-danger" onClick={() => this.setState({ modalEditarcoment: false })}>Cerrar</button>
+              </Modal>
+
 
             </Row>
             <Row>
@@ -871,6 +958,7 @@ export default class Asignatura extends React.Component {
                     borderRadius: "20px",
                   }}
                   onChange={this.handleChangeTextA}
+                  value={this.state.comenttext}
                 />
               </Row>
               <Row className="justify-content-center py-5 btnShare">
@@ -891,6 +979,9 @@ export default class Asignatura extends React.Component {
           </Container>
         </div>
       );
+
+
+      // Cuando el usuario no inicia sesion
     } else {
       return (
         <div className="contentAsig">
