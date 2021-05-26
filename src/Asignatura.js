@@ -744,6 +744,37 @@ export default class Asignatura extends React.Component {
                         <br />
                         <p>{this.state.data2[i].descripcion}</p>
                       </div>
+                      {this.state.data2[i].email === this.state.user.email
+                     &&
+                    <div>
+                      <Button
+                              style={{
+                                color: "#E1FF00",
+                                backgroundColor: "transparent",
+                                border: "3px solid #E1FF00",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Editar')}
+                            >
+                              <FaPencilAlt />
+                            </Button>
+                            <Button
+                              style={{
+                                color: "#FF0000",
+                                backgroundColor: "transparent",
+                                border: "3px solid #FF0000",
+                                borderRadius: "15px",
+                                fontSize: "15px",
+                              }}
+                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Eliminar')}
+                            >
+                              <FaTrashAlt />
+
+                            </Button>
+                     </div>
+                  }
+
                     </div>
 
                     {/* usuario administrador */}
@@ -871,14 +902,48 @@ export default class Asignatura extends React.Component {
                   <h4 className="NameUser">{this.state.data[i].correo}</h4>
 
                   <p className="comentario">{this.state.data[i].comentario}</p>
+                  {/* usuario  registrado no admin */}
+                  {this.state.data[i].correo === this.state.user.email
+                  &&
+                    <div>
+                      <Button
+                            style={{
+                              color: "#E1FF00",
+                              backgroundColor: "transparent",
+                              border: "3px solid #E1FF00",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Editar')}
+                          >
+                            <FaPencilAlt />
+                          </Button>
+
+                          <Button
+                            style={{
+                              color: "#FF0000",
+                              backgroundColor: "transparent",
+                              border: "3px solid #FF0000",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
+                          >
+                            <FaTrashAlt />
+
+                          </Button>
+                     </div>
+                  }
+
+                  
+
+
+
 
                   {/* usuario administrador */}
                   {Object.keys(this.state.Admos).map(x => {
 
                     return <div key={x}>
-
-
-                      {console.log(this.state.Admos[x].email)}
 
                       {this.state.user.email == this.state.Admos[x].email &&
                         <div>
