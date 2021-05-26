@@ -1168,3 +1168,6 @@ export default class Asignatura extends React.Component {
     return <div>{this.Asig()}</div>;
   }
 }
+
+
+//para volver a esta version
