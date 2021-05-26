@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import Image from "react-bootstrap/Image";
+import { firebasedb } from "../index"
+import Admins from "../admins"
+
 
 import "../css/menu.css";
 
@@ -10,15 +13,31 @@ class Nav extends React.Component {
     super();
     this.state = {
       user: null,
+      useradmin: true,
+      Admos: []
     };
 
     this.handleLogout = this.handleLogout.bind(this);
   }
 
+  peticionadmins = () => {
+    firebasedb.child("Administra").on("value", (email) => {
+      if (email.val() !== null) {
+        this.setState({ ...this.state.Admos, Admos: email.val() });
+      } else {
+        this.setState({ Admos: [] });
+      }
+    });
+
+  }
+
+
+
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user: user });
     });
+    this.peticionadmins();
   }
 
   handleLogout() {
@@ -30,6 +49,7 @@ class Nav extends React.Component {
   }
 
   renderUserLogin() {
+
     if (this.state.user) {
       //Si el usuario esta logueado:
       return (
@@ -59,8 +79,20 @@ class Nav extends React.Component {
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   Inicio
+                  
                 </Link>
               </li>
+
+              <li className="admin">
+                <Link
+                  to="/Admins"
+                  style={{ textDecoration: "none", color: "#000000" }}
+                >
+                  Adminds
+                  
+                </Link>
+              </li>
+
               <li className="list">
                 <Link
                   to="/"

@@ -23,6 +23,7 @@ const fb = firebase.initializeApp(firebaseconfig);
 const storage = firebase.storage();
 const database = firebase.database();
 const firebasedb=fb.database().ref();
+
 export { storage, database, firebasedb};
 
 ReactDOM.render(<App />, document.getElementById("root"));

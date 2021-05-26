@@ -3,32 +3,34 @@ import React, { Component } from "react";
 
 
 import {firebasedb} from "./index"
+import Modal from "react-bootstrap/Modal";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 class Admins extends Component {
   state = {
-    data2: [],
-    formpop:{
-      
+    data: [],
+    modalInsertar: false,
+    modalEditar: false,
+    form:{
       email: '',
-      
     },
-    id2: 0
+    id: 0
   };
 
   peticionGet = () => {
     firebasedb.child("Administra").on("value", (email) => {
       if (email.val() !== null) {
-        this.setState({ ...this.state.data2, data2: email.val() });
+        this.setState({ ...this.state.data, data: email.val() });
       } else {
-        this.setState({ data2: [] });
+        this.setState({ data: [] });
       }
     });
   };
 
   peticionPost=()=>{
-    firebasedb.child("Administra").push(this.state.formpop,
+    firebasedb.child("Administra").push(this.state.form,
       error=>{
         if(error)console.log(error)
       });
@@ -36,8 +38,8 @@ class Admins extends Component {
   }
 
   peticionPut=()=>{
-    firebasedb.child(`Administra/${this.state.id2}`).set(
-      this.state.formpop,
+    firebasedb.child(`Administra/${this.state.id}`).set(
+      this.state.form,
       error=>{
         if(error)console.log(error)
       });
@@ -45,27 +47,26 @@ class Admins extends Component {
   }
 
   peticionDelete=()=>{
-    if(window.confirm(`Estás seguro que deseas eliminar el comentario ${this.state.formpop && this.state.formpop.email}?`))
+    if(window.confirm(`Estás seguro que deseas eliminar el canal ${this.state.form && this.state.form.email}?`))
     {
-      firebasedb.child(`/proyectos/animacion3d/${this.state.id2}`).remove(
+      firebasedb.child(`Administra/${this.state.id}`).remove(
       error=>{
         if(error)console.log(error)
       });
     }
-    console.log("id2   " + this.state.id2);
   }
 
   handleChange=e=>{
-    this.setState({formpop:{
-      ...this.state.formpop,
+    this.setState({form:{
+      ...this.state.form,
       [e.target.name]: e.target.value
     }})
-    console.log(this.state.formpop);
+    console.log(this.state.form);
   }
 
-  seleccionarCanal=async(email, id2, caso)=>{
+  seleccionarCanal=async(email, id, caso)=>{
 
-    await this.setState({formpop: email, id2: id2});
+    await this.setState({form: email, id: id});
 
     (caso==="Editar")?this.setState({modalEditar: true}):
     this.peticionDelete()
@@ -80,69 +81,63 @@ class Admins extends Component {
     return (
       <div className="App">
         <br />
-        <button className="btn btn-success" onClick={()=>this.setState({modalInsertar: true})}>Insertar</button>
+        <button className="btn btn-success" onClick={()=>this.setState({modalInsertar: true})}>Agregar un nuevo administrador</button>
         <br />
         <br />
 
-     
-          
-              <h1>Comentarios</h1>
-              
-             
-           
-          
-            {Object.keys(this.state.data2).map(i=>{
-              console.log("i"+i);
-              return <div key={i}>
-                <p>{this.state.data2[i].email}</p>
-                <img
-                      src={this.state.data2[i].image}
-                      alt="image select Gallery"
-                    />
-                
-                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data2[i], i, 'Editar')}>Editar</button> 
-                  <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data2[i], i, 'Eliminar')}>Eliminar</button>
-                
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Administradores</th>
 
-              </div>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(this.state.data).map(i=>{
+             // console.log(i);
+              return <tr key={i}>
+                <td>{this.state.data[i].email}</td>
+                <td>
+                  <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}>Editar</button> {"   "}
+                  <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}>Eliminar</button>
+                </td>
+
+              </tr>
             })}
-          
-        
+          </tbody>
+        </table>
 
 
-        
-      
-     
+        <Modal show={this.state.modalInsertar}>
+    
         <div className="form-group">
-          <label>Comentario: </label>
+          <label>Nuevo admin: </label>
           <br />
           <input type="text" className="form-control" name="email" onChange={this.handleChange}/>
           <br />
         </div>
-      
-      
+     
         <button className="btn btn-primary" onClick={()=>this.peticionPost()}>Insertar</button>{"   "}
         <button className="btn btn-danger" onClick={()=>this.setState({modalInsertar: false})}>Cancelar</button>
       
-   
+    </Modal>
 
 
 
-   
-      
+    <Modal show={this.state.modalEditar}>
+     
      
         <div className="form-group">
-          <label>Comentario: </label>
+          <label>Canal: </label>
           <br />
-          <input type="text" className="form-control" name="email" onChange={this.handleChange} value={this.state.formpop && this.state.formpop.comentario}/>
+          <input type="text" className="form-control" name="email" onChange={this.handleChange} value={this.state.form.email}/>
           <br />
         </div>
-      
      
-        <button className="btn btn-primary" onClick={()=>this.peticionPut()}>Editar</button>
+        <button className="btn btn-primary" onClick={()=>this.peticionPut()}>Editar</button>{"   "}
         <button className="btn btn-danger" onClick={()=>this.setState({modalEditar: false})}>Cancelar</button>
-      
-    
+     
+    </Modal>
       </div>
     );
   }

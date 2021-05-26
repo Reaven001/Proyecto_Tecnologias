@@ -271,7 +271,7 @@ export default class Asignatura extends React.Component {
         if (error) console.log(error)
       });
     this.setState({ modalEditar: false });
-    this.state.formpop.descripcion = this.stateinit.descripcion
+    this.state.formpop.descripcion = this.stateinit.descripciond
 
   }
 
