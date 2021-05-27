@@ -20,6 +20,7 @@ import Asignatura from "./Asignatura.js";
 import Login from "./Login.js";
 import Upload from "./Upload";
 import Register from "./components/Register";
+import Admins from "./admins"
 
 function App() {
 
@@ -243,6 +244,7 @@ function App() {
           <Route path="/IniciarSesion" component={Login} exact />
           <Route path="/SubirArchivos" component={Upload} />
           <Route path="/Registrarse" component={Register} />
+          <Route path="/Admins" component={Admins} />
           <Route path="/TransformacionDigital">
             <AreaSpe info={area1} />
           </Route>

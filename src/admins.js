@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 
 
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import {firebasedb} from "./index"
 import Modal from "react-bootstrap/Modal";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/tabla.css";
 // import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 class Admins extends Component {
@@ -79,13 +81,12 @@ class Admins extends Component {
 
   render() {
     return (
-      <div className="App">
-        <br />
-        <button className="btn btn-success" onClick={()=>this.setState({modalInsertar: true})}>Agregar un nuevo administrador</button>
-        <br />
-        <br />
+      <div className="Admins">
 
-        <table className="table table-bordered">
+          <Row className="justify-content-center">
+            <Col lg={6} sm={10} className="align-self-center">
+        <br />
+        <table className="table table-bordered ">
           <thead>
             <tr>
               <th>Administradores</th>
@@ -94,9 +95,10 @@ class Admins extends Component {
           </thead>
           <tbody>
             {Object.keys(this.state.data).map(i=>{
-             // console.log(i);
+              // console.log(i);
               return <tr key={i}>
                 <td>{this.state.data[i].email}</td>
+                
                 <td>
                   <button className="btn btn-primary" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Editar')}>Editar</button> {"   "}
                   <button className="btn btn-danger" onClick={()=>this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}>Eliminar</button>
@@ -104,10 +106,26 @@ class Admins extends Component {
 
               </tr>
             })}
+            
           </tbody>
         </table>
+            </Col>
+            </Row>
+            {/* <img src="https://i.ytimg.com/vi/ydo-Mf_1vUc/hqdefault.jpg"></img> */}
+
+            <Row className="justify-content-center">
+            <Col lg={2} sm={12} className="align-self-center">
+            <br />
+            
+        <button className="btn btn-secondary" onClick={()=>this.setState({modalInsertar: true})}>Agregar un nuevo administrador</button>
+        <br />
+        <br />
+            </Col>
+        </Row>
 
 
+            <Row className="justify-content-center">
+            <Col lg={2} sm={12} className="align-self-center">
         <Modal show={this.state.modalInsertar}>
     
         <div className="form-group">
@@ -121,9 +139,12 @@ class Admins extends Component {
         <button className="btn btn-danger" onClick={()=>this.setState({modalInsertar: false})}>Cancelar</button>
       
     </Modal>
+         </Col>
+            </Row>
 
 
-
+            <Row className="justify-content-center">
+            <Col lg={2} sm={12} className="align-self-center">
     <Modal show={this.state.modalEditar}>
      
      
@@ -138,6 +159,8 @@ class Admins extends Component {
         <button className="btn btn-danger" onClick={()=>this.setState({modalEditar: false})}>Cancelar</button>
      
     </Modal>
+    </Col>
+            </Row>
       </div>
     );
   }

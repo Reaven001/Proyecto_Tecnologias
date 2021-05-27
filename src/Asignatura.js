@@ -843,7 +843,7 @@ export default class Asignatura extends React.Component {
                 </div>
 
 
-                <button className="btn btn-primary" onClick={() => this.peticionPutimg()} >Editar</button>{"   "}
+                <button className="btn btn-primary" onClick={() => this.peticionPutimg()} >Editar</button>
                 <button className="btn btn-danger" onClick={() => this.setState({ modalEditarimg: false })}>Cerrar</button>
               </Modal>
 
