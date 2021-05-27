@@ -38,6 +38,9 @@ class Login extends React.Component {
       .then((u) => {})
       .catch(function (error) {
         console.log(error);
+        alert(
+          "Tuvimos problemas para validar los datos, revisa los campos correctamente"
+        );
       });
   }
 

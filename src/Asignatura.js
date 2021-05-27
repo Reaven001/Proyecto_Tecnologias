@@ -12,7 +12,7 @@ import Modal from "react-bootstrap/Modal";
 
 import { FaTrashAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
-import { firebasedb } from "./index"
+import { firebasedb } from "./index";
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
 
@@ -22,9 +22,10 @@ export default class Asignatura extends React.Component {
     this.stateinit = {
       comenttext: "",
       comentario: "",
-      descripcion: ""
+      descripcion: "",
     };
     this.state = {
+      valAdmin: false,
       modalEditarimg: false,
       modalEditarcoment: false,
       data: [],
@@ -40,19 +41,18 @@ export default class Asignatura extends React.Component {
       selectedEmail: null,
       selectedDescrip: null,
       form: {
-        comentario: '',
-        correo: '',
-
+        comentario: "",
+        correo: "",
       },
       data2: [],
       formpop: {
-        descripcion: '',
-        email: '',
-        image: '',
+        descripcion: "",
+        email: "",
+        image: "",
       },
       id: "",
       id2: "",
-      Admos: []
+      Admos: [],
     };
     this.handleChangeTextA = this.handleChangeTextA.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,9 +61,15 @@ export default class Asignatura extends React.Component {
     this.handleChangeimg = this.handleChangeimg.bind(this);
   }
 
-
-
-
+  validarAdmin() {
+    Object.keys(this.state.Admos).map((x) => {
+      if (this.state.user.email == this.state.Admos[x].email) {
+        this.setState({ valAdmin: true });
+      } else {
+        this.setState({ valAdmin: false });
+      }
+    });
+  }
 
   peticionGetimg = () => {
     var referencia = null;
@@ -135,9 +141,7 @@ export default class Asignatura extends React.Component {
         this.setState({ Admos: [] });
       }
     });
-
-  }
-
+  };
 
   peticionDeleteimg = () => {
     var referencia = null;
@@ -193,24 +197,27 @@ export default class Asignatura extends React.Component {
         break;
     }
 
-
-    if (window.confirm(`Estás seguro que deseas eliminar la publicacion ${this.state.formpop && this.state.formpop.descripcion}?`)) {
-      firebasedb.child(`${referencia}/${this.state.id2}`).remove(
-        error => {
-          if (error) console.log(error)
-        });
+    if (
+      window.confirm(
+        `Estás seguro que deseas eliminar la publicacion ${
+          this.state.formpop && this.state.formpop.descripcion
+        }?`
+      )
+    ) {
+      firebasedb.child(`${referencia}/${this.state.id2}`).remove((error) => {
+        if (error) console.log(error);
+      });
     }
     console.log("id2   " + this.state.id2);
-  }
+  };
 
   seleccionarImg = async (descripcion, id2, caso) => {
-
     await this.setState({ formpop: descripcion, id2: id2 });
 
-    (caso === "Editar") ? this.setState({ modalEditarimg: true }) :
-      this.peticionDeleteimg()
-
-  }
+    caso === "Editar"
+      ? this.setState({ modalEditarimg: true })
+      : this.peticionDeleteimg();
+  };
 
   peticionPutimg = () => {
     var referencia = null;
@@ -265,71 +272,52 @@ export default class Asignatura extends React.Component {
 
         break;
     }
-    firebasedb.child(`${referencia}/${this.state.id2}`).set(
-      this.state.formpop,
-      error => {
-        if (error) console.log(error)
+    firebasedb
+      .child(`${referencia}/${this.state.id2}`)
+      .set(this.state.formpop, (error) => {
+        if (error) console.log(error);
       });
     this.setState({ modalEditar: false });
-    this.state.formpop.descripcion = this.stateinit.descripciond
-
-  }
-
-
-
-
-
-
+    this.state.formpop.descripcion = this.stateinit.descripciond;
+  };
 
   peticionGet = () => {
-
     var referenciacoment = null;
     switch (this.props.info.titulo) {
       case "Tecnologías de Internet":
         referenciacoment = "comentarios/tecnologias";
         break;
       case "Procesamiento de imágenes":
-
         referenciacoment = "comentarios/proImage";
         break;
       case "Diseño":
-
         referenciacoment = "comentarios/design";
         break;
       case "Render":
-
         referenciacoment = "comentarios/render";
         break;
       case "Multimedia Educativa":
-
         referenciacoment = "comentarios/multimediaEd";
         break;
       case "Inteligencia Artificial":
-
         referenciacoment = "comentarios/inteArt";
         break;
       case "Diseño de Interfaces":
-
         referenciacoment = "comentarios/designInter";
         break;
       case "Animación 3D":
-
         referenciacoment = "comentarios/animacion3d";
         break;
       case "Integración Multimedia":
-
         referenciacoment = "comentarios/integracionMul";
         break;
       case "Procesamiento de señales":
-
         referenciacoment = "comentarios/proSignal";
         break;
       case "Guiones":
-
         referenciacoment = "comentarios/guiones";
         break;
       case "Modelado 3D":
-
         referenciacoment = "comentarios/modelado3d";
         break;
     }
@@ -342,7 +330,6 @@ export default class Asignatura extends React.Component {
     });
   };
 
-
   peticionPut = () => {
     var referenciacoment = null;
     switch (this.props.info.titulo) {
@@ -350,159 +337,130 @@ export default class Asignatura extends React.Component {
         referenciacoment = "comentarios/tecnologias";
         break;
       case "Procesamiento de imágenes":
-
         referenciacoment = "comentarios/proImage";
         break;
       case "Diseño":
-
         referenciacoment = "comentarios/design";
         break;
       case "Render":
-
         referenciacoment = "comentarios/render";
         break;
       case "Multimedia Educativa":
-
         referenciacoment = "comentarios/multimediaEd";
         break;
       case "Inteligencia Artificial":
-
         referenciacoment = "comentarios/inteArt";
         break;
       case "Diseño de Interfaces":
-
         referenciacoment = "comentarios/designInter";
         break;
       case "Animación 3D":
-
         referenciacoment = "comentarios/animacion3d";
         break;
       case "Integración Multimedia":
-
         referenciacoment = "comentarios/integracionMul";
         break;
       case "Procesamiento de señales":
-
         referenciacoment = "comentarios/proSignal";
         break;
       case "Guiones":
-
         referenciacoment = "comentarios/guiones";
         break;
       case "Modelado 3D":
-
         referenciacoment = "comentarios/modelado3d";
         break;
     }
-    firebasedb.child(`${referenciacoment}/${this.state.id}`).set(
-      this.state.form,
-      error => {
-        if (error) console.log(error)
+    firebasedb
+      .child(`${referenciacoment}/${this.state.id}`)
+      .set(this.state.form, (error) => {
+        if (error) console.log(error);
       });
     this.setState({ modalEditar: false });
     this.state.form.comentario = this.stateinit.comentario;
-  }
+  };
 
   peticionDelete = () => {
-
     var referenciacoment = null;
     switch (this.props.info.titulo) {
       case "Tecnologías de Internet":
-
         referenciacoment = "comentarios/tecnologias";
         break;
       case "Procesamiento de imágenes":
-
         referenciacoment = "comentarios/proImage";
         break;
       case "Diseño":
-
         referenciacoment = "comentarios/design";
         break;
       case "Render":
-
         referenciacoment = "comentarios/render";
         break;
       case "Multimedia Educativa":
-
         referenciacoment = "comentarios/multimediaEd";
         break;
       case "Inteligencia Artificial":
-
         referenciacoment = "comentarios/inteArt";
         break;
       case "Diseño de Interfaces":
-
         referenciacoment = "comentarios/designInter";
         break;
       case "Animación 3D":
-
         referenciacoment = "comentarios/animacion3d";
         break;
       case "Integración Multimedia":
-
         referenciacoment = "comentarios/integracionMul";
         break;
       case "Procesamiento de señales":
-
         referenciacoment = "comentarios/proSignal";
         break;
       case "Guiones":
-
         referenciacoment = "comentarios/guiones";
         break;
       case "Modelado 3D":
-
         referenciacoment = "comentarios/modelado3d";
         break;
     }
-    if (window.confirm(`Estás seguro que deseas eliminar el comentario ${this.state.form.comentario}?`)) {
-      firebasedb.child(`${referenciacoment}/${this.state.id}`).remove(
-        error => {
-          if (error) console.log(error)
+    if (
+      window.confirm(
+        `Estás seguro que deseas eliminar el comentario ${this.state.form.comentario}?`
+      )
+    ) {
+      firebasedb
+        .child(`${referenciacoment}/${this.state.id}`)
+        .remove((error) => {
+          if (error) console.log(error);
         });
     }
 
     console.log("id   " + this.state.id);
+  };
 
-
-  }
-
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
       form: {
         ...this.state.form,
-        [e.target.name]: e.target.value
-      }
-    })
+        [e.target.name]: e.target.value,
+      },
+    });
     console.log(this.state.form);
-  }
-
+  };
 
   seleccionarCanal = async (comentario, id, caso) => {
-
     await this.setState({ form: comentario, id: id });
 
-    (caso === "Editar") ? this.setState({ modalEditarcoment: true }) :
-      this.peticionDelete()
+    caso === "Editar"
+      ? this.setState({ modalEditarcoment: true })
+      : this.peticionDelete();
+  };
 
-  }
-
-  handleChangeimg = e => {
+  handleChangeimg = (e) => {
     this.setState({
       formpop: {
         ...this.state.formpop,
-        [e.target.name]: e.target.value
-      }
-    })
+        [e.target.name]: e.target.value,
+      },
+    });
     console.log(this.state.formpop);
-  }
-
-
-
-
-
-
+  };
 
   componentDidMount() {
     this.peticionadmins();
@@ -602,7 +560,6 @@ export default class Asignatura extends React.Component {
         console.error(error);
       });
     console.log("Imagen seleccionada" + this.state.selectedImg);
-
   }
 
   handleChangeTextA(event) {
@@ -696,6 +653,7 @@ export default class Asignatura extends React.Component {
       });
       console.log("setShow: " + this.state.setShow);
     };
+
     if (this.state.user) {
       return (
         <div className="contentAsig">
@@ -721,130 +679,154 @@ export default class Asignatura extends React.Component {
             </Row>
             <Row className="justify-content-center">
               <div className="img-grid">
-
                 {/* obtener id para las fotos */}
-                {Object.keys(this.state.data2).map(i => {
-                  console.log("i" + i);
-                  return <div key={i}>
-                    <div>
-                      <div className="img-wrap">
-                        <img
-                          src={this.state.data2[i].image}
-                          onClick={() =>
-                            imageClick(
-                              this.state.data2[i].image,
-                              this.state.data2[i].descripcion,
-                              this.state.data2[i].email
-
-                            )
-                          }
-                        />
-                        <br />
-                        <span>{this.state.data2[i].email}</span>
-                        <br />
-                        <p>{this.state.data2[i].descripcion}</p>
-                      </div>
-                      {this.state.data2[i].email === this.state.user.email
-                     &&
-                    <div>
-                      <Button
-                              style={{
-                                color: "#E1FF00",
-                                backgroundColor: "transparent",
-                                border: "3px solid #E1FF00",
-                                borderRadius: "15px",
-                                fontSize: "15px",
-                              }}
-                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Editar')}
-                            >
-                              <FaPencilAlt />
-                            </Button>
-                            <Button
-                              style={{
-                                color: "#FF0000",
-                                backgroundColor: "transparent",
-                                border: "3px solid #FF0000",
-                                borderRadius: "15px",
-                                fontSize: "15px",
-                              }}
-                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Eliminar')}
-                            >
-                              <FaTrashAlt />
-
-                            </Button>
-                     </div>
-                  }
-
-                    </div>
-
-                    {/* usuario administrador */}
-                    {Object.keys(this.state.Admos).map(x => {
-
-                      return <div key={x}>
-
-
-                        {console.log(this.state.Admos[x].email)}
-
-                        {this.state.user.email == this.state.Admos[x].email &&
-                          <div>
-
-                            <Button
-                              style={{
-                                color: "#E1FF00",
-                                backgroundColor: "transparent",
-                                border: "3px solid #E1FF00",
-                                borderRadius: "15px",
-                                fontSize: "15px",
-                              }}
-                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Editar')}
-                            >
-                              <FaPencilAlt />
-                            </Button>
-                            <Button
-                              style={{
-                                color: "#FF0000",
-                                backgroundColor: "transparent",
-                                border: "3px solid #FF0000",
-                                borderRadius: "15px",
-                                fontSize: "15px",
-                              }}
-                              onClick={() => this.seleccionarImg(this.state.data2[i], i, 'Eliminar')}
-                            >
-                              <FaTrashAlt />
-
-                            </Button>
-
+                {Object.keys(this.state.data2)
+                  .map((i) => {
+                    console.log("i" + i);
+                    return (
+                      <div key={i}>
+                        <div>
+                          <div className="img-wrap">
+                            <img
+                              src={this.state.data2[i].image}
+                              onClick={() =>
+                                imageClick(
+                                  this.state.data2[i].image,
+                                  this.state.data2[i].descripcion,
+                                  this.state.data2[i].email
+                                )
+                              }
+                            />
+                            <br />
+                            <span>{this.state.data2[i].email}</span>
+                            <br />
+                            <p>{this.state.data2[i].descripcion}</p>
                           </div>
-                        }
+                          {this.state.data2[i].email ===
+                            this.state.user.email && (
+                            <div>
+                              <Button
+                                style={{
+                                  color: "#E1FF00",
+                                  backgroundColor: "transparent",
+                                  border: "3px solid #E1FF00",
+                                  borderRadius: "15px",
+                                  fontSize: "15px",
+                                }}
+                                onClick={() =>
+                                  this.seleccionarImg(
+                                    this.state.data2[i],
+                                    i,
+                                    "Editar"
+                                  )
+                                }
+                              >
+                                <FaPencilAlt />
+                              </Button>
+                              <Button
+                                style={{
+                                  color: "#FF0000",
+                                  backgroundColor: "transparent",
+                                  border: "3px solid #FF0000",
+                                  borderRadius: "15px",
+                                  fontSize: "15px",
+                                }}
+                                onClick={() =>
+                                  this.seleccionarImg(
+                                    this.state.data2[i],
+                                    i,
+                                    "Eliminar"
+                                  )
+                                }
+                              >
+                                <FaTrashAlt />
+                              </Button>
+                            </div>
+                          )}
+                        </div>
 
+                        {/* usuario administrador */}
+                        {Object.keys(this.state.Admos).map((x) => {
+                          return (
+                            <div key={x}>
+                              {console.log(this.state.Admos[x].email)}
+
+                              {this.state.user.email ==
+                                this.state.Admos[x].email && (
+                                <div>
+                                  <Button
+                                    style={{
+                                      color: "#E1FF00",
+                                      backgroundColor: "transparent",
+                                      border: "3px solid #E1FF00",
+                                      borderRadius: "15px",
+                                      fontSize: "15px",
+                                    }}
+                                    onClick={() =>
+                                      this.seleccionarImg(
+                                        this.state.data2[i],
+                                        i,
+                                        "Editar"
+                                      )
+                                    }
+                                  >
+                                    <FaPencilAlt />
+                                  </Button>
+                                  <Button
+                                    style={{
+                                      color: "#FF0000",
+                                      backgroundColor: "transparent",
+                                      border: "3px solid #FF0000",
+                                      borderRadius: "15px",
+                                      fontSize: "15px",
+                                    }}
+                                    onClick={() =>
+                                      this.seleccionarImg(
+                                        this.state.data2[i],
+                                        i,
+                                        "Eliminar"
+                                      )
+                                    }
+                                  >
+                                    <FaTrashAlt />
+                                  </Button>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-
-
-                    })}
-
-
-
-
-
-
-
-
-
-                  </div>
-                }).reverse()}
+                    );
+                  })
+                  .reverse()}
               </div>
               <Modal show={this.state.modalEditarimg}>
-
                 <div className="form-group">
                   <label>Descripcion: </label>
                   <br />
-                  <input type="text" className="form-control" name="descripcion" onChange={this.handleChangeimg} value={this.state.formpop.descripcion} />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="descripcion"
+                    onChange={this.handleChangeimg}
+                    value={this.state.formpop.descripcion}
+                  />
                   <br />
                 </div>
 
-
-                <button className="btn btn-primary" onClick={() => this.peticionPutimg()} >Editar</button>{"   "}
-                <button className="btn btn-danger" onClick={() => this.setState({ modalEditarimg: false })}>Cerrar</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.peticionPutimg()}
+                >
+                  Editar
+                </button>
+                {"   "}
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.setState({ modalEditarimg: false })}
+                >
+                  Cerrar
+                </button>
               </Modal>
 
               <div className="popUp">
@@ -868,7 +850,6 @@ export default class Asignatura extends React.Component {
                   <div className="info">
                     <h4>{this.state.selectedEmail}</h4>
                     <p>{this.state.selectedDescrip}</p>
-
                   </div>
                 </Modal>
               </div>
@@ -891,121 +872,143 @@ export default class Asignatura extends React.Component {
             <Row>
               <h3 className="tituloComent"> Comentarios </h3>
             </Row>
-            <Row className="justify-content-between py-5">
-
+            <div className="coments">
               {/* Obtenemos el id y pintamos los comentarios */}
-              {Object.keys(this.state.data).map(i => {
-
-
+              {Object.keys(this.state.data).map((i) => {
                 console.log("i" + i);
-                return <tr key={i}>
-                  <h4 className="NameUser">{this.state.data[i].correo}</h4>
-
-                  <p className="comentario">{this.state.data[i].comentario}</p>
-                  {/* usuario  registrado no admin */}
-                  {this.state.data[i].correo === this.state.user.email
-                  &&
+                return (
+                  <div key={i} className="content-coments">
                     <div>
-                      <Button
-                            style={{
-                              color: "#E1FF00",
-                              backgroundColor: "transparent",
-                              border: "3px solid #E1FF00",
-                              borderRadius: "15px",
-                              fontSize: "15px",
-                            }}
-                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Editar')}
-                          >
-                            <FaPencilAlt />
-                          </Button>
+                      <h4 className="NameUser">{this.state.data[i].correo}</h4>
 
-                          <Button
-                            style={{
-                              color: "#FF0000",
-                              backgroundColor: "transparent",
-                              border: "3px solid #FF0000",
-                              borderRadius: "15px",
-                              fontSize: "15px",
-                            }}
-                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
-                          >
-                            <FaTrashAlt />
-
-                          </Button>
-                     </div>
-                  }
-
-                  
-
-
-
-
-                  {/* usuario administrador */}
-                  {Object.keys(this.state.Admos).map(x => {
-
-                    return <div key={x}>
-
-                      {this.state.user.email == this.state.Admos[x].email &&
-                        <div>
-
-                          <Button
-                            style={{
-                              color: "#E1FF00",
-                              backgroundColor: "transparent",
-                              border: "3px solid #E1FF00",
-                              borderRadius: "15px",
-                              fontSize: "15px",
-                            }}
-                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Editar')}
-                          >
-                            <FaPencilAlt />
-                          </Button>
-
-                          <Button
-                            style={{
-                              color: "#FF0000",
-                              backgroundColor: "transparent",
-                              border: "3px solid #FF0000",
-                              borderRadius: "15px",
-                              fontSize: "15px",
-                            }}
-                            onClick={() => this.seleccionarCanal(this.state.data[i], i, 'Eliminar')}
-                          >
-                            <FaTrashAlt />
-
-                          </Button>
-
-                        </div>
-                      }
-
+                      <p className="comentario">
+                        {this.state.data[i].comentario}
+                      </p>
                     </div>
 
+                    {/* usuario  registrado no admin */}
+                    {this.state.data[i].correo === this.state.user.email && (
+                      <div className="btn-coments">
+                        <Button
+                          style={{
+                            color: "#E1FF00",
+                            backgroundColor: "transparent",
+                            border: "3px solid #E1FF00",
+                            borderRadius: "15px",
+                            fontSize: "15px",
+                          }}
+                          onClick={() =>
+                            this.seleccionarCanal(
+                              this.state.data[i],
+                              i,
+                              "Editar"
+                            )
+                          }
+                        >
+                          <FaPencilAlt />
+                        </Button>
 
-                  })}
+                        <Button
+                          style={{
+                            color: "#FF0000",
+                            backgroundColor: "transparent",
+                            border: "3px solid #FF0000",
+                            borderRadius: "15px",
+                            fontSize: "15px",
+                          }}
+                          onClick={() =>
+                            this.seleccionarCanal(
+                              this.state.data[i],
+                              i,
+                              "Eliminar"
+                            )
+                          }
+                        >
+                          <FaTrashAlt />
+                        </Button>
+                      </div>
+                    )}
 
+                    {/* usuario administrador */}
+                    {Object.keys(this.state.Admos).map((x) => {
+                      return (
+                        <div key={x} className="btn-coments">
+                          {this.state.user.email ==
+                            this.state.Admos[x].email && (
+                            <div>
+                              <Button
+                                style={{
+                                  color: "#E1FF00",
+                                  backgroundColor: "transparent",
+                                  border: "3px solid #E1FF00",
+                                  borderRadius: "15px",
+                                  fontSize: "15px",
+                                }}
+                                onClick={() =>
+                                  this.seleccionarCanal(
+                                    this.state.data[i],
+                                    i,
+                                    "Editar"
+                                  )
+                                }
+                              >
+                                <FaPencilAlt />
+                              </Button>
 
-
-
-                </tr>
-
-
+                              <Button
+                                style={{
+                                  color: "#FF0000",
+                                  backgroundColor: "transparent",
+                                  border: "3px solid #FF0000",
+                                  borderRadius: "15px",
+                                  fontSize: "15px",
+                                }}
+                                onClick={() =>
+                                  this.seleccionarCanal(
+                                    this.state.data[i],
+                                    i,
+                                    "Eliminar"
+                                  )
+                                }
+                              >
+                                <FaTrashAlt />
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
               })}
               <Modal show={this.state.modalEditarcoment}>
-
                 <div className="form-group">
                   <label>Editar comentario: </label>
                   <br />
-                  <input type="text" className="form-control" name="comentario" onChange={this.handleChange} value={this.state.form.comentario} />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="comentario"
+                    onChange={this.handleChange}
+                    value={this.state.form.comentario}
+                  />
                   <br />
                 </div>
 
-
-                <button className="btn btn-primary" onClick={() => this.peticionPut()}>Editar</button>
-                <button className="btn btn-danger" onClick={() => this.setState({ modalEditarcoment: false })}>Cerrar</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.peticionPut()}
+                >
+                  Editar
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.setState({ modalEditarcoment: false })}
+                >
+                  Cerrar
+                </button>
               </Modal>
-
-
-            </Row>
+            </div>
             <Row>
               <h3 className="tituloComent">
                 <u>Comparte tus ideas</u>
@@ -1044,7 +1047,6 @@ export default class Asignatura extends React.Component {
           </Container>
         </div>
       );
-
 
       // Cuando el usuario no inicia sesion
     } else {
@@ -1168,6 +1170,5 @@ export default class Asignatura extends React.Component {
     return <div>{this.Asig()}</div>;
   }
 }
-
 
 //para volver a esta version
