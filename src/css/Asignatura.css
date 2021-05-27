@@ -104,7 +104,7 @@ button:active {
   padding-left: 50px;
 }
 
-.botonesinfo{
+.botonesinfo {
   position: relative;
   left: 85%;
 }
@@ -115,6 +115,22 @@ button:active {
   right: 20px;
   color: white;
   font-family: "Fredoka One";
+}
+
+.coments {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+}
+
+.content-coments {
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.btn-coments {
+  float: right;
 }
 
 @media (max-width: 640px) {
