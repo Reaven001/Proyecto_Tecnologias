@@ -827,6 +827,19 @@ export default class Asignatura extends React.Component {
                 >
                   Cerrar
                 </button>
+
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.peticionPutimg()}
+                >
+                  Editar
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.setState({ modalEditarimg: false })}
+                >
+                  Cerrar
+                </button>
               </Modal>
 
               <div className="popUp">

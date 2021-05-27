@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "firebase";
 import Image from "react-bootstrap/Image";
 import { firebasedb } from "../index"
-import Admins from "../admins"
+
 
 
 import "../css/menu.css";
@@ -73,22 +73,36 @@ class Nav extends React.Component {
                   roundedCircle
                 />
               </div>
+                            {Object.keys(this.state.Admos).map(x => {
+
+              return <div key={x}>
+
+                {this.state.user.email == this.state.Admos[x].email &&
+                  <div>
+
+                        <li className="list">
+                        <Link
+                          to="/Admins"
+                          style={{ textDecoration: "none", color: "#000000" }}
+                        >
+                          Admins
+                          
+                        </Link>
+                      </li>
+
+                  </div>
+                }
+
+              </div>
+
+
+              })}
               <li className="list">
                 <Link
                   to="/Inicio"
                   style={{ textDecoration: "none", color: "#000000" }}
                 >
                   Inicio
-                  
-                </Link>
-              </li>
-
-              <li className="admin">
-                <Link
-                  to="/Admins"
-                  style={{ textDecoration: "none", color: "#000000" }}
-                >
-                  Adminds
                   
                 </Link>
               </li>
@@ -101,6 +115,9 @@ class Nav extends React.Component {
                   Areas
                 </Link>
               </li>
+
+
+
               <li className="list">
                 <Link
                   to="/SubirArchivos"
