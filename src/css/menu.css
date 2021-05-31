@@ -15,17 +15,19 @@
   font-family: "Roboto Condensed", sans-serif;
   font-size: 30px;
   opacity: 0.4;
-  background: #b9b9b9;
+  background: #0d6eff;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.list {
+  color: #e1ff00;
 }
 
 .menu:hover {
   opacity: 1;
   color: white;
 }
-
 
 .menu.img {
   padding-left: 10px;
@@ -39,7 +41,7 @@
 .left-panel {
   width: 30%;
   height: 100%;
-  background: #b9b9b9;
+  background: #0d6eff;
   position: fixed;
   top: 0;
   left: -30%;
@@ -47,7 +49,8 @@
   align-items: center;
   justify-content: center;
   transition: left 0.4s;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Fredoka One", cursive;
+  color: #e1ff00;
   z-index: 100;
 }
 
@@ -60,7 +63,6 @@
 }
 
 ul a {
-  color: #000000;
   text-decoration: none;
 }
 
@@ -74,11 +76,8 @@ li {
 
 .list:hover {
   border: solid white;
+  color: #000;
   border-width: 0 0.1rem;
-}
-
-li:hover {
-  color: white;
 }
 
 @media (max-width: 640px) {
@@ -90,7 +89,6 @@ li:hover {
   .left-panel {
     width: 80%;
     height: 100%;
-    background: #b9b9b9;
     position: fixed;
     top: 0;
     left: -80%;
