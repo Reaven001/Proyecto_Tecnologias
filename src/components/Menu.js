@@ -156,7 +156,7 @@ class Nav extends React.Component {
                                 color: "#e1ff00",
                               }}
                             >
-                              Sistemas Interactvos
+                              Sistemas Interactivos
                             </Link>
                           </li>
                           <li className="list">
@@ -274,7 +274,7 @@ class Nav extends React.Component {
                                 color: "#e1ff00",
                               }}
                             >
-                              Sistemas Interactvos
+                              Sistemas Interactivos
                             </Link>
                           </li>
                           <li className="list">
