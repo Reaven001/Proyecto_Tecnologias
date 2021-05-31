@@ -15,6 +15,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { firebasedb } from "./index";
 import "./css/Asignatura.css";
 import Hexagoncard2 from "./components/Hexagono/Hexagono2";
+import { P } from "@fullpage/react-fullpage";
 
 export default class Asignatura extends React.Component {
   constructor(props) {
@@ -887,113 +888,116 @@ export default class Asignatura extends React.Component {
             </Row>
             <div className="coments">
               {/* Obtenemos el id y pintamos los comentarios */}
-              {Object.keys(this.state.data).map((i) => {
-                console.log("i" + i);
-                return (
-                  <div key={i} className="content-coments">
-                    <div>
-                      <h4 className="NameUser">{this.state.data[i].correo}</h4>
+              {Object.keys(this.state.data)
+                .map((i) => {
+                  console.log("i" + i);
+                  return (
+                    <div key={i} className="content-coments">
+                      <div>
+                        <h4 className="NameUser">
+                          {this.state.data[i].correo}
+                        </h4>
 
-                      <p className="comentario">
-                        {this.state.data[i].comentario}
-                      </p>
-                    </div>
-
-                    {/* usuario  registrado no admin */}
-                    {this.state.data[i].correo === this.state.user.email && (
-                      <div className="btn-coments">
-                        <Button
-                          style={{
-                            color: "#E1FF00",
-                            backgroundColor: "transparent",
-                            border: "3px solid #E1FF00",
-                            borderRadius: "15px",
-                            fontSize: "15px",
-                          }}
-                          onClick={() =>
-                            this.seleccionarCanal(
-                              this.state.data[i],
-                              i,
-                              "Editar"
-                            )
-                          }
-                        >
-                          <FaPencilAlt />
-                        </Button>
-
-                        <Button
-                          style={{
-                            color: "#FF0000",
-                            backgroundColor: "transparent",
-                            border: "3px solid #FF0000",
-                            borderRadius: "15px",
-                            fontSize: "15px",
-                          }}
-                          onClick={() =>
-                            this.seleccionarCanal(
-                              this.state.data[i],
-                              i,
-                              "Eliminar"
-                            )
-                          }
-                        >
-                          <FaTrashAlt />
-                        </Button>
+                        <p className="comentario">
+                          {this.state.data[i].comentario}
+                        </p>
                       </div>
-                    )}
+                      {/* usuario  registrado no admin */}
+                      {this.state.data[i].correo === this.state.user.email && (
+                        <div className="btn-coments">
+                          <Button
+                            style={{
+                              color: "#E1FF00",
+                              backgroundColor: "transparent",
+                              border: "3px solid #E1FF00",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() =>
+                              this.seleccionarCanal(
+                                this.state.data[i],
+                                i,
+                                "Editar"
+                              )
+                            }
+                          >
+                            <FaPencilAlt />
+                          </Button>
 
-                    {/* usuario administrador */}
-                    {Object.keys(this.state.Admos).map((x) => {
-                      return (
-                        <div key={x} className="btn-coments">
-                          {this.state.user.email ==
-                            this.state.Admos[x].email && (
-                            <div>
-                              <Button
-                                style={{
-                                  color: "#E1FF00",
-                                  backgroundColor: "transparent",
-                                  border: "3px solid #E1FF00",
-                                  borderRadius: "15px",
-                                  fontSize: "15px",
-                                }}
-                                onClick={() =>
-                                  this.seleccionarCanal(
-                                    this.state.data[i],
-                                    i,
-                                    "Editar"
-                                  )
-                                }
-                              >
-                                <FaPencilAlt />
-                              </Button>
-
-                              <Button
-                                style={{
-                                  color: "#FF0000",
-                                  backgroundColor: "transparent",
-                                  border: "3px solid #FF0000",
-                                  borderRadius: "15px",
-                                  fontSize: "15px",
-                                }}
-                                onClick={() =>
-                                  this.seleccionarCanal(
-                                    this.state.data[i],
-                                    i,
-                                    "Eliminar"
-                                  )
-                                }
-                              >
-                                <FaTrashAlt />
-                              </Button>
-                            </div>
-                          )}
+                          <Button
+                            style={{
+                              color: "#FF0000",
+                              backgroundColor: "transparent",
+                              border: "3px solid #FF0000",
+                              borderRadius: "15px",
+                              fontSize: "15px",
+                            }}
+                            onClick={() =>
+                              this.seleccionarCanal(
+                                this.state.data[i],
+                                i,
+                                "Eliminar"
+                              )
+                            }
+                          >
+                            <FaTrashAlt />
+                          </Button>
                         </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
+                      )}
+
+                      {/* usuario administrador */}
+                      {Object.keys(this.state.Admos).map((x) => {
+                        return (
+                          <div key={x} className="btn-coments">
+                            {this.state.user.email ==
+                              this.state.Admos[x].email && (
+                              <div>
+                                <Button
+                                  style={{
+                                    color: "#E1FF00",
+                                    backgroundColor: "transparent",
+                                    border: "3px solid #E1FF00",
+                                    borderRadius: "15px",
+                                    fontSize: "15px",
+                                  }}
+                                  onClick={() =>
+                                    this.seleccionarCanal(
+                                      this.state.data[i],
+                                      i,
+                                      "Editar"
+                                    )
+                                  }
+                                >
+                                  <FaPencilAlt />
+                                </Button>
+
+                                <Button
+                                  style={{
+                                    color: "#FF0000",
+                                    backgroundColor: "transparent",
+                                    border: "3px solid #FF0000",
+                                    borderRadius: "15px",
+                                    fontSize: "15px",
+                                  }}
+                                  onClick={() =>
+                                    this.seleccionarCanal(
+                                      this.state.data[i],
+                                      i,
+                                      "Eliminar"
+                                    )
+                                  }
+                                >
+                                  <FaTrashAlt />
+                                </Button>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })
+                .reverse()}
               <Modal show={this.state.modalEditarcoment}>
                 <div className="form-group">
                   <label>Editar comentario: </label>
@@ -1153,26 +1157,49 @@ export default class Asignatura extends React.Component {
             <Row>
               <h3 className="tituloComent"> Comentarios </h3>
             </Row>
-            <Row>
-              <Col lg={8} sm={12}>
-                {this.state.coments
-                  .map((coment) => (
+            <div className="coments">
+              {/* Obtenemos el id y pintamos los comentarios */}
+              {Object.keys(this.state.data).map((i) => {
+                console.log("i" + i);
+                return (
+                  <div key={i} className="content-coments">
                     <div>
-                      <div>
-                        <h4 className="NameUser">{coment.correo}</h4>
-                      </div>
-                      <p className="comentario">{coment.comentario}</p>
+                      <h4 className="NameUser">{this.state.data[i].correo}</h4>
+
+                      <p className="comentario">
+                        {this.state.data[i].comentario}
+                      </p>
                     </div>
-                  ))
-                  .reverse()}
-              </Col>
-            </Row>
+                  </div>
+                );
+              })}
+            </div>
+
             <Row>
               <h3 className="tituloComent">
                 <u>Comparte tus ideas</u>
               </h3>
             </Row>
-            <h1>Para comentar inicia sesion</h1>
+            <Row>
+              <p className="parrAsig">
+                Para comentar y compartir tus ideas, debes iniciar sesión
+              </p>
+            </Row>
+            <Row className="justify-content-center py-3 btnShare">
+              <Button
+                style={{
+                  color: "#620CE8",
+                  backgroundColor: "#E8910C",
+                  border: "#0DBFFF",
+                  borderRadius: "20px",
+                  padding: "15px",
+                  fontSize: "15px",
+                }}
+                href="/IniciarSesion"
+              >
+                Inicia Sesión
+              </Button>
+            </Row>
           </Container>
         </div>
       );
