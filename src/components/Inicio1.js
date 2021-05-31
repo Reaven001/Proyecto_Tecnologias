@@ -11,6 +11,9 @@ import Tableta from "./modelos/tableta_01";
 import Mando from "./modelos/mando_01";
 import Claqueta from "./modelos/claqueta_01";
 import Camara from "./modelos/camara_01";
+import Casa from "./modelos/Todo2"
+import Casa2 from "./modelos/Todo1"
+import Años from "./modelos/20anos"
 
 export default class Inicio extends React.Component {
   render() {
@@ -38,12 +41,15 @@ export default class Inicio extends React.Component {
               castShadow
             />
             <Suspense fallback={null}>
-              <Environment preset="city"></Environment>
+              <Environment preset="city">
+              </Environment>
               <Tableta></Tableta>
               <Titulo></Titulo>
               <Mando></Mando>
               <Claqueta></Claqueta>
               <Camara></Camara>
+              <Años></Años>
+              
             </Suspense>
             <OrbitControls></OrbitControls>
           </Canvas>

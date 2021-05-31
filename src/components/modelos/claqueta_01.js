@@ -5,7 +5,7 @@ export default function Claqueta(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/home_claqueta_01.gltf')
   return (
-    <group ref={group} {...props} dispose={null} rotation={[0, -1.57, 0]} position={[0, -10, 0]}>
+    <group ref={group} {...props} dispose={null} rotation={[0, -1.57, 0]} position={[11, -8, 0]}>
       <mesh geometry={nodes['claquetavox-0-claqueta_1'].geometry} material={materials['Material.002']} />
       <mesh geometry={nodes['claquetavox-0-claqueta_2'].geometry} material={materials['Material.006']} />
       <group position={[0.6, 3.96, 3.22]} rotation={[0.21, 0, 0]}>

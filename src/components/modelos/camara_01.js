@@ -6,7 +6,7 @@ export default function Camara(props) {
   const { nodes, materials } = useGLTF('/home_camara_01.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0.88, 8, -0.54]}>
+      <group position={[-10, 7.5, 0]}>
         <mesh geometry={nodes.voxcamrav3_1.geometry} material={materials['Material.001']} />
         <mesh geometry={nodes.voxcamrav3_2.geometry} material={materials['Material.002']} />
         <mesh geometry={nodes.voxcamrav3_3.geometry} material={materials['Material.003']} />

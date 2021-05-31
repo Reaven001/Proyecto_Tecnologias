@@ -6,7 +6,7 @@ export default function Mando(props) {
   const { nodes, materials } = useGLTF('/home_mando_01.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[8, 2.86, 1]} >
+      <group position={[11, 7, 0]} >
         <mesh geometry={nodes['MANDOV2-0-mandoxd_1'].geometry} material={materials['Material.001']} />
         <mesh geometry={nodes['MANDOV2-0-mandoxd_2'].geometry} material={materials['Material.002']} />
         <mesh geometry={nodes['MANDOV2-0-mandoxd_3'].geometry} material={materials['Material.004']} />
